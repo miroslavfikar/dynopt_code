@@ -5,7 +5,8 @@ options = optimset(options,'MaxIter',1e5);
 options = optimset(options,'TolFun',1e-5);
 options = optimset(options,'TolCon',1e-5);
 options = optimset(options,'TolX',1e-5);
-options = optimset(options,'Algorithm','active-set');
+options = optimset(options,'Algorithm','sqp'); %2010a
+%options = optimset(options,'Algorithm','active-set'); %2008b
 
 optimparam.optvar = 3; 
 optimparam.objtype = []; 

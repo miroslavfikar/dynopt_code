@@ -1,1056 +1,423 @@
-ver
--------------------------------------------------------------------------------------
-MATLAB Version 7.4.0.336 (R2007a)
-MATLAB License Number: 12345678
-Operating System: Linux 2.6.24.7-desktop586-2mnb #1 SMP Thu Oct 30 17:39:28 EDT 2008 i686
-Java VM Version: Java is not enabled
--------------------------------------------------------------------------------------
-MATLAB                                                Version 7.4        (R2007a)
-Simulink                                              Version 6.6        (R2007a)
-Control System Toolbox                                Version 8.0        (R2007a)
-Fuzzy Logic Toolbox                                   Version 2.2.5      (R2007a)
-Multi-Parametric Toolbox                              Version 2.6.2      (R2006b)
-Neural Network Toolbox                                Version 5.0.2      (R2007a)
-Optimization Toolbox                                  Version 3.1.1      (R2007a)
-Polynomial Toolbox                                    Version 2.5.8              
-Signal Processing Toolbox                             Version 6.7        (R2007a)
-Stateflow                                             Version 6.6        (R2007a)
-Symbolic Math Toolbox                                 Version 3.2        (R2007a)
-YALMIP                                                Version 3          (R14SP3)
-
-Trademarks
-------------------
-MATLAB, Simulink, Stateflow, Handle Graphics, Real-Time Workshop, and xPC
-TargetBox are registered trademarks and SimBiology, SimEvents, and
-SimHydraulics are trademarks of The MathWorks, Inc. Other product or
-brand names are trademarks or registered trademarks of their respective
-holders. 
 problem1b
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+    0       1    1.000000e+00   6.217e-15   1.000e+00   0.000e+00   2.207e+01
+    1       4    9.744627e-01   1.304e-04   1.000e+00   1.678e-01   6.018e-02
+    2       9    9.400210e-01   1.713e-03   4.900e-01   3.231e-01   4.414e-02
+    3      12    9.245380e-01   1.620e-03   1.000e+00   3.640e-01   2.433e-02
+    4      14    9.241057e-01   1.165e-04   1.000e+00   4.537e-02   3.362e-03
+    5      16    9.242603e-01   1.091e-05   1.000e+00   9.101e-03   2.790e-03
+    6      18    9.242194e-01   3.224e-05   1.000e+00   1.364e-02   1.024e-03
+    7      20    9.242331e-01   2.526e-06   1.000e+00   4.480e-03   5.070e-04
+    8      22    9.242345e-01   3.231e-07   1.000e+00   1.886e-03   1.483e-04
+    9      24    9.242347e-01   4.719e-08   1.000e+00   6.377e-04   1.215e-04
+   10      26    9.242346e-01   6.045e-08   1.000e+00   7.158e-04   6.174e-05
+   11      28    9.242346e-01   1.158e-08   1.000e+00   2.935e-04   1.724e-05
+   12      30    9.242346e-01   6.905e-10   1.000e+00   1.007e-04   1.126e-05
+   13      32    9.242346e-01   1.107e-10   1.000e+00   3.210e-05   9.424e-06
+   14      34    9.242346e-01   1.680e-10   1.000e+00   3.905e-05   5.679e-06
+   15      36    9.242346e-01   5.099e-11   1.000e+00   1.815e-05   2.164e-06
+   16      38    9.242346e-01   3.112e-12   1.000e+00   5.974e-06   4.737e-07
+   17      40    9.242346e-01   4.699e-13   1.000e+00   1.983e-06   5.773e-07
+   18      43    9.242346e-01   9.923e-15   1.000e+00   6.740e-06   1.072e-06
+   19      46    9.242346e-01   1.481e-14   1.000e+00   1.212e-05   1.755e-06
+   20      49    9.242346e-01   1.686e-14   1.000e+00   2.725e-05   3.794e-06
+   21      52    9.242346e-01   3.607e-14   1.000e+00   5.426e-05   8.465e-06
+   22      55    9.242346e-01   7.857e-13   1.000e+00   1.215e-04   1.978e-05
+   23      58    9.242346e-01   1.611e-11   1.000e+00   2.847e-04   4.803e-05
+   24      62    9.242346e-01   1.404e-10   7.000e-01   4.950e-04   9.936e-05
+   25      69    9.242346e-01   3.512e-10   2.401e-01   4.823e-04   1.501e-04
+   26      80    9.242346e-01   4.615e-10   5.765e-02   3.046e-04   1.818e-04
+   27      94    9.242346e-01   5.450e-10   1.977e-02   2.196e-04   2.040e-04
+   28     110    9.242346e-01   6.337e-10   9.689e-03   1.867e-04   2.223e-04
+   29     128    9.242346e-01   6.956e-10   4.748e-03   1.410e-04   2.358e-04
+   30     147    9.242346e-01   7.105e-10   2.326e-03   9.971e-05   2.449e-04
 
-                                Max     Line search  Directional  First-order 
- Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
-    0      1            1    7.994e-15                                         
-    1      3     0.971907     0.001974            1      -0.0281         12.3   dependent
-    2      7     0.874859      0.03666         0.25       -0.388         13.8  Hessian modified;   dependent
-    3      9     0.926956     0.006785            1       0.0521         13.3  Hessian modified;   dependent
-    4     14      0.90619      0.01363        0.125       -0.166         13.4  Hessian modified;   dependent
-    5     18     0.909249      0.01345         0.25       0.0122         12.9  Hessian modified;   dependent
-    6     23     0.896978      0.02103        0.125      -0.0982         12.8  Hessian modified;   dependent
-    7     27     0.894703      0.02058         0.25      -0.0091         12.7  Hessian modified;   dependent
-    8     34     0.892976      0.02153       0.0312      -0.0552           13  Hessian modified;   dependent
-    9     38     0.897772      0.01967         0.25       0.0192         12.9  Hessian modified;   dependent
-   10     45     0.892397      0.02196       0.0312       -0.172         12.7  Hessian modified;   dependent
-   11     49     0.898205      0.01963         0.25       0.0232         12.9  Hessian modified;   dependent
-   12     56     0.891542        0.023       0.0312       -0.213         13.2  Hessian modified;   dependent
-   13     63     0.893267      0.02279       0.0312       0.0552         1.62  Hessian modified;   overly constrained
-   14     67     0.891006      0.02022         0.25     -0.00904         12.8  Hessian modified twice;   dependent
-   15     73     0.892501      0.01987       0.0625       0.0239         13.3  Hessian modified twice;   dependent
-   16     77     0.896877      0.01857         0.25       0.0175         13.1   dependent
-   17     84     0.892049      0.02151       0.0312       -0.154         12.3  Hessian modified;   dependent
-   18     88     0.896936      0.01977         0.25       0.0195           13  Hessian modified;   dependent
-   19     95     0.891405      0.02389       0.0312       -0.177         12.9  Hessian modified;   dependent
-   20    102     0.894675      0.02378       0.0312        0.105         1.62  Hessian modified;   overly constrained
-   21    105     0.886685      0.02731          0.5       -0.016           13  Hessian modified twice;   dependent
-   22    111     0.867157      0.04378       0.0625       -0.312         13.4  Hessian modified twice;   dependent
-   23    115     0.872096      0.03826         0.25       0.0198           13  Hessian modified;   dependent
-   24    124     0.872005      0.03827      0.00781      -0.0117           13  Hessian modified;   dependent
-   25    127     0.897269      0.02907          0.5       0.0505         12.9  Hessian modified twice;   dependent
-   26    133     0.870358      0.05202       0.0625       -0.431         13.3  Hessian modified;   dependent
-   27    136     0.879248      0.04804          0.5       0.0178           13  Hessian modified;   dependent
-   28    142     0.852264      0.06899       0.0625       -0.432         13.1  Hessian modified;   dependent
-   29    145     0.871652      0.05663          0.5       0.0388           13  Hessian modified;   dependent
-   30    151      0.84455      0.07733       0.0625       -0.434         13.1  Hessian modified;   dependent
-   31    156     0.863981      0.07534        0.125        0.155         1.62  Hessian modified;   overly constrained
-   32    159     0.806645      0.05207          0.5       -0.115         12.9  Hessian modified;   dependent
-   33    163     0.827832      0.04318         0.25       0.0848         13.1  Hessian modified;   dependent
-   34    167     0.833185      0.03941         0.25       0.0214           13   dependent
-   35    172     0.833045      0.03594        0.125     -0.00112         12.9  Hessian modified;   dependent
-   36    176     0.852042      0.03411         0.25        0.076         12.9  Hessian modified;   dependent
-   37    181     0.838532      0.04233        0.125       -0.108         12.8  Hessian modified;   dependent
-   38    186     0.847034      0.04034        0.125        0.068           13  Hessian modified;   dependent
-   39    192     0.847527      0.04033       0.0625      0.00787         13.3  Hessian modified;   dependent
-   40    196     0.863695      0.03953         0.25       0.0647           13  Hessian modified;   dependent
-   41    202      0.85045      0.04388       0.0625       -0.212         13.2  Hessian modified;   dependent
-   42    204     0.922357      0.04103            1       0.0719           13  Hessian modified;   dependent
-   43    208     0.824702       0.1445         0.25       -0.391         12.9  Hessian modified;   dependent
-   44    212     0.819964       0.1289         0.25      -0.0189         12.7  Hessian modified;   dependent
-   45    216      0.78701       0.1373         0.25       -0.132           13  Hessian modified;   dependent
-   46    218     0.839154       0.2585            1       0.0521           13  Hessian modified;   dependent
-   47    222     0.837715       0.2322         0.25     -0.00576         12.9  Hessian modified;   dependent
-   48    224     0.904618       0.1005            1       0.0669         13.2  Hessian modified;   dependent
-   49    229     0.875805       0.1163        0.125       -0.231           13  Hessian modified;   dependent
-   50    233      0.88282      0.09946         0.25       0.0281         13.1  Hessian modified;   dependent
-   51    236     0.886838      0.09149          0.5      0.00804         13.1  Hessian modified;   dependent
-   52    241     0.883498      0.08522        0.125      -0.0267           13  Hessian modified;   dependent
-   53    246     0.886732       0.0809        0.125       0.0259           13  Hessian modified;   dependent
-   54    249     0.896228      0.07544          0.5        0.019           13  Hessian modified;   dependent
-   55    253     0.878533      0.06977         0.25      -0.0708         12.9  Hessian modified;   dependent
-   56    258     0.867378      0.06168        0.125      -0.0892         13.3  Hessian modified;   dependent
-   57    262     0.871278      0.05008         0.25       0.0156           13  Hessian modified;   dependent
-   58    267     0.856603       0.0614        0.125       -0.117         13.1  Hessian modified;   dependent
-   59    272     0.860181      0.05901        0.125       0.0286           13  Hessian modified;   dependent
-   60    278     0.861735      0.05867       0.0625       0.0249           13  Hessian modified;   dependent
-   61    283     0.865461      0.05801        0.125       0.0298         12.9  Hessian modified;   dependent
-   62    289     0.864765      0.05807       0.0625      -0.0111           13  Hessian modified;   dependent
-   63    294     0.870366      0.05507        0.125       0.0448           13  Hessian modified;   dependent
-   64    300     0.868927      0.05579       0.0625       -0.023         12.9  Hessian modified twice;   dependent
-   65    304     0.878407       0.0552         0.25       0.0379           13  Hessian modified;   dependent
-   66    309     0.859784      0.07088        0.125       -0.149         13.2  Hessian modified;   dependent
-   67    314     0.858863      0.06891        0.125     -0.00737           13  Hessian modified;   dependent
-   68    317     0.888351      0.04413          0.5        0.059         12.9  Hessian modified;   dependent
-   69    323       0.8877      0.04349       0.0625      -0.0104           13  Hessian modified;   dependent
-   70    329     0.889197      0.04258       0.0625       0.0239           13  Hessian modified;   dependent
-   71    334     0.892659      0.03994        0.125       0.0277           13  Hessian modified;   dependent
-   72    339     0.894436      0.03935        0.125       0.0142           13  Hessian modified;   dependent
-   73    344     0.896286      0.03743        0.125       0.0148           13  Hessian modified;   dependent
-   74    349     0.898269       0.0374        0.125       0.0159           13  Hessian modified;   dependent
-   75    355     0.897961      0.03666       0.0625     -0.00492           13  Hessian modified;   dependent
-   76    358     0.911114      0.03647          0.5       0.0263           13  Hessian modified;   dependent
-   77    363     0.880612       0.0621        0.125       -0.244         12.9  Hessian modified;   dependent
-   78    366     0.895214      0.05673          0.5       0.0292           13  Hessian modified;   dependent
-   79    372     0.887967      0.06161       0.0625       -0.116           13  Hessian modified;   dependent
-   80    379     0.888818      0.06069       0.0312       0.0273           13  Hessian modified twice;   dependent
-   81    382     0.903924      0.05163          0.5       0.0302         13.1  Hessian modified twice;   dependent
-   82    388      0.89342      0.05863       0.0625       -0.168           13  Hessian modified;   dependent
-   83    396     0.893678      0.05835       0.0156       0.0165           13  Hessian modified;   dependent
-   84    399     0.908371      0.04807          0.5       0.0294         13.1  Hessian modified twice;   dependent
-   85    405     0.897137       0.0558       0.0625        -0.18         12.7  Hessian modified;   dependent
-   86    413      0.89723      0.05536       0.0156      0.00597         12.9  Hessian modified;   dependent
-   87    416      0.90822      0.04844          0.5        0.022           13  Hessian modified twice;   dependent
-   88    421     0.861556       0.0956        0.125       -0.373         11.8  Hessian modified;   dependent
-   89    423     0.898056      0.08104            1       0.0365         12.9  Hessian modified;   dependent
-   90    428     0.887674      0.08687        0.125      -0.0831         13.3  Hessian modified;   dependent
-   91    432      0.89468      0.07683         0.25        0.028           13  Hessian modified;   dependent
-   92    434     0.905842       0.0721            1       0.0112           13  Hessian modified;   dependent
-   93    439     0.889708      0.08334        0.125       -0.129         13.1  Hessian modified;   dependent
-   94    444     0.892009      0.08289        0.125       0.0184           13  Hessian modified;   dependent
-   95    446     0.909168      0.07098            1       0.0172           13  Hessian modified;   dependent
-   96    452     0.888279      0.09625       0.0625       -0.334         13.1  Hessian modified;   dependent
-   97    454     0.917985      0.05125            1       0.0297           13  Hessian modified;   dependent
-   98    459     0.890015       0.0764        0.125       -0.224           13  Hessian modified;   dependent
-   99    467     0.890171      0.07583       0.0156         0.01         12.8  Hessian modified twice;   dependent
-  100    469     0.923353      0.03473            1       0.0332         13.3  Hessian modified twice;   dependent
-  101    475     0.888661      0.08588       0.0625       -0.555         12.7  Hessian modified;   dependent
-  102    478     0.894947      0.07803          0.5       0.0126           13  Hessian modified;   dependent
-  103    483     0.886786      0.07479        0.125      -0.0653         12.9  Hessian modified;   dependent
-  104    489     0.887988      0.07337       0.0625       0.0192           13  Hessian modified;   dependent
-  105    492     0.900414      0.06749          0.5       0.0249           13  Hessian modified;   dependent
-  106    497     0.881336       0.0901        0.125       -0.153         13.1  Hessian modified;   dependent
-  107    500     0.898708      0.07996          0.5       0.0347           13  Hessian modified;   dependent
-  108    505     0.880806       0.1011        0.125       -0.143           13  Hessian modified;   dependent
-  109    508     0.897489      0.08661          0.5       0.0334           13  Hessian modified;   dependent
-  110    513     0.879993       0.1053        0.125        -0.14         12.5  Hessian modified twice;   dependent
-  111    516     0.897368      0.08961          0.5       0.0348           13  Hessian modified;   dependent
-  112    521     0.878979       0.1087        0.125       -0.147           13  Hessian modified;   dependent
-  113    524     0.896098       0.1041          0.5       0.0342           13  Hessian modified;   dependent
-  114    529     0.869137       0.1248        0.125       -0.216           13  Hessian modified;   dependent
-  115    532     0.893087       0.1084          0.5       0.0479           13  Hessian modified;   dependent
-  116    536     0.691073       0.4609         0.25       -0.808         9.64  Hessian modified;   dependent
-  117    539     0.427884        1.378          0.5       -0.526         1.62  Hessian modified;   overly constrained
-  118    541     0.309332        1.307            1       -0.119         12.9  Hessian modified;   dependent
-  119    544     0.195801        1.165          0.5       -0.227         8.67  Hessian modified;   dependent
-  120    546     0.679936       0.9351            1        0.484           13  Hessian modified;   dependent
-  121    548    0.0716729        1.652            1       -0.608          8.6  Hessian modified;   dependent
-  122    550     0.510599        1.366            1        0.439         12.8  Hessian modified;   dependent
-  123    552    0.0557133        1.827            1       -0.455         8.27  Hessian modified;   dependent
-  124    555      0.30935        1.309          0.5        0.507           13  Hessian modified;   dependent
-  125    559     0.288594        1.172         0.25       -0.083         9.62  Hessian modified;   dependent
-  126    561     0.776837       0.7747            1        0.488         12.9  Hessian modified;   dependent
-  127    563    0.0949541        1.272            1       -0.682         8.51  Hessian modified;   dependent
-  128    565      0.52553        1.171            1        0.431         12.9  Hessian modified;   dependent
-  129    567    0.0939619        1.363            1       -0.432         8.54  Hessian modified;   dependent
-  130    570     0.499383       0.8465          0.5        0.811         1.62  Hessian modified;   overly constrained
-  131    573     0.594116        0.832          0.5        0.189         12.9  Hessian modified;   dependent
-  132    576     0.702685       0.7299          0.5        0.217           13  Hessian modified;   dependent
-  133    580     0.688199       0.6861         0.25      -0.0579         12.9  Hessian modified;   dependent
-  134    583     0.816362       0.5084          0.5        0.256           13  Hessian modified;   dependent
-  135    587     0.706416        0.544         0.25        -0.44         12.6  Hessian modified twice;   dependent
-  136    589      0.99175       0.4854            1        0.285           13  Hessian modified;   dependent
-  137    591     0.404485        1.364            1       -0.587         12.9  Hessian modified;   dependent
-  138    594     0.340962        1.467          0.5       -0.127         13.2  Hessian modified;   dependent
-  139    597     0.405167        1.188          0.5        0.128           13  Hessian modified;   dependent
-  140    601     0.476817        1.049         0.25        0.287         13.1  Hessian modified;   dependent
-  141    603     0.944959      0.04969            1        0.468         1.62  Hessian modified;   overly constrained
-  142    606     0.903628       0.1025          0.5      -0.0827         12.7  Hessian modified twice;   dependent
-  143    612      0.89438       0.1083       0.0625       -0.148         12.9  Hessian modified;   dependent
-  144    614     0.949592      0.01452            1       0.0552           13  Hessian modified;   dependent
-  145    620     0.938323       0.0214       0.0625        -0.18         12.6  Hessian modified twice;   dependent
-  146    625     0.931424      0.02229        0.125      -0.0552         13.1  Hessian modified;   dependent
-  147    632     0.931626      0.02206       0.0312      0.00647           13  Hessian modified twice;   dependent
-  148    637     0.929038      0.02408        0.125      -0.0207           13  Hessian modified twice;   dependent
-  149    642     0.925982      0.02774        0.125      -0.0244         12.9  Hessian modified;   dependent
-  150    647      0.91954      0.02737        0.125      -0.0515           13  Hessian modified;   dependent
-  151    652     0.913878      0.03397        0.125      -0.0453           13  Hessian modified;   dependent
-  152    658     0.913185      0.03475       0.0625      -0.0111         12.9  Hessian modified;   dependent
-  153    664     0.913618      0.03479       0.0625      0.00694           13  Hessian modified;   dependent
-  154    671     0.913628      0.03442       0.0312     0.000307           13  Hessian modified;   dependent
-  155    677     0.915304      0.03362       0.0625       0.0268           13  Hessian modified twice;   dependent
-  156    683     0.915091      0.03423       0.0625     -0.00342         12.9  Hessian modified twice;   dependent
-  157    690     0.915328      0.03373       0.0312      0.00761           13  Hessian modified;   dependent
-  158    695     0.916403      0.03028        0.125       0.0086           13  Hessian modified twice;   dependent
-  159    700     0.914144      0.03991        0.125      -0.0181           13  Hessian modified;   dependent
-  160    705     0.913363      0.04284        0.125     -0.00624           13  Hessian modified;   dependent
-  161    711     0.912617      0.04232       0.0625      -0.0119         13.1  Hessian modified twice;   dependent
-  162    717     0.913487      0.04124       0.0625       0.0139           13  Hessian modified twice;   dependent
-  163    724     0.913346      0.04091       0.0312     -0.00451           13  Hessian modified twice;   dependent
-  164    730     0.914895      0.04026       0.0625       0.0248           13  Hessian modified twice;   dependent
-  165    736     0.914914      0.04085       0.0625      0.00031           13  Hessian modified twice;   dependent
-  166    742     0.915902      0.03963       0.0625       0.0158           13  Hessian modified twice;   dependent
-  167    749     0.916365      0.03913       0.0312       0.0148           13  Hessian modified twice;   dependent
-  168    754     0.918817      0.03889        0.125       0.0196         12.9  Hessian modified twice;   dependent
-  169    760     0.915886      0.04285       0.0625      -0.0469           13  Hessian modified twice;   dependent
-  170    766     0.916489      0.04192       0.0625      0.00964           13  Hessian modified twice;   dependent
-  171    773     0.916786      0.04136       0.0312      0.00951           13  Hessian modified twice;   dependent
-  172    778     0.919305      0.04014        0.125       0.0202         12.9  Hessian modified twice;   dependent
-  173    784     0.916475      0.04333       0.0625      -0.0453           13  Hessian modified twice;   dependent
-  174    790     0.917202      0.04208       0.0625       0.0116           13  Hessian modified twice;   dependent
-  175    798     0.916741      0.04251       0.0156      -0.0295         12.9  Hessian modified twice;   dependent
-  176    800     0.941385       0.0181            1       0.0246           13  Hessian modified twice;   dependent
-  177    807     0.931084      0.02631       0.0312        -0.33         12.3  Hessian modified twice;   dependent
-  178    814     0.929555      0.02844       0.0312      -0.0489         12.8  Hessian modified twice;   dependent
-  179    820     0.929984      0.02807       0.0625      0.00687           13  Hessian modified twice;   dependent
-  180    826     0.928417      0.03032       0.0625      -0.0251           13  Hessian modified twice;   dependent
-  181    831     0.926983       0.0328        0.125      -0.0115           13  Hessian modified twice;   dependent
-  182    837     0.924064      0.03589       0.0625      -0.0467           13  Hessian modified twice;   dependent
-  183    843     0.923981      0.03516       0.0625     -0.00132           13  Hessian modified twice;   dependent
-  184    848     0.923815      0.03323        0.125     -0.00133         12.9  Hessian modified twice;   dependent
-  185    853     0.920022      0.02986        0.125      -0.0303         12.9  Hessian modified twice;   dependent
-  186    858     0.918827       0.0276        0.125     -0.00956         13.1  Hessian modified twice;   dependent
-  187    862     0.910612      0.04355         0.25      -0.0329         13.2  Hessian modified;   dependent
-  188    867     0.903035      0.04839        0.125      -0.0606           13  Hessian modified;   dependent
-  189    872     0.905303      0.04742        0.125       0.0181         13.1  Hessian modified twice;   dependent
-  190    877      0.90151      0.05188        0.125      -0.0303           13  Hessian modified twice;   dependent
-  191    882     0.900653      0.05119        0.125     -0.00686           13  Hessian modified twice;   dependent
-  192    888     0.901575      0.05035       0.0625       0.0148           13  Hessian modified;   dependent
-  193    893     0.903004      0.05025        0.125       0.0114           13  Hessian modified twice;   dependent
-  194    899     0.901933      0.05036       0.0625      -0.0171           13  Hessian modified twice;   dependent
-  195    905     0.903299      0.04891       0.0625       0.0218           13  Hessian modified twice;   dependent
-  196    912     0.903441      0.04831       0.0312      0.00456           13  Hessian modified twice;   dependent
-  197    917     0.906228      0.04404        0.125       0.0223           13  Hessian modified twice;   dependent
-  198    922     0.906292      0.04308        0.125     0.000512         12.9  Hessian modified twice;   dependent
-  199    927     0.905109      0.04154        0.125     -0.00946           13  Hessian modified twice;   dependent
-  200    933     0.904936      0.04278       0.0625     -0.00278           13  Hessian modified;   dependent
-  201    939     0.905072        0.042       0.0625      0.00218           13  Hessian modified twice;   dependent
-  202    946     0.905659      0.04154       0.0312       0.0188           13  Hessian modified twice;   dependent
-  203    952      0.90666      0.04074       0.0625        0.016         12.9  Hessian modified twice;   dependent
-  204    959     0.906757      0.04026       0.0312      0.00311           13  Hessian modified twice;   dependent
-  205    964     0.910155      0.03903        0.125       0.0272           13  Hessian modified twice;   dependent
-  206    970     0.907776      0.04144       0.0625      -0.0381         12.9  Hessian modified twice;   dependent
-  207    975     0.910382      0.03997        0.125       0.0209           13  Hessian modified twice;   dependent
-  208    981     0.908564      0.04246       0.0625      -0.0291         12.9  Hessian modified twice;   dependent
-  209    987     0.909444      0.04126       0.0625       0.0141           13  Hessian modified twice;   dependent
-  210    994     0.909716      0.04088       0.0312      0.00872           13  Hessian modified twice;   dependent
-  211   1000     0.910795      0.03997       0.0625       0.0173         12.9  Hessian modified twice;   dependent
-  212   1007     0.910668      0.03977       0.0312     -0.00406           13  Hessian modified twice;   dependent
-  213   1012     0.913556      0.03743        0.125       0.0231           13  Hessian modified twice;   dependent
-  214   1018     0.911775      0.04035       0.0625      -0.0285         12.9  Hessian modified twice;   dependent
-  215   1024     0.912183      0.03963       0.0625      0.00654           13  Hessian modified twice;   dependent
-  216   1031     0.912387      0.03936       0.0312      0.00653           13  Hessian modified twice;   dependent
-  217   1037      0.91323      0.03853       0.0625       0.0135         12.9  Hessian modified twice;   dependent
-  218   1044      0.91307      0.03841       0.0312     -0.00513           13  Hessian modified twice;   dependent
-  219   1047     0.921435      0.03323          0.5       0.0167           13  Hessian modified twice;   dependent
-  220   1053     0.913383      0.03816       0.0625       -0.129         13.1  Hessian modified;   dependent
-  221   1061      0.91332        0.038       0.0156     -0.00404           13  Hessian modified;   dependent
-  222   1066     0.915035      0.03758        0.125       0.0137         13.1  Hessian modified twice;   dependent
-  223   1069     0.913255      0.03429          0.5     -0.00356         12.9  Hessian modified;   dependent
-  224   1074     0.906486      0.03692        0.125      -0.0541         12.8  Hessian modified twice;   dependent
-  225   1078     0.912336      0.03136         0.25       0.0234         12.9  Hessian modified;   dependent
-  226   1082     0.900443      0.03801         0.25      -0.0476           13  Hessian modified;   dependent
-  227   1087      0.89796       0.0375        0.125      -0.0199           13  Hessian modified;   dependent
-  228   1092     0.902246      0.03578        0.125       0.0343         12.9  Hessian modified twice;   dependent
-  229   1097     0.900116      0.03565        0.125       -0.017         12.9  Hessian modified twice;   dependent
-  230   1102     0.903603      0.03476        0.125       0.0279           13  Hessian modified;   dependent
-  231   1107     0.902023      0.03471        0.125      -0.0126         12.9  Hessian modified twice;   dependent
-  232   1112     0.904469      0.03361        0.125       0.0196           13  Hessian modified twice;   dependent
-  233   1117      0.90397      0.03321        0.125     -0.00399           13  Hessian modified;   dependent
-  234   1122     0.905712      0.03256        0.125       0.0139           13  Hessian modified;   dependent
-  235   1127     0.905339      0.03237        0.125     -0.00298           13  Hessian modified twice;   dependent
-  236   1133     0.905545      0.03188       0.0625      0.00329           13  Hessian modified;   dependent
-  237   1138     0.906876      0.02888        0.125       0.0107           13  Hessian modified twice;   dependent
-  238   1143     0.908333      0.02849        0.125       0.0117           13  Hessian modified twice;   dependent
-  239   1148     0.907201      0.02893        0.125     -0.00905           13  Hessian modified twice;   dependent
-  240   1153     0.908195      0.02874        0.125      0.00795           13  Hessian modified;   dependent
-  241   1158     0.907927      0.02914        0.125     -0.00215           13  Hessian modified twice;   dependent
-  242   1164      0.90745      0.02827       0.0625     -0.00763           13  Hessian modified;   dependent
-  243   1170     0.907614       0.0271       0.0625      0.00263           13  Hessian modified twice;   dependent
-  244   1178     0.907902      0.02692       0.0156       0.0184           13  Hessian modified twice;   dependent
-  245   1184      0.90936      0.02671       0.0625       0.0233           13  Hessian modified twice;   dependent
-  246   1191     0.909004      0.02706       0.0312      -0.0114           13  Hessian modified twice;   dependent
-  247   1195     0.915616      0.02292         0.25       0.0264           13  Hessian modified twice;   dependent
-  248   1200     0.909523      0.03578        0.125      -0.0487         12.7  Hessian modified twice;   dependent
-  249   1204      0.91296      0.03669         0.25       0.0138           13  Hessian modified twice;   dependent
-  250   1209     0.911053      0.04431        0.125      -0.0153           13  Hessian modified twice;   dependent
-  251   1215     0.910889      0.04464       0.0625     -0.00263         12.9  Hessian modified twice;   dependent
-  252   1219     0.911921       0.0423         0.25      0.00413         13.1  Hessian modified twice;   dependent
-  253   1224     0.898294      0.05185        0.125       -0.109         12.4  Hessian modified;   dependent
-  254   1229     0.899197      0.05087        0.125      0.00722         12.8  Hessian modified;   dependent
-  255   1236     0.899369      0.05058       0.0312      0.00552           13  Hessian modified twice;   dependent
-  256   1241     0.903636      0.04931        0.125       0.0341           13  Hessian modified twice;   dependent
-  257   1247     0.900725      0.05195       0.0625      -0.0466         12.9  Hessian modified twice;   dependent
-  258   1250     0.915264      0.04902          0.5       0.0291           13  Hessian modified twice;   dependent
-  259   1255     0.901905      0.06442        0.125       -0.107         13.1  Hessian modified;   dependent
-  260   1258     0.917172      0.05593          0.5       0.0305           13  Hessian modified;   dependent
-  261   1266     0.910485      0.06016       0.0156       -0.428         13.2  Hessian modified;   dependent
-  262   1276     0.910483      0.06016      0.00391    -0.000485           13  Hessian modified;   dependent
-  263   1278     0.923372      0.05296            1       0.0129         12.9  Hessian modified twice;   dependent
-  264   1284     0.911726      0.06927       0.0625       -0.186         13.1  Hessian modified;   dependent
-  265   1287     0.921931      0.05384          0.5       0.0204           13  Hessian modified twice;   dependent
-  266   1293      0.90976      0.07649       0.0625       -0.195         12.3  Hessian modified twice;   dependent
-  267   1296     0.913773      0.07434          0.5      0.00803           13  Hessian modified twice;   dependent
-  268   1303     0.900687      0.08757       0.0312       -0.419         12.6  Hessian modified twice;   dependent
-  269   1306     0.906307      0.05899          0.5       0.0112         13.1  Hessian modified twice;   dependent
-  270   1311     0.857405       0.1625        0.125       -0.391         12.6  Hessian modified;   dependent
-  271   1314     0.857781       0.1442          0.5     0.000751           13  Hessian modified;   dependent
-  272   1321     0.850898       0.1531       0.0312        -0.22           13  Hessian modified;   dependent
-  273   1324      0.87599       0.1457          0.5       0.0502         13.1  Hessian modified twice;   dependent
-  274   1329     0.830844       0.2121        0.125       -0.361         12.9  Hessian modified;   dependent
-  275   1331      0.88808       0.1486            1       0.0572           13  Hessian modified;   dependent
-  276   1335     0.742369        0.297         0.25       -0.583           13  Hessian modified;   dependent
-  277   1337     0.841555       0.1721            1       0.0992           13  Hessian modified;   dependent
-  278   1341     0.721686       0.3203         0.25       -0.479           13  Hessian modified;   dependent
-  279   1343      0.83642       0.1731            1        0.115           13  Hessian modified;   dependent
-  280   1348     0.766926       0.2011        0.125       -0.556           13  Hessian modified;   dependent
-  281   1355     0.763867       0.2039       0.0312      -0.0979           13  Hessian modified;   dependent
-  282   1358     0.824181        0.153          0.5        0.121         13.1  Hessian modified twice;   dependent
-  283   1362     0.792599       0.1885         0.25       -0.126         12.9  Hessian modified;   dependent
-  284   1365     0.854226        0.182          0.5        0.123           13  Hessian modified;   dependent
-  285   1369     0.793337       0.2501         0.25       -0.244           13  Hessian modified;   dependent
-  286   1372     0.841362       0.2431          0.5        0.096           13  Hessian modified;   dependent
-  287   1377     0.777103       0.2999        0.125       -0.514           13  Hessian modified;   dependent
-  288   1379     0.941739       0.2328            1        0.165           13  Hessian modified;   dependent
-  289   1383     0.956304       0.1731         0.25       0.0583         1.62  Hessian modified;   overly constrained
-  290   1385     0.958744       0.1546            1      0.00244         12.9  Hessian modified;   dependent
-  291   1387            1      0.02809            1       0.0413         19.6  Hessian modified;   dependent
-  292   1390     0.917017       0.0917          0.5       -0.166         13.1  Hessian modified twice;   dependent
-  293   1394     0.924204      0.08122         0.25       0.0287         12.8  Hessian modified;   dependent
-  294   1397     0.911028      0.09927          0.5      -0.0264           14  Hessian modified;   dependent
-  295   1402     0.894304       0.1044        0.125       -0.134         13.2  Hessian modified;   dependent
-  296   1406     0.889834       0.1146         0.25      -0.0179           13  Hessian modified twice;   dependent
-  297   1412     0.890641       0.1127       0.0625       0.0129         12.9  Hessian modified twice;   dependent
-  298   1416     0.894704      0.08459         0.25       0.0163         13.2  Hessian modified twice;   dependent
-  299   1420     0.891852      0.06727         0.25      -0.0114         12.9  Hessian modified twice;   dependent
-  300   1424      0.87776       0.1173         0.25      -0.0564           13  Hessian modified;   dependent
-  301   1428     0.877151       0.1253         0.25     -0.00243         12.9  Hessian modified;   dependent
-  302   1433     0.879135       0.1237        0.125       0.0159         13.1  Hessian modified twice;   dependent
-  303   1437     0.889613       0.1226         0.25       0.0419         12.9  Hessian modified twice;   dependent
-  304   1442     0.884301        0.125        0.125      -0.0425         12.9  Hessian modified twice;   dependent
-  305   1446     0.898244       0.1191         0.25       0.0558           13  Hessian modified twice;   dependent
-  306   1451     0.888255       0.1288        0.125      -0.0799         12.8  Hessian modified twice;   dependent
-  307   1455     0.900018       0.1197         0.25       0.0471           13  Hessian modified twice;   dependent
-  308   1460     0.889863       0.1355        0.125      -0.0812         12.9  Hessian modified twice;   dependent
-  309   1464     0.897417       0.1246         0.25       0.0302           13  Hessian modified twice;   dependent
-  310   1469     0.891173       0.1388        0.125        -0.05         12.9  Hessian modified twice;   dependent
-  311   1473      0.89615       0.1288         0.25       0.0199           13  Hessian modified twice;   dependent
-  312   1479     0.894245       0.1281       0.0625      -0.0305           13  Hessian modified twice;   dependent
-  313   1481     0.941853      0.03841            1       0.0476           13  Hessian modified twice;   dependent
-  314   1486     0.918283      0.06992        0.125       -0.189         12.9  Hessian modified;   dependent
-  315   1491     0.909978      0.06995        0.125      -0.0664           13  Hessian modified twice;   dependent
-  316   1497     0.907674      0.07256       0.0625      -0.0369         12.9  Hessian modified twice;   dependent
-  317   1502     0.909701        0.072        0.125       0.0162         12.9  Hessian modified twice;   dependent
-  318   1507     0.903201       0.0909        0.125       -0.052         12.9  Hessian modified twice;   dependent
-  319   1511     0.902882      0.08065         0.25     -0.00127           13  Hessian modified twice;   dependent
-  320   1516     0.902847      0.07829        0.125    -0.000286           13  Hessian modified twice;   dependent
-  321   1521     0.893376        0.099        0.125      -0.0758         13.1  Hessian modified twice;   dependent
-  322   1526     0.895435      0.09632        0.125       0.0165         13.1  Hessian modified twice;   dependent
-  323   1530     0.897057      0.09128         0.25      0.00649           13  Hessian modified twice;   dependent
-  324   1535     0.893856      0.09057        0.125      -0.0256           13  Hessian modified twice;   dependent
-  325   1539       0.8983      0.08911         0.25       0.0178           13  Hessian modified twice;   dependent
-  326   1544     0.899138      0.08919        0.125      0.00671           13  Hessian modified twice;   dependent
-  327   1549     0.894071      0.08229        0.125      -0.0405         13.1  Hessian modified twice;   dependent
-  328   1554     0.893636       0.0821        0.125     -0.00348           13  Hessian modified twice;   dependent
-  329   1558     0.897102      0.08516         0.25       0.0139           13  Hessian modified twice;   dependent
-  330   1564     0.896864      0.08346       0.0625     -0.00381           13  Hessian modified twice;   dependent
-  331   1569     0.901368      0.07389        0.125        0.036           13  Hessian modified twice;   dependent
-  332   1574     0.898123      0.07913        0.125       -0.026           13  Hessian modified twice;   dependent
-  333   1578     0.900548      0.09009         0.25       0.0097           13  Hessian modified twice;   dependent
-  334   1584      0.90089      0.08861       0.0625      0.00546           13  Hessian modified twice;   dependent
-  335   1589     0.899008       0.0776        0.125      -0.0151           13  Hessian modified twice;   dependent
-  336   1595     0.897339      0.07659       0.0625      -0.0267           13  Hessian modified twice;   dependent
-  337   1600     0.900212      0.07347        0.125        0.023           13  Hessian modified twice;   dependent
-  338   1606     0.901639       0.0721       0.0625       0.0228           13  Hessian modified twice;   dependent
-  339   1612     0.901636      0.06763       0.0625    -5.23e-05           13  Hessian modified twice;   dependent
-  340   1618     0.903323      0.06609       0.0625        0.027           13  Hessian modified twice;   dependent
-  341   1622     0.908094      0.06427         0.25       0.0191           13  Hessian modified twice;   dependent
-  342   1627     0.901127      0.07557        0.125      -0.0557         12.9  Hessian modified twice;   dependent
-  343   1631     0.903388      0.07266         0.25      0.00905           13  Hessian modified twice;   dependent
-  344   1637     0.901559      0.07266       0.0625      -0.0293         12.9  Hessian modified twice;   dependent
-  345   1641     0.909345      0.06767         0.25       0.0311           13  Hessian modified twice;   dependent
-  346   1648     0.907797      0.06771       0.0312      -0.0495         12.9  Hessian modified twice;   dependent
-  347   1653     0.907609      0.05927        0.125      -0.0015         13.1  Hessian modified twice;   dependent
-  348   1659     0.903059      0.06301       0.0625      -0.0728         12.9  Hessian modified twice;   dependent
-  349   1663     0.904712       0.0561         0.25      0.00661         12.9  Hessian modified twice;   dependent
-  350   1670     0.904183      0.05438       0.0312      -0.0169           13  Hessian modified twice;   dependent
-  351   1677     0.904353      0.05393       0.0312      0.00545           13  Hessian modified twice;   dependent
-  352   1682     0.906937      0.05068        0.125       0.0207           13  Hessian modified twice;   dependent
-  353   1688     0.907141      0.04983       0.0625      0.00326           13  Hessian modified twice;   dependent
-  354   1693     0.908029      0.05158        0.125      0.00711           13  Hessian modified twice;   dependent
-  355   1699     0.908579      0.04836       0.0625      0.00879         13.1  Hessian modified twice;   dependent
-  356   1705     0.908422      0.04902       0.0625     -0.00251           13  Hessian modified twice;   dependent
-  357   1710     0.911142      0.04642        0.125       0.0218           13  Hessian modified twice;   dependent
-  358   1717     0.911182      0.04602       0.0312      0.00128           13  Hessian modified twice;   dependent
-  359   1720     0.923597      0.03782          0.5       0.0248           13  Hessian modified twice;   dependent
-  360   1727     0.910349      0.04027       0.0312       -0.424         13.2  Hessian modified;   dependent
-  361   1731     0.910179      0.03856         0.25    -0.000682         12.8  Hessian modified twice;   dependent
-  362   1738     0.906788      0.03843       0.0312       -0.109         13.3  Hessian modified twice;   dependent
-  363   1742     0.913008      0.03772         0.25       0.0249           13  Hessian modified twice;   dependent
-  364   1749     0.906799      0.04479       0.0312       -0.199         12.7  Hessian modified twice;   dependent
-  365   1752     0.916108      0.03756          0.5       0.0186           13  Hessian modified twice;   dependent
-  366   1759     0.903856      0.04258       0.0312       -0.392         22.2  Hessian modified;   dependent
-  367   1761     0.932156      0.03954            1       0.0283         13.1  Hessian modified;   dependent
-  368   1766     0.848689       0.1557        0.125       -0.668           13  Hessian modified;   dependent
-  369   1768     0.869356       0.1424            1       0.0207         12.7  Hessian modified;   dependent
-  370   1773     0.772405       0.2436        0.125       -0.776         7.58  Hessian modified;   dependent
-  371   1776      0.83229       0.1523          0.5         0.12         1.62  Hessian modified;   overly constrained
-  372   1781     0.823688       0.1463        0.125      -0.0688         13.2  Hessian modified;   dependent
-  373   1787     0.829691       0.1435       0.0625        0.096         12.9  Hessian modified;   dependent
-  374   1790     0.877812       0.1143          0.5       0.0962           13  Hessian modified;   dependent
-  375   1796      0.86508        0.115       0.0625       -0.204           13  Hessian modified;   dependent
-  376   1800     0.876891      0.08827         0.25       0.0472           13  Hessian modified;   dependent
-  377   1804     0.891316      0.09252         0.25       0.0577           13  Hessian modified;   dependent
-  378   1808     0.896604      0.09979         0.25       0.0212           13  Hessian modified;   dependent
-  379   1813     0.900457      0.09645        0.125       0.0308           13  Hessian modified;   dependent
-  380   1818     0.906592      0.09034        0.125       0.0491           13  Hessian modified twice;   dependent
-  381   1823     0.910059      0.09201        0.125       0.0277           13  Hessian modified;   dependent
-  382   1826     0.921025      0.05967          0.5       0.0219           13  Hessian modified twice;   dependent
-  383   1832     0.904508      0.06558       0.0625       -0.264         12.9  Hessian modified;   dependent
-  384   1836      0.89324      0.06687         0.25      -0.0451         1.62  Hessian modified twice;   overly constrained
-  385   1840     0.893212        0.066         0.25    -0.000112           13  Hessian modified;   dependent
-  386   1846     0.892567       0.0658       0.0625      -0.0103         12.9  Hessian modified;   dependent
-  387   1850     0.903151      0.05871         0.25       0.0423           13  Hessian modified;   dependent
-  388   1856     0.898597      0.05857       0.0625      -0.0729           13  Hessian modified;   dependent
-  389   1860     0.909934      0.05622         0.25       0.0453           13  Hessian modified;   dependent
-  390   1864     0.905243      0.05762         0.25      -0.0188           13  Hessian modified;   dependent
-  391   1871     0.905461      0.05689       0.0312      0.00699           13  Hessian modified;   dependent
-  392   1874     0.926462      0.05539          0.5        0.042           13  Hessian modified;   dependent
-  393   1879     0.903822      0.06356        0.125       -0.181           13  Hessian modified;   dependent
-  394   1886     0.903358       0.0628       0.0312      -0.0148           13  Hessian modified;   dependent
-  395   1889     0.924501      0.04425          0.5       0.0423           13  Hessian modified twice;   dependent
-  396   1892     0.913736      0.07089          0.5      -0.0215           13  Hessian modified;   dependent
-  397   1898     0.911347      0.07023       0.0625      -0.0382           13  Hessian modified;   dependent
-  398   1904     0.913651      0.06876       0.0625       0.0369           13  Hessian modified;   dependent
-  399   1907     0.924361      0.06898          0.5       0.0214           13  Hessian modified twice;   dependent
-  400   1913     0.917161      0.07286       0.0625       -0.115           13  Hessian modified;   dependent
-  401   1916     0.925578      0.04284          0.5       0.0168           13  Hessian modified;   dependent
-  402   1921     0.899145      0.06588        0.125       -0.211           13  Hessian modified;   dependent
-  403   1924     0.912055      0.05259          0.5       0.0258           13  Hessian modified;   dependent
-  404   1929      0.88622      0.07947        0.125       -0.207         13.1  Hessian modified;   dependent
-  405   1932     0.898658      0.09085          0.5       0.0249           13  Hessian modified;   dependent
-  406   1939     0.887404      0.09587       0.0312        -0.36         13.1  Hessian modified;   dependent
-  407   1948     0.887599      0.09573      0.00781        0.025           13  Hessian modified;   dependent
-  408   1951      0.91205      0.05122          0.5       0.0489           13  Hessian modified twice;   dependent
-  409   1956     0.867713       0.1169        0.125       -0.355         13.1  Hessian modified;   dependent
-  410   1959     0.878823        0.115          0.5       0.0222         12.9  Hessian modified;   dependent
-  411   1965     0.862252       0.1281       0.0625       -0.265           13  Hessian modified;   dependent
-  412   1967     0.937906       0.1211            1       0.0757           13  Hessian modified;   dependent
-  413   1970     0.615727       0.8367          0.5       -0.644         13.1  Hessian modified;   dependent
-  414   1972     0.598787        0.897            1      -0.0169         12.8  Hessian modified;   dependent
-  415   1975     0.452002        1.104          0.5       -0.294           13  Hessian modified;   dependent
-  416   1977     0.741905       0.5301            1         0.29           13  Hessian modified;   dependent
-  417   1980     0.519212       0.9862          0.5       -0.445           13  Hessian modified;   dependent
-  418   1982     0.590001       0.8671            1       0.0708           13  Hessian modified;   dependent
-  419   1985     0.498217       0.7717          0.5       -0.184         35.2  Hessian modified;   dependent
-  420   1987     0.891363       0.1903            1        0.393           13  Hessian modified;   dependent
-  421   1991     0.771532       0.3141         0.25       -0.479         32.8  Hessian modified;   dependent
-  422   1994     0.832445       0.2435          0.5        0.122           13  Hessian modified;   dependent
-  423   2000     0.826055       0.2428       0.0625       -0.102           13  Hessian modified;   dependent
-  424   2002     0.938303       0.1672            1        0.112           13  Hessian modified;   dependent
-  425   2007     0.870312       0.2269        0.125       -0.544         12.9  Hessian modified;   dependent
-  426   2009     0.940089      0.05633            1       0.0698           13  Hessian modified;   dependent
-  427   2014     0.836944       0.1504        0.125       -0.825         9.18  Hessian modified;   dependent
-  428   2021     0.842039        0.171       0.0312        0.163         1.62  Hessian modified;   overly constrained
-  429   2025     0.843251       0.1551         0.25      0.00485         12.9  Hessian modified;   dependent
-  430   2031     0.849009        0.151       0.0625       0.0921           13  Hessian modified;   dependent
-  431   2034     0.872675        0.124          0.5       0.0473         12.9  Hessian modified twice;   dependent
-  432   2039     0.831257       0.1998        0.125       -0.331           13  Hessian modified;   dependent
-  433   2042     0.851639       0.1773          0.5       0.0408           13  Hessian modified;   dependent
-  434   2047     0.807603        0.285        0.125       -0.352         12.8  Hessian modified;   dependent
-  435   2052     0.828813       0.2636        0.125         0.17         1.62  Hessian modified;   overly constrained
-  436   2056     0.854263       0.2518         0.25        0.102           13  Hessian modified;   dependent
-  437   2060      0.87729       0.2517         0.25       0.0921           13  Hessian modified;   dependent
-  438   2064     0.877128       0.2307         0.25    -0.000648         12.9  Hessian modified;   dependent
-  439   2067     0.898732       0.2103          0.5       0.0432           13  Hessian modified;   dependent
-  440   2072     0.881125       0.2348        0.125       -0.141           13  Hessian modified;   dependent
-  441   2075     0.907419       0.2036          0.5       0.0526           13  Hessian modified;   dependent
-  442   2081     0.884041       0.2202       0.0625       -0.374           13  Hessian modified;   dependent
-  443   2088     0.883194       0.2196       0.0312      -0.0271         12.9  Hessian modified twice;   dependent
-  444   2091     0.907261       0.1729          0.5       0.0481           13  Hessian modified;   dependent
-  445   2096     0.853771       0.2588        0.125       -0.428           13  Hessian modified;   dependent
-  446   2099     0.891906        0.211          0.5       0.0763           13  Hessian modified;   dependent
-  447   2105      0.86183       0.2391       0.0625       -0.481           18  Hessian modified;   dependent
-  448   2112     0.863215       0.2376       0.0312       0.0443         13.2  Hessian modified;   dependent
-  449   2115     0.888209       0.1802          0.5         0.05         13.1  Hessian modified;   dependent
-  450   2121     0.853443       0.2078       0.0625       -0.556         12.9  Hessian modified;   dependent
-  451   2128     0.853822       0.2053       0.0312       0.0121           13  Hessian modified;   dependent
-  452   2132     0.870289       0.1921         0.25       0.0659         12.9  Hessian modified;   dependent
-  453   2138     0.867841       0.1983       0.0625      -0.0392           13  Hessian modified;   dependent
-  454   2142     0.864603        0.153         0.25       -0.013           13  Hessian modified;   dependent
-  455   2149     0.861583       0.1547       0.0312      -0.0966           13  Hessian modified;   dependent
-  456   2153      0.87708       0.1442         0.25        0.062           13  Hessian modified;   dependent
-  457   2157     0.871504       0.1458         0.25      -0.0223           13  Hessian modified;   dependent
-  458   2161      0.87133       0.1325         0.25    -0.000697           13  Hessian modified;   dependent
-  459   2164     0.867441       0.1297          0.5     -0.00778           13  Hessian modified;   dependent
-  460   2169     0.862294       0.1456        0.125      -0.0412           13  Hessian modified;   dependent
-  461   2173     0.871578       0.1375         0.25       0.0371           13  Hessian modified;   dependent
-  462   2181     0.870957       0.1385       0.0156      -0.0398         12.7  Hessian modified twice;   dependent
-  463   2185     0.874657       0.1273         0.25       0.0148         12.9  Hessian modified;   dependent
-  464   2189     0.871285       0.1261         0.25      -0.0135           13  Hessian modified twice;   dependent
-  465   2196     0.871846       0.1258       0.0312        0.018           13  Hessian modified;   dependent
-  466   2204     0.871669       0.1254       0.0156      -0.0114         13.1  Hessian modified twice;   dependent
-  467   2208     0.880375       0.1186         0.25       0.0348           13  Hessian modified;   dependent
-  468   2216     0.878028         0.12       0.0156        -0.15         12.5  Hessian modified twice;   dependent
-  469   2221     0.880182       0.1196        0.125       0.0172         12.9  Hessian modified twice;   dependent
-  470   2225     0.883712       0.1161         0.25       0.0141           13  Hessian modified;   dependent
-  471   2233     0.881545       0.1173       0.0156       -0.139         13.1  Hessian modified;   dependent
-  472   2237     0.890991      0.09364         0.25       0.0378           13  Hessian modified;   dependent
-  473   2244     0.886027      0.09912       0.0312       -0.159         13.1  Hessian modified;   dependent
-  474   2248     0.880614        0.105         0.25      -0.0217           13  Hessian modified;   dependent
-  475   2255     0.881609       0.1047       0.0312       0.0318           13  Hessian modified;   dependent
-  476   2259     0.891365       0.1004         0.25        0.039           13  Hessian modified;   dependent
-  477   2266     0.884979       0.1061       0.0312       -0.204           13  Hessian modified;   dependent
-  478   2270     0.888156       0.1021         0.25       0.0127           13  Hessian modified;   dependent
-  479   2273     0.885779       0.1357          0.5     -0.00475           13  Hessian modified;   dependent
-  480   2278     0.882402       0.1388        0.125       -0.027         12.9  Hessian modified twice;   dependent
-  481   2280     0.922944        0.111            1       0.0405           13  Hessian modified twice;   dependent
-  482   2284     0.810627        0.333         0.25       -0.449         13.1  Hessian modified;   dependent
-  483   2287     0.822108       0.2924          0.5        0.023           13  Hessian modified;   dependent
-  484   2294     0.816677       0.2936       0.0312       -0.174           13  Hessian modified;   dependent
-  485   2301     0.819117       0.2891       0.0312       0.0781           13  Hessian modified;   dependent
-  486   2303     0.912777       0.2575            1       0.0937           13  Hessian modified;   dependent
-  487   2307      0.69922       0.4543         0.25       -0.854         10.6  Hessian modified;   dependent
-  488   2311      0.69379       0.3554         0.25      -0.0217           13  Hessian modified;   dependent
-  489   2313     0.881147       0.2371            1        0.187           13  Hessian modified;   dependent
-  490   2319      0.85214       0.2707       0.0625       -0.464         13.1  Hessian modified;   dependent
-  491   2323     0.803667       0.2255         0.25       -0.194           13  Hessian modified;   dependent
-  492   2326     0.852306       0.2054          0.5       0.0973         12.8  Hessian modified twice;   dependent
-  493   2332     0.819977        0.254       0.0625       -0.517         12.9  Hessian modified;   dependent
-  494   2335     0.849579       0.1796          0.5       0.0592           13  Hessian modified;   dependent
-  495   2341     0.826352       0.1944       0.0625       -0.372         12.6  Hessian modified;   dependent
-  496   2344     0.852565       0.1693          0.5       0.0524           13  Hessian modified twice;   dependent
-  497   2350     0.830312       0.1935       0.0625       -0.356         12.7  Hessian modified;   dependent
-  498   2354     0.852014       0.1705         0.25       0.0868           13  Hessian modified;   dependent
-  499   2357      0.84692       0.1898          0.5      -0.0102           13  Hessian modified;   dependent
-  500   2362      0.83303       0.2155        0.125       -0.111           13  Hessian modified;   dependent
-  501   2364     0.896753       0.1547            1       0.0637           13  Hessian modified;   dependent
-  502   2368     0.789447       0.2672         0.25       -0.429         12.9  Hessian modified;   dependent
-  503   2370     0.909149       0.2542            1         0.12           13  Hessian modified;   dependent
-  504   2374     0.702257        0.587         0.25       -0.828         12.9  Hessian modified;   dependent
-  505   2376     0.832473       0.4842            1         0.13           13  Hessian modified;   dependent
-  506   2380     0.643191       0.6955         0.25       -0.757         12.9  Hessian modified;   dependent
-  507   2382     0.881984       0.3568            1        0.239           13  Hessian modified;   dependent
-  508   2386     0.683378       0.5947         0.25       -0.794           13  Hessian modified;   dependent
-  509   2388     0.882266       0.3456            1        0.199           13  Hessian modified;   dependent
-  510   2392     0.683424       0.5895         0.25       -0.795           13  Hessian modified;   dependent
-  511   2394     0.878854       0.3523            1        0.195           13  Hessian modified;   dependent
-  512   2398     0.680463       0.5964         0.25       -0.794           13  Hessian modified;   dependent
-  513   2400      0.87748       0.3554            1        0.197           13  Hessian modified;   dependent
-  514   2404     0.679003       0.6006         0.25       -0.794           13  Hessian modified;   dependent
-  515   2406     0.876519       0.3573            1        0.198           13  Hessian modified;   dependent
-  516   2410     0.677696       0.6045         0.25       -0.795           13  Hessian modified;   dependent
-  517   2412     0.875246       0.3585            1        0.198           13  Hessian modified;   dependent
-  518   2416     0.676271       0.6059         0.25       -0.796           13  Hessian modified;   dependent
-  519   2418     0.873927        0.357            1        0.198           13  Hessian modified;   dependent
-  520   2422     0.674692       0.6051         0.25       -0.797           13  Hessian modified;   dependent
-  521   2424     0.872157       0.3553            1        0.197           13  Hessian modified;   dependent
-  522   2428     0.672622        0.605         0.25       -0.798           13  Hessian modified;   dependent
-  523   2430     0.869675       0.3552            1        0.197           13  Hessian modified;   dependent
-  524   2434      0.66984       0.6072         0.25       -0.799           13  Hessian modified;   dependent
-  525   2436     0.866843       0.3588            1        0.197           13  Hessian modified;   dependent
-  526   2440     0.666492       0.6174         0.25       -0.801           13  Hessian modified;   dependent
-  527   2442     0.862866        0.369            1        0.196           13  Hessian modified;   dependent
-  528   2446     0.660714       0.6397         0.25       -0.809           13  Hessian modified;   dependent
-  529   2448      0.85824       0.3835            1        0.198           13  Hessian modified;   dependent
-  530   2452     0.656772       0.6551         0.25       -0.806         10.7  Hessian modified;   dependent
-  531   2454     0.853509       0.3939            1        0.197           13  Hessian modified;   dependent
-  532   2458     0.652949       0.6597         0.25       -0.802         10.6  Hessian modified;   dependent
-  533   2460     0.854573        0.388            1        0.202           13  Hessian modified;   dependent
-  534   2464     0.653563       0.6522         0.25       -0.804         10.5  Hessian modified;   dependent
-  535   2466     0.855051       0.3823            1        0.201           13  Hessian modified;   dependent
-  536   2470     0.653707       0.6442         0.25       -0.805         10.5  Hessian modified;   dependent
-  537   2472     0.855207       0.3762            1        0.202           13  Hessian modified;   dependent
-  538   2476     0.653531       0.6339         0.25       -0.807         10.5  Hessian modified;   dependent
-  539   2478     0.855288       0.3671            1        0.202           13  Hessian modified;   dependent
-  540   2482     0.652996       0.6157         0.25       -0.809         8.93  Hessian modified;   dependent
-  541   2484     0.855791       0.3438            1        0.203           13  Hessian modified;   dependent
-  542   2487     0.446013        1.407          0.5        -0.82         9.36  Hessian modified;   dependent
-  543   2489      0.32818        1.257            1       -0.118         12.9  Hessian modified;   dependent
-  544   2492      0.16409        1.618          0.5       -0.328         3.29  Hessian modified;   dependent
-  545   2496     0.214084        1.396         0.25          0.2         1.62  Hessian modified;   overly constrained
-  546   2500     0.230564        1.347         0.25       0.0659         13.3  Hessian modified;   dependent
-  547   2502     0.360435        1.206            1         0.13         40.4  Hessian modified;   dependent
-  548   2505     0.305948        1.109          0.5       -0.109           13  Hessian modified;   dependent
-  549   2508     0.652972        0.616          0.5        0.694         1.62  Hessian modified;   overly constrained
-  550   2510    0.0448568        1.081            1       -0.608         9.66  Hessian modified;   dependent
-  551   2512     0.358179        1.786            1        0.313           13  Hessian modified;   dependent
-  552   2515     0.196645        1.321          0.5       -0.323         7.66  Hessian modified;   dependent
-  553   2518     0.155857        3.284          0.5      -0.0816         1.62  Hessian modified twice;   overly constrained
-  554   2520     0.318549        1.466            1        0.163         13.1  Hessian modified;   dependent
-  555   2523     0.440541        1.273          0.5        0.244         12.9  Hessian modified;   dependent
-  556   2525     0.726831       0.9626            1        0.286         12.9  Hessian modified;   dependent
-  557   2528     0.503738        1.142          0.5       -0.446         31.5  Hessian modified;   dependent
-  558   2530     0.878452       0.6025            1        0.375           13  Hessian modified;   dependent
-  559   2533     0.532379        1.174          0.5       -0.692         14.4  Hessian modified;   dependent
-  560   2535     0.754466       0.8671            1        0.222           13  Hessian modified;   dependent
-  561   2538     0.460139        1.289          0.5       -0.589           13  Hessian modified;   dependent
-  562   2540     0.766529       0.8238            1        0.306           13  Hessian modified;   dependent
-  563   2543     0.455169        1.287          0.5       -0.623           13  Hessian modified;   dependent
-  564   2545     0.744054       0.8515            1        0.289           13  Hessian modified;   dependent
-  565   2548     0.437661        1.299          0.5       -0.613           13  Hessian modified;   dependent
-  566   2550     0.738796       0.8472            1        0.301           13  Hessian modified;   dependent
-  567   2553     0.429871        1.298          0.5       -0.618           13  Hessian modified;   dependent
-  568   2555     0.728798         0.85            1        0.299           13  Hessian modified;   dependent
-  569   2558     0.422981        1.298          0.5       -0.612           13  Hessian modified;   dependent
-  570   2560      0.71984       0.8503            1        0.297           13  Hessian modified;   dependent
-  571   2563     0.407822         1.29          0.5       -0.624           13  Hessian modified;   dependent
-  572   2565     0.710607       0.8701            1        0.303           13  Hessian modified;   dependent
-  573   2568     0.398442        1.303          0.5       -0.624           13  Hessian modified;   dependent
-  574   2570            1       0.9644            1        0.602         1.62  Hessian modified;   overly constrained
-  575   2572      1.00077       0.3162            1     0.000774         1.62  Hessian modified twice;   infeasible
-  576   2575      1.00084       0.2935          0.5     0.000128         1.62  Hessian modified twice;   infeasible
-  577   2577      1.00005      0.01858            1    -0.000784         1.62  Hessian modified twice;   infeasible
-  578   2580      0.80378       0.2295          0.5       -0.393         12.9  Hessian modified;   dependent
-  579   2584     0.822381       0.2038         0.25       0.0744         12.8  Hessian modified;   dependent
-  580   2587     0.839928       0.1848          0.5       0.0351           13  Hessian modified;   dependent
-  581   2593     0.818517       0.2261       0.0625       -0.343         19.8  Hessian modified;   dependent
-  582   2598     0.841202       0.2159        0.125        0.181         1.62  Hessian modified twice;   overly constrained
-  583   2601     0.832061       0.2178          0.5      -0.0183         12.9  Hessian modified twice;   dependent
-  584   2607     0.811198       0.2507       0.0625       -0.334         12.6  Hessian modified twice;   dependent
-  585   2610     0.843233       0.1964          0.5       0.0641           13  Hessian modified;   dependent
-  586   2615     0.804044       0.3072        0.125       -0.314         18.2  Hessian modified twice;   dependent
-  587   2618     0.809355       0.2568          0.5       0.0106         12.9  Hessian modified;   dependent
-  588   2624     0.799124       0.2714       0.0625       -0.164         12.8  Hessian modified twice;   dependent
-  589   2626     0.896433       0.2434            1       0.0973         13.1  Hessian modified twice;   dependent
-  590   2630     0.685845       0.5066         0.25       -0.842          8.4  Hessian modified;   dependent
-  591   2637     0.664412       0.4917       0.0312       -0.686         1.62  Hessian modified twice;   overly constrained
-  592   2639     0.674208       0.5708            1       0.0098         25.4  Hessian modified;   dependent
-  593   2645     0.634914       0.5482       0.0625       -0.629         7.21  Hessian modified;   dependent
-  594   2647     0.982359      0.04399            1        0.347         12.9  Hessian modified;   dependent
-  595   2650     0.840648       0.1483          0.5       -0.283         12.8  Hessian modified;   dependent
-  596   2653     0.851258       0.1514          0.5       0.0212         13.1  Hessian modified twice;   dependent
-  597   2655            1      0.06702            1        0.149         1.62  Hessian modified twice;   overly constrained
-  598   2658     0.714854       0.7432          0.5        -0.57         10.8  Hessian modified twice;   dependent
-  599   2660     0.439629       0.9426            1       -0.275         12.6  Hessian modified;   dependent
-  600   2666     0.474652       0.9304       0.0625         0.56         1.62  Hessian modified;   overly constrained
-  601   2670      0.40467       0.8955         0.25        -0.28         38.1   dependent
-  602   2674     0.474293       0.8506         0.25        0.278         63.9  Hessian modified;   dependent
-  603   2676     0.894413       0.1726            1         0.42           13  Hessian modified;   dependent
-  604   2680     0.721909       0.4961         0.25        -0.69         13.1  Hessian modified;   dependent
-  605   2682     0.731281       0.4189            1      0.00937           13  Hessian modified;   dependent
-  606   2686     0.552298       0.6391         0.25       -0.716         7.04  Hessian modified;   dependent
-  607   2688     0.838595       0.3507            1        0.286         1.62  Hessian modified;   overly constrained
-  608   2690     0.426707        3.014            1       -0.412         11.9  Hessian modified twice;   dependent
-  609   2693     0.213707        1.895          0.5       -0.426         29.4  Hessian modified;   dependent
-  610   2695      0.47616        1.264            1        0.262         1.62  Hessian modified;   overly constrained
-  611   2697     0.733678       0.5692            1        0.258         1.62  Hessian modified twice;   overly constrained
-  612   2700     0.745851       0.4269          0.5       0.0243         25.4  Hessian modified twice;   dependent
-  613   2705      0.76063        0.404        0.125        0.118         13.2  Hessian modified twice;   dependent
-  614   2707     0.886453       0.2961            1        0.126           19  Hessian modified twice;   dependent
-  615   2711     0.697401       0.6082         0.25       -0.756         23.9  Hessian modified;   dependent
-  616   2713     0.847798       0.3824            1         0.15           13  Hessian modified;   dependent
-  617   2717     0.667933       0.6738         0.25       -0.719           13  Hessian modified;   dependent
-  618   2721      0.75095         0.55         0.25        0.332         1.62  Hessian modified;   overly constrained
-  619   2724     0.717596       0.4888          0.5      -0.0667           13  Hessian modified;   dependent
-  620   2726     0.864044       0.2975            1        0.146         12.9  Hessian modified;   dependent
-  621   2731     0.794723       0.3215        0.125       -0.555         12.1  Hessian modified twice;   dependent
-  622   2734     0.882526          0.2          0.5        0.176         12.9  Hessian modified;   dependent
-  623   2736     0.857237       0.2383            1      -0.0253           13  Hessian modified;   dependent
-  624   2740     0.801077       0.3799         0.25       -0.225           21  Hessian modified;   dependent
-  625   2742     0.917306       0.1184            1        0.116           13  Hessian modified;   dependent
-  626   2747     0.902296       0.1363        0.125        -0.12         21.1  Hessian modified;   dependent
-  627   2749     0.951961      0.02205            1       0.0497         12.9  Hessian modified;   dependent
-  628   2757     0.949449      0.02211       0.0156       -0.161         13.1  Hessian modified;   dependent
-  629   2766     0.949531      0.02203      0.00781       0.0105         13.2  Hessian modified twice;   dependent
-  630   2769     0.951864      0.01157          0.5      0.00467         13.2  Hessian modified twice;   dependent
-  631   2776      0.95113      0.01133       0.0312      -0.0235         12.6  Hessian modified twice;   dependent
-  632   2778     0.954963       0.0205            1      0.00383           13  Hessian modified twice;   dependent
-  633   2787     0.950221       0.0294      0.00781       -0.607         11.8  Hessian modified twice;   dependent
-  634   2789     0.945693      0.01629            1     -0.00453         12.6  Hessian modified twice;   dependent
-  635   2798     0.942894      0.02089      0.00781       -0.358         15.3  Hessian modified;   dependent
-  636   2803     0.937163      0.03707        0.125      -0.0459         12.3  Hessian modified twice;   dependent
-  637   2805     0.917023      0.02189            1      -0.0201         13.1  Hessian modified twice;   dependent
-  638   2813     0.916587      0.02155       0.0156      -0.0279         12.6  Hessian modified twice;   dependent
-  639   2815     0.930672     0.004952            1       0.0141         12.8  Hessian modified twice;   dependent
-  640   2826     0.929327     0.008754      0.00195       -0.689         12.9  Hessian modified twice;   dependent
-  641   2836     0.929603     0.008741      0.00391       0.0707         1.62  Hessian modified twice;   overly constrained
-  642   2838     0.926888      0.01349            1     -0.00271           13   dependent
-  643   2847     0.924399      0.01434      0.00781       -0.319           12  Hessian modified twice;   dependent
-  644   2855      0.92364       0.0148       0.0156      -0.0486         13.2  Hessian modified twice;   dependent
-  645   2857     0.931198     0.008247            1      0.00756         12.8  Hessian modified twice;   dependent
-  646   2866     0.930298     0.008232      0.00781       -0.115         13.2  Hessian modified twice;   dependent
-  647   2869     0.925165      0.01235          0.5      -0.0103           13  Hessian modified twice;   dependent
-  648   2877     0.924283      0.01484       0.0156      -0.0564         12.1  Hessian modified twice;   dependent
-  649   2879     0.921885      0.01039            1      -0.0024         12.7  Hessian modified twice;   dependent
-  650   2883      0.92144     0.009868         0.25     -0.00178         12.5  Hessian modified twice;   dependent
-  651   2894     0.920723     0.009859      0.00195       -0.367         12.3  Hessian modified twice;   dependent
-  652   2900     0.918631      0.01022       0.0625      -0.0335         11.1  Hessian modified twice;   dependent
-  653   2908     0.917977      0.01015       0.0156      -0.0419         12.8  Hessian modified twice;   dependent
-  654   2911     0.921177     0.007693          0.5       0.0064           13  Hessian modified twice;   dependent
-  655   2921     0.920994     0.007681      0.00391       -0.047         13.3  Hessian modified twice;   dependent
-  656   2927     0.920826     0.008048       0.0625     -0.00268         13.9  Hessian modified twice;   dependent
-  657   2934      0.92097     0.007922       0.0312      0.00459         13.6  Hessian modified twice;   dependent
-  658   2940     0.921172     0.008206       0.0625      0.00324         13.6  Hessian modified twice;   dependent
-  659   2946     0.921379     0.008054       0.0625       0.0033         13.4  Hessian modified twice;   dependent
-  660   2951      0.92193     0.007768        0.125      0.00441         13.6  Hessian modified twice;   dependent
-  661   2956      0.92219     0.007642        0.125      0.00207           13  Hessian modified twice;   dependent
-  662   2961     0.921771     0.009112        0.125     -0.00335         13.4  Hessian modified twice;   dependent
-  663   2970     0.921173     0.009764      0.00781      -0.0765         13.1  Hessian modified twice;   dependent
-  664   2977     0.923636     0.009667       0.0312       0.0788         1.62  Hessian modified twice;   overly constrained
-  665   2986     0.917832      0.01033      0.00781       -0.743         10.7  Hessian modified twice;   dependent
-  666   2999     0.917872      0.01033     0.000488       0.0822         1.62  Hessian modified;   overly constrained
-  667   3007     0.916597      0.01021       0.0156      -0.0816         14.1  Hessian modified twice;   dependent
-  668   3012     0.917065     0.008947        0.125      0.00374           13  Hessian modified twice;   dependent
-  669   3014     0.921668     0.009666            1       0.0046         13.4  Hessian modified twice;   dependent
-  670   3022     0.919715     0.009961       0.0156       -0.125         30.9  Hessian modified;   dependent
-  671   3032     0.919666      0.01004      0.00391      -0.0124         13.7  Hessian modified twice;   dependent
-  672   3036     0.920733     0.009051         0.25      0.00427         13.2  Hessian modified twice;   dependent
-  673   3044     0.920432     0.008909       0.0156      -0.0193         13.2  Hessian modified twice;   dependent
-  674   3046     0.921605     0.008478            1      0.00117         12.2  Hessian modified twice;   dependent
-  675   3052     0.916759      0.01854       0.0625      -0.0775         7.84  Hessian modified twice;   dependent
-  676   3057     0.915262      0.02355        0.125       -0.012         11.3  Hessian modified twice;   dependent
-  677   3062     0.915003       0.0207        0.125     -0.00207         13.3  Hessian modified twice;   dependent
-  678   3068      0.91417      0.02105       0.0625      -0.0133         13.4  Hessian modified twice;   dependent
-  679   3071     0.918686      0.02091          0.5      0.00903         13.2  Hessian modified twice;   dependent
-  680   3077     0.912552      0.03257       0.0625      -0.0981         11.1  Hessian modified;   dependent
-  681   3082     0.913145      0.03248        0.125      0.00474         13.3  Hessian modified twice;   dependent
-  682   3090     0.912955      0.03257       0.0156      -0.0122         12.8  Hessian modified twice;   dependent
-  683   3092     0.921458     0.007159            1       0.0085         13.1  Hessian modified twice;   dependent
-  684   3098     0.920184      0.00746       0.0625      -0.0204         12.6  Hessian modified twice;   dependent
-  685   3103     0.919359     0.006586        0.125      -0.0066         13.2  Hessian modified twice;   dependent
-  686   3111     0.918893     0.006903       0.0156      -0.0298         13.3  Hessian modified twice;   dependent
-  687   3115     0.920253     0.006377         0.25      0.00544         13.2  Hessian modified twice;   dependent
-  688   3122     0.920054     0.006712       0.0312     -0.00636         13.4  Hessian modified twice;   dependent
-  689   3124     0.925002     0.002163            1      0.00495         13.5  Hessian modified twice;   dependent
-  690   3136     0.924681      0.00237     0.000977       -0.329         10.5  Hessian modified twice;   dependent
-  691   3152     0.924676     0.002374     -6.1e-05       0.0753         1.62  Hessian modified twice;   overly constrained
-  692   3160     0.924478     0.002583       0.0156      -0.0127         12.8  Hessian modified twice;   dependent
-  693   3162     0.924306     0.001376            1    -0.000171         14.3  Hessian modified twice;   dependent
-  694   3164     0.925101    0.0005822            1     0.000795         13.5  Hessian modified;   dependent
-  695   3171     0.924958    0.0006612       0.0312     -0.00458           14  Hessian modified;   dependent
-  696   3179     0.924926     0.000664       0.0156     -0.00206         12.9  Hessian modified twice;   dependent
-  697   3184     0.924771    0.0006353        0.125     -0.00124           13  Hessian modified twice;   dependent
-  698   3187      0.92483    0.0005445          0.5     0.000119         12.9  Hessian modified twice;   dependent
-  699   3193     0.924627    0.0005099       0.0625     -0.00325         12.9  Hessian modified twice;   dependent
-  700   3196      0.92476    0.0004797          0.5     0.000265         12.9  Hessian modified twice;   dependent
-  701   3202     0.924457    0.0007498       0.0625     -0.00484         12.7  Hessian modified twice;   dependent
-  702   3205     0.924664     0.000663          0.5     0.000415           13  Hessian modified twice;   dependent
-  703   3211     0.924397    0.0008779       0.0625     -0.00428         12.8  Hessian modified twice;   dependent
-  704   3213      0.92488    0.0008425            1     0.000483         12.9  Hessian modified twice;   dependent
-  705   3219     0.924316     0.001128       0.0625     -0.00903           13  Hessian modified twice;   dependent
-  706   3226     0.924259     0.001149       0.0312      -0.0018         13.2  Hessian modified twice;   dependent
-  707   3229     0.924502    0.0007888          0.5     0.000485           13  Hessian modified twice;   dependent
-  708   3233     0.924147      0.00108         0.25     -0.00142         13.1  Hessian modified twice;   dependent
-  709   3242     0.924042     0.001204      0.00781      -0.0134         13.3  Hessian modified twice;   dependent
-  710   3246     0.924246       0.0011         0.25     0.000815         12.9  Hessian modified twice;   dependent
-  711   3256     0.924029     0.001491      0.00391      -0.0555         11.7  Hessian modified twice;   dependent
-  712   3259     0.924111     0.001721          0.5     0.000164         13.2  Hessian modified twice;   dependent
-  713   3269     0.923645     0.002508      0.00391       -0.119         12.1  Hessian modified twice;   dependent
-  714   3272     0.923578     0.001622          0.5    -0.000134         12.8  Hessian modified twice;   dependent
-  715   3280     0.923034     0.002298       0.0156      -0.0348         11.6  Hessian modified twice;   dependent
-  716   3284     0.923145     0.002016         0.25     0.000444           13  Hessian modified twice;   dependent
-  717   3296      0.92312     0.002038     0.000977      -0.0252         13.1  Hessian modified twice;   dependent
-  718   3300      0.92351     0.001876         0.25      0.00156           13  Hessian modified twice;   dependent
-  719   3308     0.923266      0.00197       0.0156      -0.0156         10.5  Hessian modified twice;   dependent
-  720   3313      0.92329     0.002074        0.125     0.000193         13.1  Hessian modified twice;   dependent
-  721   3317     0.923439     0.002067         0.25     0.000595           13  Hessian modified twice;   dependent
-  722   3324     0.923339     0.002244       0.0312      -0.0032         11.5  Hessian modified twice;   dependent
-  723   3327     0.923699     0.002058          0.5      0.00072           13  Hessian modified twice;   dependent
-  724   3337     0.923471     0.002056      0.00391      -0.0583         10.2  Hessian modified twice;   dependent
-  725   3340     0.923514     0.002155          0.5     8.64e-05         12.7  Hessian modified twice;   dependent
-  726   3345     0.922916      0.00209        0.125     -0.00479         12.9  Hessian modified twice;   dependent
-  727   3350     0.922955     0.002178        0.125      0.00031         12.7  Hessian modified twice;   dependent
-  728   3353     0.923431     0.002163          0.5     0.000952         12.9  Hessian modified twice;   dependent
-  729   3363     0.922511     0.003976      0.00391       -0.236         11.4  Hessian modified twice;   dependent
-  730   3369     0.922217     0.003762       0.0625      -0.0047         12.9  Hessian modified twice;   dependent
-  731   3372     0.922575     0.003587          0.5     0.000717         12.6  Hessian modified twice;   dependent
-  732   3380     0.921055      0.00602       0.0156      -0.0973         12.7  Hessian modified twice;   dependent
-  733   3383     0.920852      0.00521          0.5    -0.000405         13.1  Hessian modified twice;   dependent
-  734   3396     0.920635      0.00535     0.000488       -0.445         13.9  Hessian modified twice;   dependent
-  735   3413     0.920634      0.00535     3.05e-05      -0.0558         13.8  Hessian modified twice;   dependent
-  736   3420     0.920581     0.005327       0.0312      -0.0017         13.9  Hessian modified twice;   dependent
-  737   3423     0.922112     0.004419          0.5      0.00306         13.1  Hessian modified twice;   dependent
-  738   3429     0.921276     0.005946       0.0625      -0.0134         12.3  Hessian modified twice;   dependent
-  739   3432     0.922445     0.004881          0.5      0.00234           13  Hessian modified twice;   dependent
-  740   3439     0.921239     0.007496       0.0312      -0.0386         10.4  Hessian modified twice;   dependent
-  741   3442     0.922083     0.006076          0.5      0.00169           13  Hessian modified twice;   dependent
-  742   3451      0.92156     0.006808      0.00781      -0.0668         12.8  Hessian modified twice;   dependent
-  743   3453     0.924324     0.003737            1      0.00276         12.9  Hessian modified twice;   dependent
-  744   3462      0.91849      0.01762      0.00781       -0.747         11.7  Hessian modified twice;   dependent
-  745   3464     0.918836       0.0227            1     0.000346         13.3  Hessian modified twice;   dependent
-  746   3470     0.908689      0.04129       0.0625       -0.162         11.2  Hessian modified twice;   dependent
-  747   3472     0.917036      0.03878            1      0.00835         13.2  Hessian modified twice;   dependent
-  748   3478     0.901461        0.053       0.0625       -0.249         13.3  Hessian modified;   dependent
-  749   3480     0.919155      0.01305            1       0.0177         13.1  Hessian modified twice;   dependent
-  750   3485     0.913463      0.01283        0.125      -0.0455         11.4  Hessian modified;   dependent
-  751   3487     0.919584      0.01018            1      0.00612         13.4  Hessian modified twice;   dependent
-  752   3496     0.913426      0.02256      0.00781       -0.788         8.25  Hessian modified twice;   dependent
-  753   3505     0.910768      0.02274      0.00781        -0.34         10.8  Hessian modified twice;   dependent
-  754   3507     0.919031     0.009067            1      0.00826           13  Hessian modified twice;   dependent
-  755   3515     0.917587     0.009202       0.0156      -0.0925         19.2  Hessian modified;   dependent
-  756   3527     0.917056     0.009312     0.000977       -0.543         12.6  Hessian modified twice;   dependent
-  757   3540     0.916758     0.009372     0.000488       -0.612         15.6  Hessian modified twice;   dependent
-  758   3549     0.916486     0.009452      0.00781      -0.0348         10.2  Hessian modified twice;   dependent
-  759   3552     0.921276     0.005966          0.5      0.00958         13.6  Hessian modified twice;   dependent
-  760   3556     0.919493     0.008749         0.25     -0.00713         13.7  Hessian modified twice;   dependent
-  761   3558     0.920622     0.007106            1      0.00113           14  Hessian modified twice;   dependent
-  762   3565     0.918288      0.00759       0.0312      -0.0747         10.3  Hessian modified;   dependent
-  763   3577     0.918054     0.007664     0.000977       -0.239         12.6  Hessian modified twice;   dependent
-  764   3587     0.918017     0.007678      0.00391     -0.00947         11.7  Hessian modified twice;   dependent
-  765   3590     0.920829      0.00762          0.5      0.00562         13.1  Hessian modified twice;   dependent
-  766   3593     0.920355     0.006534          0.5    -0.000947         13.2  Hessian modified twice;   dependent
-  767   3603     0.920273     0.006583      0.00391      -0.0212         12.3  Hessian modified twice;   dependent
-  768   3605     0.924933     0.003607            1      0.00466         13.2  Hessian modified twice;   dependent
-  769   3609     0.923068     0.003645         0.25     -0.00746         13.3  Hessian modified twice;   dependent
-  770   3612     0.922408      0.00397          0.5     -0.00132         12.9  Hessian modified twice;   dependent
-  771   3622     0.922265     0.004118      0.00391      -0.0366         11.9  Hessian modified twice;   dependent
-  772   3624      0.92439      0.00347            1      0.00213         13.1  Hessian modified twice;   dependent
-  773   3631     0.923198     0.003672       0.0312      -0.0381         12.3  Hessian modified twice;   dependent
-  774   3642     0.922778     0.003769      0.00195       -0.215         13.5  Hessian modified twice;   dependent
-  775   3650      0.92265     0.003797       0.0156      -0.0082         12.7  Hessian modified twice;   dependent
-  776   3652     0.923863     0.001736            1      0.00121         13.3  Hessian modified twice;   dependent
-  777   3658     0.922264     0.003324       0.0625      -0.0256         11.8  Hessian modified twice;   dependent
-  778   3660     0.924083     0.001859            1      0.00182           13  Hessian modified twice;   dependent
-  779   3671     0.923793     0.001944      0.00195       -0.149         12.5  Hessian modified twice;   dependent
-  780   3674     0.924109     0.001172          0.5     0.000633         12.7  Hessian modified twice;   dependent
-  781   3681     0.923316     0.002069       0.0312      -0.0254         10.5  Hessian modified twice;   dependent
-  782   3685     0.923182     0.001849         0.25    -0.000537         12.6  Hessian modified twice;   dependent
-  783   3688     0.922902     0.001815          0.5    -0.000561         12.8  Hessian modified twice;   dependent
-  784   3693     0.922542     0.002129        0.125     -0.00288         12.4  Hessian modified twice;   dependent
-  785   3698     0.922753     0.002093        0.125      0.00169           13  Hessian modified twice;   dependent
-  786   3705     0.922719     0.002192       0.0312     -0.00111         11.6  Hessian modified twice;   dependent
-  787   3710      0.92295      0.00211        0.125      0.00185         13.1  Hessian modified twice;   dependent
-  788   3717     0.922826      0.00242       0.0312     -0.00394         10.9  Hessian modified twice;   dependent
-  789   3722     0.922976     0.002312        0.125      0.00119           13  Hessian modified twice;   dependent
-  790   3730      0.92295     0.002377       0.0156     -0.00163         11.9  Hessian modified twice;   dependent
-  791   3732     0.924401     0.001161            1      0.00145         13.1  Hessian modified twice;   dependent
-  792   3739     0.924252     0.001227       0.0312     -0.00476         14.4  Hessian modified twice;   dependent
-  793   3746     0.924252     0.001209       0.0312    -1.35e-05         12.9  Hessian modified twice;   dependent
-  794   3748     0.924602    0.0004279            1      0.00035           13  Hessian modified twice;   dependent
-  795   3754     0.924269     0.000553       0.0625     -0.00533         12.5  Hessian modified twice;   dependent
-  796   3761     0.924137    0.0005638       0.0312     -0.00422         13.3  Hessian modified twice;   dependent
-  797   3768     0.924106    0.0005873       0.0312    -0.000999         12.8  Hessian modified twice;   dependent
-  798   3778     0.924107    0.0005868      0.00391     0.000325         12.9  Hessian modified twice;   dependent
-  799   3783     0.924174    0.0005296        0.125     0.000539         12.9  Hessian modified twice;   dependent
-  800   3787     0.924199    0.0004492         0.25     9.92e-05         12.8  Hessian modified twice;   dependent
-  801   3793     0.924218    0.0004379       0.0625     0.000293         12.8  Hessian modified twice;   dependent
-  802   3795     0.924671    0.0003377            1     0.000453         12.9  Hessian modified twice;   dependent
-  803   3799      0.92415    0.0009371         0.25     -0.00208         12.3  Hessian modified twice;   dependent
-  804   3804     0.924118    0.0008846        0.125    -0.000257           13  Hessian modified twice;   dependent
-  805   3808     0.924109    0.0009525         0.25     -3.7e-05           13  Hessian modified twice;   dependent
-  806   3816      0.92406     0.001046       0.0156     -0.00311         13.1  Hessian modified twice;   dependent
-  807   3820     0.924168     0.001046         0.25     0.000432         13.1  Hessian modified twice;   dependent
-  808   3825     0.923869     0.001942        0.125      -0.0024         12.2  Hessian modified twice;   dependent
-  809   3829     0.923783     0.001869         0.25    -0.000344         12.9  Hessian modified twice;   dependent
-  810   3837     0.923774     0.001862       0.0156    -0.000519         13.1  Hessian modified twice;   dependent
-  811   3842      0.92379     0.001836        0.125     0.000123         13.1  Hessian modified twice;   dependent
-  812   3846     0.923436     0.001775         0.25     -0.00142         12.9  Hessian modified twice;   dependent
-  813   3855     0.923415     0.001774      0.00781     -0.00267         12.3  Hessian modified twice;   dependent
-  814   3857     0.924633    0.0009879            1      0.00122           13  Hessian modified twice;   dependent
-  815   3866     0.924311     0.001056      0.00781      -0.0413         15.4  Hessian modified twice;   dependent
-  816   3874     0.924097     0.001132       0.0156      -0.0137         11.3  Hessian modified twice;   dependent
-  817   3878      0.92418    0.0009948         0.25     0.000334         13.3  Hessian modified twice;   dependent
-  818   3882     0.924179    0.0008313         0.25    -3.28e-06         13.2  Hessian modified twice;   dependent
-  819   3893     0.924101    0.0008541      0.00195      -0.0398         14.1  Hessian modified twice;   dependent
-  820   3900     0.924109    0.0008438       0.0312      0.00025           13  Hessian modified twice;   dependent
-  821   3902     0.924644    0.0008181            1     0.000534           13  Hessian modified twice;   dependent
-  822   3906      0.92261     0.004547         0.25     -0.00813           11  Hessian modified twice;   dependent
-  823   3909      0.92133     0.006315          0.5     -0.00256           13  Hessian modified twice;   dependent
-  824   3918     0.920369     0.006984      0.00781       -0.123           12  Hessian modified twice;   dependent
-  825   3920     0.923021     0.005986            1      0.00265         13.2  Hessian modified twice;   dependent
-  826   3926     0.921753     0.006207       0.0625      -0.0203         13.4  Hessian modified twice;   dependent
-  827   3938     0.921481     0.006312     0.000977       -0.279         14.9  Hessian modified twice;   dependent
-  828   3951      0.92142     0.006336     0.000488       -0.125           16  Hessian modified twice;   dependent
-  829   3957      0.92139     0.006353       0.0625    -0.000484         12.8  Hessian modified twice;   dependent
-  830   3959     0.924139     0.003944            1      0.00275           13  Hessian modified twice;   dependent
-  831   3965     0.922554     0.004293       0.0625      -0.0254         13.1  Hessian modified twice;   dependent
-  832   3970     0.922016     0.004586        0.125      -0.0043           13  Hessian modified twice;   dependent
-  833   3976     0.922067     0.004502       0.0625      0.00081         12.7  Hessian modified twice;   dependent
-  834   3978     0.923258     0.004154            1      0.00119           13  Hessian modified twice;   dependent
-  835   3982     0.917691     0.009149         0.25      -0.0223         11.6  Hessian modified;   dependent
-  836   3985     0.918765      0.00607          0.5      0.00215         12.7  Hessian modified;   dependent
-  837   3992     0.918775     0.006024       0.0312     0.000324         12.9  Hessian modified twice;   dependent
-  838   3995     0.921415     0.004578          0.5      0.00528         13.1  Hessian modified twice;   dependent
-  839   4004     0.920883     0.005352      0.00781      -0.0681           14  Hessian modified twice;   dependent
-  840   4012     0.920888     0.005412       0.0156     0.000275         12.8  Hessian modified twice;   dependent
-  841   4015     0.922683      0.00456          0.5      0.00359         13.1  Hessian modified twice;   dependent
-  842   4025     0.922159     0.004642      0.00391       -0.134         15.5  Hessian modified twice;   dependent
-  843   4034     0.922048     0.004657      0.00781      -0.0141         12.3  Hessian modified twice;   dependent
-  844   4036     0.925195     0.001957            1      0.00315         14.4  Hessian modified twice;   dependent
-  845   4043     0.923671     0.002647       0.0312      -0.0488         15.5  Hessian modified twice;   dependent
-  846   4049     0.923472     0.002673       0.0625     -0.00318         13.9  Hessian modified twice;   dependent
-  847   4052     0.923327     0.002904          0.5     -0.00029         13.1  Hessian modified twice;   dependent
-  848   4063     0.923279     0.002957      0.00195      -0.0247         12.3  Hessian modified twice;   dependent
-  849   4067     0.923207        0.003         0.25    -0.000289         12.7  Hessian modified twice;   dependent
-  850   4072     0.923298     0.002885        0.125     0.000727         13.1  Hessian modified twice;   dependent
-  851   4076     0.923496     0.002595         0.25     0.000792           13  Hessian modified twice;   dependent
-  852   4081     0.923459     0.002614        0.125    -0.000293           13  Hessian modified twice;   dependent
-  853   4084     0.923585     0.002592          0.5     0.000252         13.4  Hessian modified twice;   dependent
-  854   4089      0.92257      0.00283        0.125     -0.00812         12.6  Hessian modified twice;   dependent
-  855   4093     0.922874     0.002851         0.25      0.00122         12.7  Hessian modified twice;   dependent
-  856   4102     0.922816     0.002955      0.00781     -0.00752           13  Hessian modified twice;   dependent
-  857   4105       0.9234     0.001488          0.5      0.00117         13.3  Hessian modified twice;   dependent
-  858   4118     0.923308       0.0015     0.000488       -0.189         16.7  Hessian modified twice;   dependent
-  859   4127     0.923287     0.001488      0.00781     -0.00264         1.62  Hessian modified twice;   overly constrained
-  860   4133     0.922844     0.001406       0.0625     -0.00709           12  Hessian modified twice;   dependent
-  861   4141     0.922828     0.001405       0.0156     -0.00105         12.9  Hessian modified twice;   dependent
-  862   4146     0.923033       0.0013        0.125      0.00164         12.9  Hessian modified twice;   dependent
-  863   4153     0.922913     0.001461       0.0312     -0.00385         12.6  Hessian modified twice;   dependent
-  864   4158      0.92304     0.001402        0.125      0.00102         12.9  Hessian modified twice;   dependent
-  865   4166     0.923042     0.001399       0.0156     0.000105         13.1  Hessian modified twice;   dependent
-  866   4170      0.92343     0.001142         0.25      0.00155           13  Hessian modified twice;   dependent
-  867   4177     0.923117     0.001764       0.0312        -0.01         12.2  Hessian modified twice;   dependent
-  868   4181     0.923257     0.001628         0.25     0.000559           13  Hessian modified twice;   dependent
-  869   4189     0.923253     0.001625       0.0156    -0.000255           13  Hessian modified twice;   dependent
-  870   4191     0.924667    9.516e-05            1      0.00141           13  Hessian modified twice;   dependent
-  871   4196     0.924571    0.0001564        0.125    -0.000771         13.1  Hessian modified twice;   dependent
-  872   4199     0.924611    0.0001061          0.5     7.96e-05           13  Hessian modified twice;   dependent
-  873   4205     0.924598    0.0001264       0.0625    -0.000196         12.9  Hessian modified twice;   dependent
-  874   4210     0.924596    0.0001314        0.125    -1.96e-05           13  Hessian modified twice;   dependent
-  875   4216     0.924587    0.0001452       0.0625    -0.000139           13  Hessian modified twice;   dependent
-  876   4220     0.924583    0.0001317         0.25    -1.77e-05         13.1  Hessian modified twice;   dependent
-  877   4228     0.924582    0.0001317       0.0156    -4.66e-05         12.9  Hessian modified twice;   dependent
-  878   4233     0.924592    0.0001295        0.125     8.01e-05           13  Hessian modified twice;   dependent
-  879   4236     0.924602     0.000118          0.5     1.99e-05           13  Hessian modified twice;   dependent
-  880   4240     0.924604     0.000108         0.25      7.9e-06         13.1  Hessian modified twice;   dependent
-  881   4242     0.924646    3.914e-05            1     4.22e-05           13  Hessian modified twice;   dependent
-  882   4246     0.924623     5.89e-05         0.25    -9.44e-05         12.8  Hessian modified twice;   dependent
-  883   4251     0.924614    7.114e-05        0.125    -6.58e-05         13.2  Hessian modified twice;   dependent
-  884   4256     0.924613    7.021e-05        0.125    -1.19e-05         13.1  Hessian modified twice;   dependent
-  885   4259     0.924618     6.55e-05          0.5     9.63e-06           13  Hessian modified twice;   dependent
-  886   4263     0.924595    7.688e-05         0.25    -9.04e-05         12.9  Hessian modified twice;   dependent
-  887   4266     0.924586    0.0001091          0.5    -1.77e-05           13  Hessian modified twice;   dependent
-  888   4270     0.924553    0.0001479         0.25    -0.000132         13.1  Hessian modified twice;   dependent
-  889   4274     0.924531    0.0001757         0.25    -8.77e-05         12.9  Hessian modified twice;   dependent
-  890   4281     0.924529    0.0001767       0.0312    -8.48e-05         12.9  Hessian modified twice;   dependent
-  891   4285     0.924534     0.000158         0.25     2.19e-05         12.9  Hessian modified twice;   dependent
-  892   4289     0.924508    0.0001913         0.25    -0.000105         12.8  Hessian modified twice;   dependent
-  893   4292     0.924502    0.0001587          0.5    -1.21e-05         13.1  Hessian modified twice;   dependent
-  894   4297     0.924427    0.0003391        0.125    -0.000597         12.2  Hessian modified twice;   dependent
-  895   4301     0.924414    0.0003343         0.25    -5.45e-05         12.6  Hessian modified twice;   dependent
-  896   4305     0.924404    0.0003211         0.25    -3.82e-05         13.2  Hessian modified twice;   dependent
-  897   4312     0.924405     0.000319       0.0312     2.38e-05         12.9  Hessian modified twice;   dependent
-  898   4316     0.924338    0.0004099         0.25    -0.000267         12.5  Hessian modified twice;   dependent
-  899   4320     0.924312    0.0004729         0.25    -0.000105         12.9  Hessian modified twice;   dependent
-  900   4325     0.924275    0.0005538        0.125    -0.000298         12.5  Hessian modified twice;   dependent
-  901   4333     0.924253    0.0005929       0.0156     -0.00141         12.2  Hessian modified twice;   dependent
-  902   4339     0.924255    0.0005841       0.0625      3.6e-05         12.4  Hessian modified twice;   dependent
-  903   4347     0.924253     0.000588       0.0156    -0.000114         12.7  Hessian modified twice;   dependent
-  904   4351     0.924171    0.0004623         0.25     -0.00033         12.7  Hessian modified twice;   dependent
-  905   4353     0.924146    0.0004937            1    -2.44e-05         12.5  Hessian modified twice;   dependent
-  906   4358     0.924039    0.0005365        0.125     -0.00086         12.6  Hessian modified twice;   dependent
-  907   4363     0.924019     0.000717        0.125    -0.000155         12.3  Hessian modified twice;   dependent
-  908   4369     0.924011     0.000748       0.0625    -0.000138         12.3  Hessian modified twice;   dependent
-  909   4371     0.924382    0.0001286            1     0.000371         12.8  Hessian modified twice;   dependent
-  910   4376     0.924234    0.0003624        0.125     -0.00119           13  Hessian modified twice;   dependent
-  911   4382     0.924196    0.0004376       0.0625    -0.000605         11.9  Hessian modified twice;   dependent
-  912   4389     0.924198    0.0004324       0.0312     7.96e-05         12.2  Hessian modified twice;   dependent
-  913   4392     0.924252    0.0004034          0.5     0.000108         12.5  Hessian modified twice;   dependent
-  914   4396     0.923889    0.0008471         0.25     -0.00145         11.7  Hessian modified twice;   dependent
-  915   4399     0.923703     0.001566          0.5    -0.000373         12.6  Hessian modified twice;   dependent
-  916   4403     0.923414     0.002039         0.25     -0.00115         12.2  Hessian modified twice;   dependent
-  917   4407     0.923449      0.00185         0.25     0.000141         12.5  Hessian modified twice;   dependent
-  918   4413     0.923474      0.00182       0.0625     0.000406         12.9  Hessian modified twice;   dependent
-  919   4415     0.924052     0.001815            1     0.000577         12.6  Hessian modified twice;   dependent
-  920   4418     0.922547      0.00486          0.5     -0.00301         12.3  Hessian modified twice;   dependent
-  921   4422     0.922586     0.003962         0.25     0.000153         12.9  Hessian modified twice;   dependent
-  922   4426     0.922576     0.003164         0.25    -3.78e-05         12.5  Hessian modified twice;   dependent
-  923   4431     0.922424     0.003942        0.125     -0.00121         13.2  Hessian modified twice;   dependent
-  924   4436     0.922435      0.00398        0.125     8.76e-05         12.9  Hessian modified twice;   dependent
-  925   4442     0.922488     0.003975       0.0625     0.000847           13  Hessian modified twice;   dependent
-  926   4447     0.922587     0.003938        0.125     0.000789         12.7  Hessian modified twice;   dependent
-  927   4453     0.922573     0.003995       0.0625    -0.000222         12.5  Hessian modified twice;   dependent
-  928   4458     0.922704     0.003893        0.125      0.00105         12.9  Hessian modified twice;   dependent
-  929   4464     0.922649     0.004044       0.0625    -0.000887         12.4  Hessian modified twice;   dependent
-  930   4469     0.922759     0.003817        0.125     0.000884           13  Hessian modified twice;   dependent
-  931   4476      0.92274     0.003851       0.0312    -0.000618         12.4  Hessian modified twice;   dependent
-  932   4479     0.923357     0.003182          0.5      0.00123         13.2  Hessian modified twice;   dependent
-  933   4487     0.922841     0.003776       0.0156       -0.033         11.1  Hessian modified twice;   dependent
-  934   4489     0.924225     0.002244            1      0.00138         13.2  Hessian modified twice;   dependent
-  935   4496     0.922685     0.003384       0.0312      -0.0493         13.8  Hessian modified twice;   dependent
-  936   4505      0.92264     0.003478      0.00781     -0.00585         12.6  Hessian modified twice;   dependent
-  937   4510     0.922671     0.003684        0.125     0.000255         12.5  Hessian modified twice;   dependent
-  938   4514     0.922672     0.004377         0.25     9.53e-07         12.5  Hessian modified twice;   dependent
-  939   4520     0.922484     0.004863       0.0625       -0.003         12.1  Hessian modified twice;   dependent
-  940   4525     0.922621     0.004608        0.125      0.00109         12.8  Hessian modified twice;   dependent
-  941   4532     0.922592     0.004624       0.0312     -0.00092         13.7  Hessian modified twice;   dependent
-  942   4534     0.923913     0.001049            1      0.00132         13.6  Hessian modified twice;   dependent
-  943   4542     0.923717      0.00117       0.0156      -0.0125         14.8  Hessian modified twice;   dependent
-  944   4553     0.923689     0.001194      0.00195      -0.0145         12.8  Hessian modified twice;   dependent
-  945   4560     0.923697     0.001187       0.0312     0.000255         13.1  Hessian modified twice;   dependent
-  946   4563     0.923712     0.000868          0.5     2.98e-05           14  Hessian modified twice;   dependent
-  947   4568     0.923707    0.0009232        0.125    -4.02e-05         13.2  Hessian modified;   dependent
-  948   4572     0.923784    0.0007394         0.25     0.000309         12.9  Hessian modified twice;   dependent
-  949   4576     0.923761    0.0007044         0.25    -9.11e-05         12.7  Hessian modified twice;   dependent
-  950   4579     0.923993    0.0006132          0.5     0.000463         13.5  Hessian modified twice;   dependent
-  951   4587     0.923899    0.0006887       0.0156     -0.00596         12.5  Hessian modified twice;   dependent
-  952   4596     0.923892    0.0006974      0.00781    -0.000969         14.5  Hessian modified twice;   dependent
-  953   4598     0.924269    0.0002598            1     0.000378         13.1  Hessian modified twice;   dependent
-  954   4602     0.924102    0.0003464         0.25     -0.00067           13  Hessian modified twice;   dependent
-  955   4608     0.924111    0.0003357       0.0625     0.000141         13.1  Hessian modified twice;   dependent
-  956   4613     0.924121    0.0003178        0.125      8.6e-05         13.2  Hessian modified twice;   dependent
-  957   4619     0.924121    0.0003099       0.0625    -8.32e-06         12.9  Hessian modified twice;   dependent
-  958   4624     0.924139    0.0002919        0.125     0.000144         13.5  Hessian modified twice;   dependent
-  959   4628     0.924048    0.0004382         0.25    -0.000362         12.3  Hessian modified twice;   dependent
-  960   4636     0.924044    0.0004466       0.0156    -0.000268         12.7  Hessian modified twice;   dependent
-  961   4638     0.924253    4.753e-05            1     0.000209           13  Hessian modified twice;   dependent
-  962   4643     0.924218    8.007e-05        0.125    -0.000279         13.5  Hessian modified twice;   dependent
-  963   4645     0.924262    1.297e-06            1     4.38e-05         13.1  Hessian modified twice;   dependent
-  964   4649     0.924261    2.499e-06         0.25     -2.6e-06         13.3  Hessian modified twice;   dependent
-  965   4651     0.924261     3.43e-07            1    -2.59e-07           13  Hessian modified twice;   dependent
-  966   4656     0.924256    3.634e-06        0.125    -3.96e-05         12.9  Hessian modified twice;   dependent
-  967   4659     0.924254     5.13e-06          0.5    -3.73e-06           13  Hessian modified twice;   dependent
-  968   4661     0.924252    6.832e-06            1    -2.03e-06           13  Hessian modified twice;   dependent
-  969   4665     0.924248    7.396e-06         0.25    -1.77e-05           13  Hessian modified twice;   dependent
-  970   4670     0.924246     7.56e-06        0.125    -1.03e-05         12.9  Hessian modified twice;   dependent
-  971   4672     0.924249    1.901e-06            1     2.91e-06         12.9  Hessian modified twice;   dependent
-  972   4675     0.924248    2.488e-06          0.5    -1.73e-06           13  Hessian modified twice;   dependent
-  973   4677     0.924247    5.186e-06            1    -1.24e-06         12.9  Hessian modified twice;   dependent
-  974   4681     0.924247    4.848e-06         0.25    -1.76e-06           13  Hessian modified twice;   dependent
-  975   4683     0.924248    1.993e-06            1     1.12e-06           13  Hessian modified twice;   dependent
-  976   4691     0.924247    3.185e-06       0.0156    -6.55e-05         12.8  Hessian modified twice;   dependent
-  977   4693     0.924248    6.689e-07            1     1.24e-06           13  Hessian modified twice;   dependent
-  978   4699     0.924248    6.906e-07       0.0625    -8.89e-07         12.9  Hessian modified twice;   dependent
-  979   4701     0.924247     1.78e-06            1    -9.94e-07           13  Hessian modified twice;   dependent
-  980   4703     0.924247    1.939e-06            1    -5.21e-07           13  Hessian modified twice;   dependent
-  981   4712     0.924246    2.137e-06      0.00781    -3.36e-05           13  Hessian modified twice;   dependent
-  982   4714     0.924247    2.456e-07            1     7.43e-07           13  Hessian modified twice;   dependent
-  983   4716     0.924247    2.498e-07            1    -4.91e-07           13  Hessian modified twice;   dependent
-  984   4719     0.924246     4.16e-07          0.5    -9.16e-07         12.9  Hessian modified twice;   dependent
-  985   4723     0.924246    3.173e-07         0.25     1.87e-07           13  Hessian modified twice;   dependent
-  986   4725     0.924246    1.949e-07            1     1.75e-07           13  Hessian modified twice;   dependent
-  987   4728     0.924246    5.034e-07          0.5    -5.67e-07           13  Hessian modified twice;   dependent
-  988   4731     0.924245    1.273e-06          0.5    -1.16e-06         12.9  Hessian modified twice;   dependent
-  989   4735     0.924245    1.876e-06         0.25    -2.67e-06         13.1  Hessian modified twice;   dependent
-  990   4739     0.924245    1.731e-06         0.25    -5.56e-07         12.8  Hessian modified twice;   dependent
-  991   4742     0.924245    1.796e-06          0.5     1.32e-07           13  Hessian modified twice;   dependent
-  992   4746     0.924244    2.079e-06         0.25    -1.68e-06         12.8  Hessian modified twice;   dependent
-  993   4750     0.924244     2.06e-06         0.25    -1.61e-07           13  Hessian modified twice;   dependent
-  994   4753     0.924244    1.767e-06          0.5     2.59e-07         12.9  Hessian modified twice;   dependent
-  995   4758     0.924244    2.041e-06        0.125     -3.2e-06         13.1  Hessian modified twice;   dependent
-  996   4760     0.924245    8.083e-08            1     9.83e-07           13  Hessian modified twice;   dependent
-  997   4769     0.924245    3.437e-07      0.00781    -2.28e-05         12.8  Hessian modified twice;   dependent
-  998   4771     0.924245    2.708e-07            1    -4.91e-08           13  Hessian modified twice;   dependent
-  999   4773     0.924245    4.683e-08            1    -7.25e-08           13  Hessian modified twice;   dependent
-Optimization terminated: magnitude of directional derivative in search
- direction less than 2*options.TolFun and maximum constraint violation
-  is less than options.TolCon.
-Active inequalities (to within options.TolCon = 1e-07):
-  lower      upper     ineqlin   ineqnonlin
-   20         13          2           
-                          3           
-                         35           
-                         36           
-                         71           
-                         72           
-                        107           
-                        108           
-                        139           
-                        143           
-                        144           
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+   31     176    9.242346e-01   7.124e-10   6.571e-05   3.835e-06   2.453e-04
+   32     205    9.242346e-01   7.143e-10   6.571e-05   3.830e-06   2.456e-04
+   33     234    9.242346e-01   7.161e-10   6.571e-05   3.825e-06   2.459e-04
+   34     263    9.242346e-01   7.180e-10   6.571e-05   3.819e-06   2.463e-04
+   35     292    9.242346e-01   7.198e-10   6.571e-05   3.814e-06   2.466e-04
+   36     321    9.242346e-01   7.216e-10   6.571e-05   3.809e-06   2.469e-04
+   37     350    9.242346e-01   7.235e-10   6.571e-05   3.804e-06   2.473e-04
+   38     379    9.242346e-01   7.253e-10   6.571e-05   3.799e-06   2.476e-04
+   39     408    9.242346e-01   7.271e-10   6.571e-05   3.794e-06   2.479e-04
+   40     437    9.242346e-01   7.289e-10   6.571e-05   3.788e-06   2.483e-04
+   41     466    9.242346e-01   7.307e-10   6.571e-05   3.783e-06   2.486e-04
+   42     495    9.242346e-01   7.325e-10   6.571e-05   3.778e-06   2.489e-04
+   43     524    9.242346e-01   7.343e-10   6.571e-05   3.773e-06   2.493e-04
+   44     553    9.242346e-01   7.361e-10   6.571e-05   3.768e-06   2.496e-04
+   45     582    9.242346e-01   7.379e-10   6.571e-05   3.763e-06   2.499e-04
+   46     611    9.242346e-01   7.397e-10   6.571e-05   3.758e-06   2.503e-04
+   47     640    9.242346e-01   7.415e-10   6.571e-05   3.753e-06   2.506e-04
+   48     669    9.242346e-01   7.433e-10   6.571e-05   3.748e-06   2.509e-04
+   49     698    9.242346e-01   7.450e-10   6.571e-05   3.743e-06   2.513e-04
+   50     727    9.242346e-01   7.468e-10   6.571e-05   3.738e-06   2.516e-04
+   51     756    9.242346e-01   7.486e-10   6.571e-05   3.734e-06   2.519e-04
+   52     785    9.242346e-01   7.503e-10   6.571e-05   3.729e-06   2.522e-04
+   53     814    9.242346e-01   7.521e-10   6.571e-05   3.724e-06   2.526e-04
+   54     843    9.242346e-01   7.538e-10   6.571e-05   3.719e-06   2.529e-04
+   55     872    9.242346e-01   7.555e-10   6.571e-05   3.714e-06   2.532e-04
+   56     901    9.242346e-01   7.573e-10   6.571e-05   3.709e-06   2.535e-04
+   57     930    9.242346e-01   7.590e-10   6.571e-05   3.704e-06   2.539e-04
+   58     959    9.242346e-01   7.607e-10   6.571e-05   3.700e-06   2.542e-04
+   59     988    9.242346e-01   7.625e-10   6.571e-05   3.695e-06   2.545e-04
+   60    1017    9.242346e-01   7.642e-10   6.571e-05   3.690e-06   2.548e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+   61    1046    9.242346e-01   7.659e-10   6.571e-05   3.685e-06   2.551e-04
+   62    1075    9.242346e-01   7.676e-10   6.571e-05   3.681e-06   2.555e-04
+   63    1104    9.242346e-01   7.693e-10   6.571e-05   3.676e-06   2.558e-04
+   64    1133    9.242346e-01   7.710e-10   6.571e-05   3.671e-06   2.561e-04
+   65    1162    9.242346e-01   7.727e-10   6.571e-05   3.667e-06   2.564e-04
+   66    1191    9.242346e-01   7.744e-10   6.571e-05   3.662e-06   2.567e-04
+   67    1220    9.242346e-01   7.761e-10   6.571e-05   3.657e-06   2.571e-04
+   68    1249    9.242346e-01   7.778e-10   6.571e-05   3.653e-06   2.574e-04
+   69    1278    9.242346e-01   7.794e-10   6.571e-05   3.648e-06   2.577e-04
+   70    1307    9.242346e-01   7.811e-10   6.571e-05   3.644e-06   2.580e-04
+   71    1336    9.242346e-01   7.828e-10   6.571e-05   3.639e-06   2.583e-04
+   72    1365    9.242346e-01   7.844e-10   6.571e-05   3.634e-06   2.586e-04
+   73    1394    9.242346e-01   7.861e-10   6.571e-05   3.630e-06   2.590e-04
+   74    1423    9.242346e-01   7.877e-10   6.571e-05   3.625e-06   2.593e-04
+   75    1452    9.242346e-01   7.894e-10   6.571e-05   3.621e-06   2.596e-04
+   76    1481    9.242346e-01   7.910e-10   6.571e-05   3.616e-06   2.599e-04
+   77    1510    9.242346e-01   7.927e-10   6.571e-05   3.612e-06   2.602e-04
+   78    1539    9.242346e-01   7.943e-10   6.571e-05   3.607e-06   2.605e-04
+   79    1568    9.242346e-01   7.959e-10   6.571e-05   3.603e-06   2.608e-04
+   80    1597    9.242346e-01   7.976e-10   6.571e-05   3.599e-06   2.611e-04
+   81    1626    9.242346e-01   7.992e-10   6.571e-05   3.594e-06   2.615e-04
+   82    1655    9.242346e-01   8.008e-10   6.571e-05   3.590e-06   2.618e-04
+   83    1684    9.242346e-01   8.024e-10   6.571e-05   3.585e-06   2.621e-04
+   84    1713    9.242346e-01   8.040e-10   6.571e-05   3.581e-06   2.624e-04
+   85    1742    9.242346e-01   8.057e-10   6.571e-05   3.577e-06   2.627e-04
+   86    1771    9.242346e-01   8.073e-10   6.571e-05   3.572e-06   2.630e-04
+   87    1800    9.242346e-01   8.089e-10   6.571e-05   3.568e-06   2.633e-04
+   88    1829    9.242346e-01   8.105e-10   6.571e-05   3.564e-06   2.636e-04
+   89    1858    9.242346e-01   8.120e-10   6.571e-05   3.559e-06   2.639e-04
+   90    1887    9.242346e-01   8.136e-10   6.571e-05   3.555e-06   2.642e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+   91    1916    9.242346e-01   8.152e-10   6.571e-05   3.551e-06   2.645e-04
+   92    1945    9.242346e-01   8.168e-10   6.571e-05   3.547e-06   2.648e-04
+   93    1974    9.242346e-01   8.184e-10   6.571e-05   3.542e-06   2.651e-04
+   94    2003    9.242346e-01   8.199e-10   6.571e-05   3.538e-06   2.654e-04
+   95    2032    9.242346e-01   8.215e-10   6.571e-05   3.534e-06   2.657e-04
+   96    2061    9.242346e-01   8.231e-10   6.571e-05   3.530e-06   2.660e-04
+   97    2090    9.242346e-01   8.246e-10   6.571e-05   3.525e-06   2.663e-04
+   98    2119    9.242346e-01   8.262e-10   6.571e-05   3.521e-06   2.666e-04
+   99    2148    9.242346e-01   8.277e-10   6.571e-05   3.517e-06   2.669e-04
+  100    2177    9.242346e-01   8.293e-10   6.571e-05   3.513e-06   2.672e-04
+  101    2206    9.242346e-01   8.308e-10   6.571e-05   3.509e-06   2.675e-04
+  102    2235    9.242346e-01   8.324e-10   6.571e-05   3.505e-06   2.678e-04
+  103    2264    9.242346e-01   8.339e-10   6.571e-05   3.501e-06   2.681e-04
+  104    2293    9.242346e-01   8.354e-10   6.571e-05   3.497e-06   2.684e-04
+  105    2322    9.242346e-01   8.370e-10   6.571e-05   3.492e-06   2.687e-04
+  106    2351    9.242346e-01   8.385e-10   6.571e-05   3.488e-06   2.690e-04
+  107    2380    9.242346e-01   8.400e-10   6.571e-05   3.484e-06   2.693e-04
+  108    2409    9.242346e-01   8.415e-10   6.571e-05   3.480e-06   2.696e-04
+  109    2438    9.242346e-01   8.430e-10   6.571e-05   3.476e-06   2.699e-04
+  110    2467    9.242346e-01   8.445e-10   6.571e-05   3.472e-06   2.702e-04
+  111    2496    9.242346e-01   8.461e-10   6.571e-05   3.468e-06   2.705e-04
+  112    2524    9.242346e-01   8.492e-10   9.387e-05   4.949e-06   2.709e-04
+  113    2554    9.242346e-01   8.512e-10   4.600e-05   4.041e-06   2.713e-04
+  114    2584    9.242346e-01   8.533e-10   4.600e-05   4.033e-06   2.716e-04
+  115    2614    9.242346e-01   8.554e-10   4.600e-05   4.024e-06   2.719e-04
+  116    2644    9.242346e-01   8.574e-10   4.600e-05   4.016e-06   2.722e-04
+  117    2674    9.242346e-01   8.595e-10   4.600e-05   4.007e-06   2.726e-04
+  118    2704    9.242346e-01   8.615e-10   4.600e-05   3.999e-06   2.729e-04
+  119    2734    9.242346e-01   8.635e-10   4.600e-05   3.991e-06   2.732e-04
+  120    2764    9.242346e-01   8.655e-10   4.600e-05   3.982e-06   2.735e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  121    2794    9.242346e-01   8.676e-10   4.600e-05   3.974e-06   2.738e-04
+  122    2824    9.242346e-01   8.696e-10   4.600e-05   3.966e-06   2.742e-04
+  123    2854    9.242346e-01   8.716e-10   4.600e-05   3.958e-06   2.745e-04
+  124    2884    9.242346e-01   8.735e-10   4.600e-05   3.949e-06   2.748e-04
+  125    2914    9.242346e-01   8.755e-10   4.600e-05   3.941e-06   2.751e-04
+  126    2944    9.242346e-01   8.775e-10   4.600e-05   3.933e-06   2.754e-04
+  127    2974    9.242346e-01   8.794e-10   4.600e-05   3.925e-06   2.757e-04
+  128    3004    9.242346e-01   8.814e-10   4.600e-05   3.917e-06   2.760e-04
+  129    3034    9.242346e-01   8.833e-10   4.600e-05   3.909e-06   2.764e-04
+  130    3064    9.242346e-01   8.853e-10   4.600e-05   3.902e-06   2.767e-04
+  131    3094    9.242346e-01   8.872e-10   4.600e-05   3.894e-06   2.770e-04
+  132    3124    9.242346e-01   8.891e-10   4.600e-05   3.886e-06   2.773e-04
+  133    3154    9.242346e-01   8.910e-10   4.600e-05   3.878e-06   2.776e-04
+  134    3184    9.242346e-01   8.929e-10   4.600e-05   3.871e-06   2.779e-04
+  135    3214    9.242346e-01   8.948e-10   4.600e-05   3.863e-06   2.782e-04
+  136    3244    9.242346e-01   8.967e-10   4.600e-05   3.855e-06   2.785e-04
+  137    3274    9.242346e-01   8.986e-10   4.600e-05   3.848e-06   2.788e-04
+  138    3304    9.242346e-01   9.005e-10   4.600e-05   3.840e-06   2.791e-04
+  139    3334    9.242346e-01   9.023e-10   4.600e-05   3.833e-06   2.794e-04
+  140    3364    9.242346e-01   9.042e-10   4.600e-05   3.825e-06   2.797e-04
+  141    3394    9.242346e-01   9.060e-10   4.600e-05   3.818e-06   2.800e-04
+  142    3424    9.242346e-01   9.079e-10   4.600e-05   3.810e-06   2.803e-04
+  143    3454    9.242346e-01   9.097e-10   4.600e-05   3.803e-06   2.806e-04
+  144    3484    9.242346e-01   9.115e-10   4.600e-05   3.796e-06   2.809e-04
+  145    3514    9.242346e-01   9.134e-10   4.600e-05   3.788e-06   2.812e-04
+  146    3544    9.242346e-01   9.152e-10   4.600e-05   3.781e-06   2.815e-04
+  147    3574    9.242346e-01   9.170e-10   4.600e-05   3.774e-06   2.818e-04
+  148    3604    9.242346e-01   9.188e-10   4.600e-05   3.767e-06   2.821e-04
+  149    3634    9.242346e-01   9.206e-10   4.600e-05   3.760e-06   2.824e-04
+  150    3664    9.242346e-01   9.224e-10   4.600e-05   3.753e-06   2.827e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  151    3694    9.242346e-01   9.241e-10   4.600e-05   3.746e-06   2.830e-04
+  152    3724    9.242346e-01   9.259e-10   4.600e-05   3.739e-06   2.833e-04
+  153    3754    9.242346e-01   9.277e-10   4.600e-05   3.732e-06   2.836e-04
+  154    3784    9.242346e-01   9.294e-10   4.600e-05   3.725e-06   2.838e-04
+  155    3814    9.242346e-01   9.312e-10   4.600e-05   3.718e-06   2.841e-04
+  156    3844    9.242346e-01   9.329e-10   4.600e-05   3.711e-06   2.844e-04
+  157    3874    9.242346e-01   9.347e-10   4.600e-05   3.704e-06   2.847e-04
+  158    3904    9.242346e-01   9.364e-10   4.600e-05   3.697e-06   2.850e-04
+  159    3934    9.242346e-01   9.381e-10   4.600e-05   3.690e-06   2.853e-04
+  160    3964    9.242346e-01   9.399e-10   4.600e-05   3.684e-06   2.856e-04
+  161    3994    9.242346e-01   9.416e-10   4.600e-05   3.677e-06   2.858e-04
+  162    4024    9.242346e-01   9.433e-10   4.600e-05   3.670e-06   2.861e-04
+  163    4054    9.242346e-01   9.450e-10   4.600e-05   3.664e-06   2.864e-04
+  164    4084    9.242346e-01   9.467e-10   4.600e-05   3.657e-06   2.867e-04
+  165    4114    9.242346e-01   9.483e-10   4.600e-05   3.650e-06   2.870e-04
+  166    4144    9.242346e-01   9.500e-10   4.600e-05   3.644e-06   2.872e-04
+  167    4174    9.242346e-01   9.517e-10   4.600e-05   3.637e-06   2.875e-04
+  168    4204    9.242346e-01   9.534e-10   4.600e-05   3.631e-06   2.878e-04
+  169    4234    9.242346e-01   9.550e-10   4.600e-05   3.624e-06   2.881e-04
+  170    4264    9.242346e-01   9.567e-10   4.600e-05   3.618e-06   2.884e-04
+  171    4294    9.242346e-01   9.583e-10   4.600e-05   3.612e-06   2.886e-04
+  172    4324    9.242346e-01   9.600e-10   4.600e-05   3.605e-06   2.889e-04
+  173    4354    9.242346e-01   9.616e-10   4.600e-05   3.599e-06   2.892e-04
+  174    4384    9.242346e-01   9.632e-10   4.600e-05   3.593e-06   2.895e-04
+  175    4414    9.242346e-01   9.649e-10   4.600e-05   3.586e-06   2.897e-04
+  176    4444    9.242346e-01   9.665e-10   4.600e-05   3.580e-06   2.900e-04
+  177    4474    9.242346e-01   9.681e-10   4.600e-05   3.574e-06   2.903e-04
+  178    4504    9.242346e-01   9.697e-10   4.600e-05   3.568e-06   2.905e-04
+  179    4534    9.242346e-01   9.713e-10   4.600e-05   3.562e-06   2.908e-04
+  180    4564    9.242346e-01   9.729e-10   4.600e-05   3.555e-06   2.911e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  181    4594    9.242346e-01   9.745e-10   4.600e-05   3.549e-06   2.913e-04
+  182    4624    9.242346e-01   9.761e-10   4.600e-05   3.543e-06   2.916e-04
+  183    4654    9.242346e-01   9.777e-10   4.600e-05   3.537e-06   2.919e-04
+  184    4684    9.242346e-01   9.792e-10   4.600e-05   3.531e-06   2.921e-04
+  185    4714    9.242346e-01   9.808e-10   4.600e-05   3.525e-06   2.924e-04
+  186    4744    9.242346e-01   9.824e-10   4.600e-05   3.519e-06   2.927e-04
+  187    4774    9.242346e-01   9.839e-10   4.600e-05   3.513e-06   2.929e-04
+  188    4803    9.242346e-01   9.871e-10   6.571e-05   5.011e-06   2.933e-04
+  189    4832    9.242346e-01   9.903e-10   6.571e-05   4.999e-06   2.937e-04
+  190    4861    9.242346e-01   9.935e-10   6.571e-05   4.987e-06   2.941e-04
+  191    4890    9.242346e-01   9.966e-10   6.571e-05   4.975e-06   2.944e-04
+  192    4919    9.242346e-01   9.997e-10   6.571e-05   4.963e-06   2.948e-04
+  193    4948    9.242346e-01   1.003e-09   6.571e-05   4.951e-06   2.952e-04
+  194    4977    9.242346e-01   1.006e-09   6.571e-05   4.940e-06   2.955e-04
+  195    5006    9.242346e-01   1.009e-09   6.571e-05   4.928e-06   2.959e-04
+  196    5035    9.242346e-01   1.012e-09   6.571e-05   4.917e-06   2.963e-04
+  197    5064    9.242346e-01   1.015e-09   6.571e-05   4.905e-06   2.966e-04
+  198    5093    9.242346e-01   1.018e-09   6.571e-05   4.894e-06   2.970e-04
+  199    5122    9.242346e-01   1.021e-09   6.571e-05   4.883e-06   2.974e-04
+  200    5151    9.242346e-01   1.024e-09   6.571e-05   4.872e-06   2.977e-04
+  201    5180    9.242346e-01   1.027e-09   6.571e-05   4.861e-06   2.981e-04
+  202    5209    9.242346e-01   1.030e-09   6.571e-05   4.849e-06   2.984e-04
+  203    5238    9.242346e-01   1.033e-09   6.571e-05   4.838e-06   2.988e-04
+  204    5267    9.242346e-01   1.036e-09   6.571e-05   4.828e-06   2.991e-04
+  205    5296    9.242346e-01   1.039e-09   6.571e-05   4.817e-06   2.995e-04
+  206    5325    9.242346e-01   1.042e-09   6.571e-05   4.806e-06   2.998e-04
+  207    5354    9.242346e-01   1.045e-09   6.571e-05   4.795e-06   3.002e-04
+  208    5383    9.242346e-01   1.048e-09   6.571e-05   4.785e-06   3.005e-04
+  209    5412    9.242346e-01   1.051e-09   6.571e-05   4.774e-06   3.009e-04
+  210    5441    9.242346e-01   1.054e-09   6.571e-05   4.763e-06   3.012e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  211    5470    9.242346e-01   1.056e-09   6.571e-05   4.753e-06   3.016e-04
+  212    5499    9.242346e-01   1.059e-09   6.571e-05   4.743e-06   3.019e-04
+  213    5528    9.242346e-01   1.062e-09   6.571e-05   4.732e-06   3.023e-04
+  214    5557    9.242346e-01   1.065e-09   6.571e-05   4.722e-06   3.026e-04
+  215    5586    9.242346e-01   1.068e-09   6.571e-05   4.712e-06   3.030e-04
+  216    5615    9.242346e-01   1.071e-09   6.571e-05   4.702e-06   3.033e-04
+  217    5644    9.242346e-01   1.073e-09   6.571e-05   4.692e-06   3.036e-04
+  218    5673    9.242346e-01   1.076e-09   6.571e-05   4.681e-06   3.040e-04
+  219    5702    9.242346e-01   1.079e-09   6.571e-05   4.671e-06   3.043e-04
+  220    5731    9.242346e-01   1.082e-09   6.571e-05   4.662e-06   3.046e-04
+  221    5760    9.242346e-01   1.084e-09   6.571e-05   4.652e-06   3.050e-04
+  222    5789    9.242346e-01   1.087e-09   6.571e-05   4.642e-06   3.053e-04
+  223    5818    9.242346e-01   1.090e-09   6.571e-05   4.632e-06   3.056e-04
+  224    5847    9.242346e-01   1.093e-09   6.571e-05   4.622e-06   3.060e-04
+  225    5876    9.242346e-01   1.095e-09   6.571e-05   4.613e-06   3.063e-04
+  226    5905    9.242346e-01   1.098e-09   6.571e-05   4.603e-06   3.066e-04
+  227    5934    9.242346e-01   1.101e-09   6.571e-05   4.594e-06   3.070e-04
+  228    5963    9.242346e-01   1.103e-09   6.571e-05   4.584e-06   3.073e-04
+  229    5992    9.242346e-01   1.106e-09   6.571e-05   4.575e-06   3.076e-04
+  230    6021    9.242346e-01   1.109e-09   6.571e-05   4.565e-06   3.079e-04
+  231    6050    9.242346e-01   1.111e-09   6.571e-05   4.556e-06   3.083e-04
+  232    6079    9.242346e-01   1.114e-09   6.571e-05   4.547e-06   3.086e-04
+  233    6108    9.242346e-01   1.116e-09   6.571e-05   4.538e-06   3.089e-04
+  234    6137    9.242346e-01   1.119e-09   6.571e-05   4.528e-06   3.092e-04
+  235    6166    9.242346e-01   1.122e-09   6.571e-05   4.519e-06   3.095e-04
+  236    6195    9.242346e-01   1.124e-09   6.571e-05   4.510e-06   3.099e-04
+  237    6224    9.242346e-01   1.127e-09   6.571e-05   4.501e-06   3.102e-04
+  238    6253    9.242346e-01   1.129e-09   6.571e-05   4.492e-06   3.105e-04
+  239    6282    9.242346e-01   1.132e-09   6.571e-05   4.483e-06   3.108e-04
+  240    6311    9.242346e-01   1.134e-09   6.571e-05   4.474e-06   3.111e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  241    6340    9.242346e-01   1.137e-09   6.571e-05   4.466e-06   3.114e-04
+  242    6369    9.242346e-01   1.139e-09   6.571e-05   4.457e-06   3.117e-04
+  243    6398    9.242346e-01   1.142e-09   6.571e-05   4.448e-06   3.120e-04
+  244    6427    9.242346e-01   1.144e-09   6.571e-05   4.439e-06   3.124e-04
+  245    6456    9.242346e-01   1.147e-09   6.571e-05   4.431e-06   3.127e-04
+  246    6485    9.242346e-01   1.149e-09   6.571e-05   4.422e-06   3.130e-04
+  247    6514    9.242346e-01   1.152e-09   6.571e-05   4.414e-06   3.133e-04
+  248    6543    9.242346e-01   1.154e-09   6.571e-05   4.405e-06   3.136e-04
+  249    6572    9.242346e-01   1.157e-09   6.571e-05   4.397e-06   3.139e-04
+  250    6601    9.242346e-01   1.159e-09   6.571e-05   4.388e-06   3.142e-04
+  251    6630    9.242346e-01   1.161e-09   6.571e-05   4.380e-06   3.145e-04
+  252    6659    9.242346e-01   1.164e-09   6.571e-05   4.371e-06   3.148e-04
+  253    6688    9.242346e-01   1.166e-09   6.571e-05   4.363e-06   3.151e-04
+  254    6717    9.242346e-01   1.169e-09   6.571e-05   4.355e-06   3.154e-04
+  255    6746    9.242346e-01   1.171e-09   6.571e-05   4.347e-06   3.157e-04
+  256    6775    9.242346e-01   1.173e-09   6.571e-05   4.339e-06   3.160e-04
+  257    6804    9.242346e-01   1.176e-09   6.571e-05   4.330e-06   3.163e-04
+  258    6833    9.242346e-01   1.178e-09   6.571e-05   4.322e-06   3.166e-04
+  259    6862    9.242346e-01   1.180e-09   6.571e-05   4.314e-06   3.169e-04
+  260    6891    9.242346e-01   1.183e-09   6.571e-05   4.306e-06   3.172e-04
+  261    6920    9.242346e-01   1.185e-09   6.571e-05   4.298e-06   3.175e-04
+  262    6949    9.242346e-01   1.187e-09   6.571e-05   4.290e-06   3.178e-04
+  263    6978    9.242346e-01   1.190e-09   6.571e-05   4.283e-06   3.180e-04
+  264    7007    9.242346e-01   1.192e-09   6.571e-05   4.275e-06   3.183e-04
+  265    7036    9.242346e-01   1.194e-09   6.571e-05   4.267e-06   3.186e-04
+  266    7065    9.242346e-01   1.196e-09   6.571e-05   4.259e-06   3.189e-04
+  267    7094    9.242346e-01   1.199e-09   6.571e-05   4.251e-06   3.192e-04
+  268    7123    9.242346e-01   1.201e-09   6.571e-05   4.244e-06   3.195e-04
+  269    7152    9.242346e-01   1.203e-09   6.571e-05   4.236e-06   3.198e-04
+  270    7181    9.242346e-01   1.205e-09   6.571e-05   4.228e-06   3.201e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  271    7210    9.242346e-01   1.208e-09   6.571e-05   4.221e-06   3.203e-04
+  272    7239    9.242346e-01   1.210e-09   6.571e-05   4.213e-06   3.206e-04
+  273    7268    9.242346e-01   1.212e-09   6.571e-05   4.206e-06   3.209e-04
+  274    7297    9.242346e-01   1.214e-09   6.571e-05   4.198e-06   3.212e-04
+  275    7326    9.242346e-01   1.217e-09   6.571e-05   4.191e-06   3.215e-04
+  276    7355    9.242346e-01   1.219e-09   6.571e-05   4.184e-06   3.217e-04
+  277    7384    9.242346e-01   1.221e-09   6.571e-05   4.176e-06   3.220e-04
+  278    7413    9.242346e-01   1.223e-09   6.571e-05   4.169e-06   3.223e-04
+  279    7442    9.242346e-01   1.225e-09   6.571e-05   4.162e-06   3.226e-04
+  280    7471    9.242346e-01   1.227e-09   6.571e-05   4.154e-06   3.229e-04
+  281    7500    9.242346e-01   1.230e-09   6.571e-05   4.147e-06   3.231e-04
+  282    7529    9.242346e-01   1.232e-09   6.571e-05   4.140e-06   3.234e-04
+  283    7558    9.242346e-01   1.234e-09   6.571e-05   4.133e-06   3.237e-04
+  284    7587    9.242346e-01   1.236e-09   6.571e-05   4.126e-06   3.240e-04
+  285    7616    9.242346e-01   1.238e-09   6.571e-05   4.119e-06   3.242e-04
+  286    7645    9.242346e-01   1.240e-09   6.571e-05   4.112e-06   3.245e-04
+  287    7674    9.242346e-01   1.242e-09   6.571e-05   4.105e-06   3.248e-04
+  288    7703    9.242346e-01   1.244e-09   6.571e-05   4.098e-06   3.250e-04
+  289    7732    9.242346e-01   1.247e-09   6.571e-05   4.091e-06   3.253e-04
+  290    7761    9.242346e-01   1.249e-09   6.571e-05   4.084e-06   3.256e-04
+  291    7790    9.242346e-01   1.251e-09   6.571e-05   4.077e-06   3.259e-04
+  292    7819    9.242346e-01   1.253e-09   6.571e-05   4.070e-06   3.261e-04
+  293    7848    9.242346e-01   1.255e-09   6.571e-05   4.063e-06   3.264e-04
+  294    7877    9.242346e-01   1.257e-09   6.571e-05   4.056e-06   3.267e-04
+  295    7906    9.242346e-01   1.259e-09   6.571e-05   4.050e-06   3.269e-04
+  296    7935    9.242346e-01   1.261e-09   6.571e-05   4.043e-06   3.272e-04
+  297    7964    9.242346e-01   1.263e-09   6.571e-05   4.036e-06   3.274e-04
+  298    7993    9.242346e-01   1.265e-09   6.571e-05   4.030e-06   3.277e-04
+  299    8022    9.242346e-01   1.267e-09   6.571e-05   4.023e-06   3.280e-04
+  300    8051    9.242346e-01   1.269e-09   6.571e-05   4.016e-06   3.282e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  301    8080    9.242346e-01   1.271e-09   6.571e-05   4.010e-06   3.285e-04
+  302    8109    9.242346e-01   1.273e-09   6.571e-05   4.003e-06   3.288e-04
+  303    8138    9.242346e-01   1.275e-09   6.571e-05   3.997e-06   3.290e-04
+  304    8167    9.242346e-01   1.277e-09   6.571e-05   3.990e-06   3.293e-04
+  305    8196    9.242346e-01   1.279e-09   6.571e-05   3.984e-06   3.295e-04
+  306    8225    9.242346e-01   1.281e-09   6.571e-05   3.977e-06   3.298e-04
+  307    8254    9.242346e-01   1.283e-09   6.571e-05   3.971e-06   3.300e-04
+  308    8283    9.242346e-01   1.285e-09   6.571e-05   3.964e-06   3.303e-04
+  309    8312    9.242346e-01   1.287e-09   6.571e-05   3.958e-06   3.306e-04
+  310    8341    9.242346e-01   1.289e-09   6.571e-05   3.952e-06   3.308e-04
+  311    8370    9.242346e-01   1.291e-09   6.571e-05   3.945e-06   3.311e-04
+  312    8399    9.242346e-01   1.293e-09   6.571e-05   3.939e-06   3.313e-04
+  313    8428    9.242346e-01   1.295e-09   6.571e-05   3.933e-06   3.316e-04
+  314    8457    9.242346e-01   1.296e-09   6.571e-05   3.927e-06   3.318e-04
+  315    8486    9.242346e-01   1.298e-09   6.571e-05   3.921e-06   3.321e-04
+  316    8515    9.242346e-01   1.300e-09   6.571e-05   3.914e-06   3.323e-04
+  317    8544    9.242346e-01   1.302e-09   6.571e-05   3.908e-06   3.326e-04
+  318    8573    9.242346e-01   1.304e-09   6.571e-05   3.902e-06   3.328e-04
+  319    8602    9.242346e-01   1.306e-09   6.571e-05   3.896e-06   3.331e-04
+  320    8631    9.242346e-01   1.308e-09   6.571e-05   3.890e-06   3.333e-04
+  321    8660    9.242346e-01   1.310e-09   6.571e-05   3.884e-06   3.336e-04
+  322    8689    9.242346e-01   1.312e-09   6.571e-05   3.878e-06   3.338e-04
+  323    8718    9.242346e-01   1.313e-09   6.571e-05   3.872e-06   3.340e-04
+  324    8747    9.242346e-01   1.315e-09   6.571e-05   3.866e-06   3.343e-04
+  325    8776    9.242346e-01   1.317e-09   6.571e-05   3.860e-06   3.345e-04
+  326    8805    9.242346e-01   1.319e-09   6.571e-05   3.854e-06   3.348e-04
+  327    8834    9.242346e-01   1.321e-09   6.571e-05   3.848e-06   3.350e-04
+  328    8863    9.242346e-01   1.323e-09   6.571e-05   3.843e-06   3.353e-04
+  329    8892    9.242346e-01   1.324e-09   6.571e-05   3.837e-06   3.355e-04
+  330    8921    9.242346e-01   1.326e-09   6.571e-05   3.831e-06   3.357e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  331    8950    9.242346e-01   1.328e-09   6.571e-05   3.825e-06   3.360e-04
+  332    8979    9.242346e-01   1.330e-09   6.571e-05   3.819e-06   3.362e-04
+  333    9008    9.242346e-01   1.332e-09   6.571e-05   3.814e-06   3.365e-04
+  334    9037    9.242346e-01   1.334e-09   6.571e-05   3.808e-06   3.367e-04
+  335    9066    9.242346e-01   1.335e-09   6.571e-05   3.802e-06   3.369e-04
+  336    9095    9.242346e-01   1.337e-09   6.571e-05   3.797e-06   3.372e-04
+  337    9124    9.242346e-01   1.339e-09   6.571e-05   3.791e-06   3.374e-04
+  338    9153    9.242346e-01   1.341e-09   6.571e-05   3.785e-06   3.376e-04
+  339    9182    9.242346e-01   1.342e-09   6.571e-05   3.780e-06   3.379e-04
+  340    9211    9.242346e-01   1.344e-09   6.571e-05   3.774e-06   3.381e-04
+  341    9240    9.242346e-01   1.346e-09   6.571e-05   3.769e-06   3.384e-04
+  342    9269    9.242346e-01   1.348e-09   6.571e-05   3.763e-06   3.386e-04
+  343    9298    9.242346e-01   1.349e-09   6.571e-05   3.758e-06   3.388e-04
+  344    9327    9.242346e-01   1.351e-09   6.571e-05   3.752e-06   3.390e-04
+  345    9356    9.242346e-01   1.353e-09   6.571e-05   3.747e-06   3.393e-04
+  346    9385    9.242346e-01   1.355e-09   6.571e-05   3.741e-06   3.395e-04
+  347    9414    9.242346e-01   1.356e-09   6.571e-05   3.736e-06   3.397e-04
+  348    9443    9.242346e-01   1.358e-09   6.571e-05   3.730e-06   3.400e-04
+  349    9472    9.242346e-01   1.360e-09   6.571e-05   3.725e-06   3.402e-04
+  350    9501    9.242346e-01   1.361e-09   6.571e-05   3.720e-06   3.404e-04
+  351    9530    9.242346e-01   1.363e-09   6.571e-05   3.714e-06   3.407e-04
+  352    9559    9.242346e-01   1.365e-09   6.571e-05   3.709e-06   3.409e-04
+  353    9588    9.242346e-01   1.367e-09   6.571e-05   3.704e-06   3.411e-04
+  354    9617    9.242346e-01   1.368e-09   6.571e-05   3.699e-06   3.413e-04
+  355    9646    9.242346e-01   1.370e-09   6.571e-05   3.693e-06   3.416e-04
+  356    9675    9.242346e-01   1.372e-09   6.571e-05   3.688e-06   3.418e-04
+  357    9704    9.242346e-01   1.373e-09   6.571e-05   3.683e-06   3.420e-04
+  358    9733    9.242346e-01   1.375e-09   6.571e-05   3.678e-06   3.422e-04
+  359    9762    9.242346e-01   1.377e-09   6.571e-05   3.672e-06   3.425e-04
+  360    9791    9.242346e-01   1.378e-09   6.571e-05   3.667e-06   3.427e-04
+
+                                                          Norm of First-order
+ Iter F-count            f(x) Feasibility  Steplength        step  optimality
+  361    9820    9.242346e-01   1.380e-09   6.571e-05   3.662e-06   3.429e-04
+  362    9849    9.242346e-01   1.382e-09   6.571e-05   3.657e-06   3.431e-04
+  363    9878    9.242346e-01   1.383e-09   6.571e-05   3.652e-06   3.433e-04
+  364    9907    9.242346e-01   1.385e-09   6.571e-05   3.647e-06   3.436e-04
+  365    9936    9.242346e-01   1.386e-09   6.571e-05   3.642e-06   3.438e-04
+  366    9965    9.242346e-01   1.388e-09   6.571e-05   3.637e-06   3.440e-04
+  367    9994    9.242346e-01   1.390e-09   6.571e-05   3.632e-06   3.442e-04
+  368   10000    9.242346e-01   1.390e-09   1.681e-01   9.276e-03   3.442e-04
+
+Solver stopped prematurely.
+
+fmincon stopped because it exceeded the function evaluation limit,
+options.MaxFunEvals = 10000 (the selected value).
+
 
 optimout = 
 
         nlpx: [68x1 double]
         fval: 0.9242
-    exitflag: 5
+    exitflag: 0
       output: [1x1 struct]
       lambda: [1x1 struct]
         grad: [68x1 double]
@@ -1092,3 +459,4 @@ optimparam =
      dx_col: 56
      dp_col: 0
 
+diary off

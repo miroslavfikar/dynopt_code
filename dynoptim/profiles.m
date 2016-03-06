@@ -1,5 +1,5 @@
 function [tplot,uplot,xplot] = profiles(optimout,optim_param,ntimes)
-% PROFILES - returns vectors/matrixes of time, control and state variables
+% PROFILES - returns vectors/matrices of time, control and state variables
 % prepared to plot them. 
 %
 %   [TPLOT,UPLOT,XPLOT] = profiles(OPTIMOUT,OPTIM_PARAM,NTIMES,NTIMES)
@@ -30,7 +30,7 @@ else % if control variables are given
     lfu = lagfun(tau,tauku);
 end
 
-% vector of length of intervals and parameters, and matrixes of control and
+% vector of length of intervals and parameters, and matrices of control and
 % state variable coefficients uij and xij calculus 
 [lim,um,xm,pm] = cmvariables(optimout.nlpx,optim_param);
 
