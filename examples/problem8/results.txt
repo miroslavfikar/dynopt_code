@@ -1,0 +1,58 @@
+problem8
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      1   2.7988e-06     0.002884                                         Infeasible start point
+    1      3  2.50848e-06    2.068e-15            1     -0.00117       0.0265   dependent
+Optimization terminated: directional derivative predicts change in
+  objective value less than options.TolFun and maximum constraint violation
+  is less than options.TolCon.
+No active inequalities.
+
+optimout = 
+
+        nlpx: [62x1 double]
+        fval: 2.5085e-06
+    exitflag: 5
+      output: [1x1 struct]
+      lambda: [1x1 struct]
+        grad: [62x1 double]
+     hessian: [62x62 double]
+           t: []
+           u: []
+           p: [2x1 double]
+
+
+optimparam = 
+
+     optvar: 4
+    objtype: [1x1 struct]
+      ncolx: 4
+      ncolu: []
+         li: [6x1 double]
+         tf: []
+         ui: []
+        par: [2x1 double]
+        bdu: []
+        bdx: []
+        bdp: [2x2 double]
+     objfun: @objfun
+     confun: []
+    process: @process
+    options: [1x1 struct]
+        bdt: []
+         ni: 6
+         nu: 0
+         nx: 2
+         np: 2
+        tau: [6x1 double]
+        lfx: [6x5 double]
+       dlfx: [6x5 double]
+        lfu: []
+          M: [2x2 double]
+     dt_col: 0
+     du_col: 0
+     dx_col: 60
+     dp_col: 2
+
+diary off

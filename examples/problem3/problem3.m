@@ -5,6 +5,7 @@ options = optimset(options,'MaxIter',1e5);
 options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
+options = optimset(options,'Algorithm','active-set'); %2008b
 
 optimparam.optvar = 3; 
 optimparam.objtype = []; 
@@ -25,6 +26,8 @@ optimparam.options = options;
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
-save optimprofiles tplot uplot xplot 
+[tp,cp,ceqp] = constraints(optimout,optimparam,50);
 
-graph
+save optimprofiles tplot uplot xplot tp cp ceqp
+
+%graph

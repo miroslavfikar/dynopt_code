@@ -1,8 +1,10 @@
 options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'MaxFunEvals',1e5);
+options = optimset(options,'MaxFunEvals',1e6);
 options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
+options = optimset(options,'MaxIter',4000);
+options = optimset(options,'Algorithm','active-set');
 
 optimparam.optvar = 3; 
 optimparam.objtype = []; 
@@ -20,6 +22,7 @@ optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
 
+[optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 

@@ -1,6 +1,10 @@
-function [f,Dft,Dfx,Dfu] = objfun(t,x,u)
+function [f,Df] = objfun(t,x,u,p)
 
-f=[-x(8)];
-Dft=[];
-Dfx=[0;0;0;0;0;0;0;-1];
-Dfu=[];
+% objective function
+f = -x(8); % J
+
+% gradients of the objective function
+Df.t = [];      % dJ/dt
+Df.x = [0;0;0;0;0;0;0;-1];   % dJ/dx
+Df.u = [];      % dJ/du
+Df.p = [];      % dJ/dp

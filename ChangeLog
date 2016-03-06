@@ -1,3 +1,22 @@
+2009-02-24  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.1.3
+
+	* problem3 did not print graph with constraint. main program was
+	old. now ok.
+
+	* problem7 was not working due to old syntax of process and
+	objfun. now ok.
+
+	* examples tested with matlab 2008b, all work, but with slight
+	optimum changes (as with any different versions of matlab,
+	fmincon, etc). Only problem1b is still with Matlab 2007a, did not
+	converge under 2008. Older versions of matlab might have problem
+	with line in the main program:
+	options = optimset(options,'Algorithm','active-set');
+	It can be commented if necessary. 
+
+	* Users's guide - corrected several typos, all results calculated
+	with matlab 2008b (except problem1b).
+
 2008-10-24  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.1.2
 
 	* No code changes. Repackaged, all dynopt functions now reside in
