@@ -1,3 +1,8 @@
+2012-06-21  Miroslav Fikar  <miroslav.fikar@stuba.sk>
+
+	* added examples car, car2: minimum time problem without (car) and
+	with path constraints (car2)
+
 2010-04-02  Miroslav Fikar  <miroslav.fikar@stuba.sk> 
 
 	* added problem9 - optimal diafiltration
