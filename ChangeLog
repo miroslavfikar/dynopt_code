@@ -1,0 +1,10 @@
+2008-10-24  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.1.2
+
+	* No code changes. Repackaged, all dynopt functions now reside in
+	a single directory dynoptim and not in further subdirectories. All
+	other directories should be outside this tree so that the files
+	and functions therein cannot interfere with others. Thanks to
+	B. Roffel (NL) for spotting it.
+
+	* Begin of a new ChangeLog
+
