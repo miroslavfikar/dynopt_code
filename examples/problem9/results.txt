@@ -1,73 +1,70 @@
 problem9
+Your initial point x0 is not between bounds lb and ub; FMINCON
+shifted x0 to satisfy the bounds.
 
                                 Max     Line search  Directional  First-order 
  Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
     0      1      79.3019        430.4                                         Infeasible start point
-    1      3      106.989        55.94            1       0.0672     5.36e+07   dependent
-    2      5      88.7909        13.98            1      -0.0854     1.64e+06  Hessian modified;   dependent
-    3      7      78.0422           10            1      -0.0717     2.62e+05  Hessian modified;   dependent
-    4      9      70.0308        4.661            1      -0.0831     1.35e+06   dependent
-    5     11      65.0266         2.06            1      -0.0903     1.38e+05   dependent
-    6     13      62.2581       0.7693            1      -0.0969     9.83e+03  Hessian modified;   dependent
-    7     15      60.8842       0.2026            1       -0.102     2.03e+04  Hessian modified;   dependent
-    8     17      60.2405      0.04212            1       -0.106     2.02e+04  Hessian modified;   dependent
-    9     19      59.6995      0.04532            1       -0.187        2e+04  Hessian modified;   dependent
-   10     27       59.278        0.111       0.0156        -0.23     1.93e+03  Hessian modified  
-   11     33      57.5829        1.167       0.0625       -0.226     4.32e+03   dependent
-   12     39      55.8506        2.151       0.0625       -0.208     3.96e+04  Hessian modified;   dependent
-   13     44      52.3174        6.093        0.125       -0.191     2.99e+03  Hessian modified;   dependent
-   14     49      48.6516        9.483        0.125       -0.158     1.06e+04  Hessian modified;   dependent
-   15     54       44.893        12.36        0.125       -0.128     1.54e+03  Hessian modified;   dependent
-   16     59       41.574        13.82        0.125       -0.101     2.23e+04  Hessian modified  
-   17     64      38.8837        14.54        0.125      -0.0796     2.99e+04  Hessian modified;   dependent
-   18     69      36.6542        15.92        0.125      -0.0649     2.55e+04  Hessian modified;   dependent
-   19     74      34.7624        16.68        0.125      -0.0547     3.36e+04  Hessian modified;   dependent
-   20     79      33.1142        16.98        0.125      -0.0476     1.67e+04  Hessian modified;   dependent
-   21     83      30.6356        18.84         0.25      -0.0415      6.3e+03  Hessian modified  
-   22     86      28.9841        13.55          0.5      -0.0266     7.96e+04  Hessian modified;   dependent
-   23     88      29.1501        2.865            1      0.00317     1.13e+04  Hessian modified;   dependent
-   24     90      30.3374       0.1585            1       0.0639     1.59e+04  Hessian modified;   dependent
-   25     92      30.9489      0.04084            1       0.0705     1.95e+04   dependent
-   26     94      31.2115     0.007746            1       0.0683     1.18e+04   dependent
-   27     96      31.3185     0.001249            1       0.0662     1.17e+04  Hessian modified;   dependent
-   28     98      31.3602    0.0001861            1       0.0638     1.16e+04  Hessian modified;   dependent
-   29    100       31.361    6.199e-05            1      0.00295     1.14e+04  Hessian modified;   dependent
-   30    102      20.4775        34.22            1       -0.108     6.92e+03  Hessian modified;   dependent
-   31    104      26.9333        11.43            1        0.188     1.36e+04  Hessian modified  
-   32    106      26.3044       0.4184            1      -0.0438     1.41e+04  Hessian modified;   dependent
-   33    111      25.6794       0.5094        0.125      -0.0781     1.72e+04  Hessian modified  
-   34    114      22.4171         4.68          0.5      -0.0754     5.43e+04  Hessian modified  
-   35    116      19.7942        8.999            1      -0.0377     6.18e+04  Hessian modified  
-   36    118       21.308       0.4446            1       0.0362     1.31e+04  Hessian modified  
-   37    120      22.2852       0.1405            1       0.0503     2.16e+04   
-   38    122      22.7431      0.03013            1        0.052     2.29e+05  Hessian modified  
-   39    124       22.953     0.006423            1       0.0518     7.14e+04  Hessian modified  
-   40    126      23.0497     0.001372            1       0.0517      7.2e+04  Hessian modified  
-   41    128      23.0943     0.000293            1       0.0517     9.28e+03  Hessian modified  
-   42    130       23.115    6.262e-05            1       0.0516     9.51e+03  Hessian modified twice  
-   43    132      23.1245    1.338e-05            1       0.0516     2.22e+04  Hessian modified twice  
-   44    134      23.1289    2.861e-06            1       0.0516     6.89e+04  Hessian modified twice  
-   45    136      23.1309    9.109e-07            1       0.0516     1.87e+04  Hessian modified twice  
-   46    138      23.1319    4.211e-07            1       0.0516     7.21e+04  Hessian modified twice  
-   47    140      23.1323    1.947e-07            1       0.0516     2.95e+04  Hessian modified twice  
-   48    142      23.1325    9.002e-08            1       0.0516     2.95e+04  Hessian modified twice  
-   49    144      23.1326    4.162e-08            1       0.0516      7.2e+04  Hessian modified twice  
-   50    146      23.1326    1.924e-08            1       0.0516     7.17e+04  Hessian modified twice  
-   51    148      23.1327    8.897e-09            1       0.0516     7.11e+04  Hessian modified twice  
-   52    150      23.1327    4.113e-09            1       0.0516     6.99e+04  Hessian modified twice  
-   53    152      23.1327    1.902e-09            1       0.0516     6.79e+04  Hessian modified twice  
-   54    154      23.1327    8.793e-10            1       0.0516      6.4e+04  Hessian modified twice  
-   55    156      23.1327    4.065e-10            1       0.0516     4.14e+04  Hessian modified twice  
-   56    158      23.1327    1.324e-10            1       0.0785      2.9e+04  Hessian modified twice;   dependent
-   57    160      23.1327    1.462e-11            1        0.124     2.93e+04  Hessian modified twice;   dependent
-   58    162      23.1327    1.183e-10            1       -0.066      9.1e+04  Hessian modified twice  
-   59    164      23.1327     3.67e-11            1       0.0732     2.22e+04  Hessian modified twice;   dependent
+    1      3      106.989        55.94            1       0.0672     9.41e+07   dependent
+    2      5      88.7909        13.98            1      -0.0854     1.61e+06  Hessian modified;   dependent
+    3      7      78.0422           10            1      -0.0717     1.28e+06  Hessian modified;   dependent
+    4      9      70.0308        4.661            1      -0.0831      1.3e+06   dependent
+    5     11      65.0266         2.06            1      -0.0903     4.31e+04   dependent
+    6     13      62.2581       0.7693            1      -0.0969     2.03e+03  Hessian modified;   dependent
+    7     15      60.8842       0.2026            1       -0.102     5.24e+03  Hessian modified;   dependent
+    8     17      60.2405      0.04212            1       -0.106     5.13e+03  Hessian modified;   dependent
+    9     19      59.6995      0.04532            1       -0.187        5e+03  Hessian modified;   dependent
+   10     27       59.278        0.111       0.0156        -0.23     2.78e+03  Hessian modified  
+   11     33      57.5829        1.167       0.0625       -0.226     5.18e+03   dependent
+   12     39      55.8506        2.151       0.0625       -0.208     1.78e+04  Hessian modified;   dependent
+   13     44      52.3174        6.093        0.125       -0.191     1.02e+03  Hessian modified;   dependent
+   14     49      48.6516        9.483        0.125       -0.158     7.79e+03  Hessian modified;   dependent
+   15     54       44.893        12.36        0.125       -0.128     1.74e+03  Hessian modified;   dependent
+   16     59       41.574        13.82        0.125       -0.101     8.82e+03  Hessian modified  
+   17     64      38.8837        14.54        0.125      -0.0796     1.66e+04  Hessian modified;   dependent
+   18     69      36.6542        15.92        0.125      -0.0649      1.6e+04  Hessian modified;   dependent
+   19     74      34.7624        16.68        0.125      -0.0547     1.56e+04  Hessian modified;   dependent
+   20     79      33.1142        16.98        0.125      -0.0476      4.9e+03  Hessian modified;   dependent
+   21     83      30.6356        18.84         0.25      -0.0415     2.12e+03  Hessian modified  
+   22     86      28.9841        13.55          0.5      -0.0266     4.87e+04  Hessian modified;   dependent
+   23     88      29.1501        2.865            1      0.00317      1.5e+03  Hessian modified;   dependent
+   24     90      30.3374       0.1585            1       0.0639     6.16e+03  Hessian modified;   dependent
+   25     92      30.9489      0.04084            1       0.0705      6.6e+03   dependent
+   26     94      31.2115     0.007746            1       0.0683     3.71e+03   dependent
+   27     96      31.3185     0.001249            1       0.0662     3.56e+03  Hessian modified;   dependent
+   28     98      31.3602    0.0001861            1       0.0638     3.51e+03  Hessian modified;   dependent
+   29    100       31.361    6.197e-05            1      0.00296     3.36e+03  Hessian modified;   dependent
+   30    102      20.4648        34.32            1       -0.108     2.67e+03  Hessian modified;   dependent
+   31    104      26.9304        11.48            1        0.188     7.94e+03  Hessian modified  
+   32    106      26.4272       0.3359            1      -0.0385     3.07e+03  Hessian modified;   dependent
+   33    110      25.4052       0.6442         0.25      -0.0775     4.14e+03  Hessian modified  
+   34    116      25.1422       0.6359       0.0625      -0.0679     4.83e+03  Hessian modified;   dependent
+   35    119      22.2048        4.335          0.5      -0.0704          522  Hessian modified  
+   36    121       19.916        7.967            1      -0.0343          954  Hessian modified  
+   37    123      21.7186       0.5172            1       0.0486          635  Hessian modified;   dependent
+   38    125      22.2255       0.1765            1       0.0268     8.82e+03  Hessian modified  
+   39    127      22.7085      0.03537            1       0.0499          317   
+   40    129      22.9371     0.007615            1       0.0518     7.18e+04  Hessian modified  
+   41    131      23.0424     0.001625            1       0.0517     3.58e+04  Hessian modified  
+   42    133      23.0909    0.0003472            1       0.0517     3.15e+04  Hessian modified twice  
+   43    135      23.1134     7.42e-05            1       0.0516     6.92e+04  Hessian modified twice  
+   44    137      23.1238    1.586e-05            1       0.0516      3.2e+04  Hessian modified twice  
+   45    139      23.1286     3.39e-06            1       0.0516        0.621  Hessian modified twice  
+   46    141      23.1308    9.915e-07            1       0.0516        0.261  Hessian modified twice  
+   47    143      23.1318    4.584e-07            1       0.0516        0.115  Hessian modified twice  
+   48    145      23.1323    2.119e-07            1       0.0516        0.052  Hessian modified twice  
+   49    147      23.1325    9.799e-08            1       0.0516       0.0238  Hessian modified twice  
+   50    149      23.1326    4.531e-08            1       0.0516        0.033  Hessian modified twice  
+   51    151      23.1326    2.095e-08            1       0.0516       0.0611  Hessian modified twice  
+   52    153      23.1327    9.151e-09            1       0.0564        0.142  Hessian modified twice;   dependent
+   53    155      23.1327    9.392e-10            1        0.124        0.992  Hessian modified twice;   dependent
+   54    157      23.1327    7.881e-11            1        0.135        0.179  Hessian modified twice;   dependent
 
 Local minimum possible. Constraints satisfied.
 
-fmincon stopped because the predicted change in the objective function
-is less than the selected value of the function tolerance and constraints 
-were satisfied to within the selected value of the constraint tolerance.
+fmincon stopped because the size of the current search direction is less than
+twice the selected value of the step size tolerance and constraints are 
+satisfied to within the selected value of the constraint tolerance.
 
 
 
@@ -89,10 +86,12 @@ Active inequalities (to within options.TolCon = 1e-07):
                          71           
                          76           
                          79           
+
 optimout = 
+
         nlpx: [28x1 double]
         fval: 23.1327
-    exitflag: 5
+    exitflag: 4
       output: [1x1 struct]
       lambda: [1x1 struct]
         grad: [28x1 double]
@@ -100,7 +99,10 @@ optimout =
            t: [6x1 double]
            u: [6x1 double]
            p: []
+
+
 optimparam = 
+
      optvar: 3
     objtype: []
       ncolx: 3
@@ -130,4 +132,5 @@ optimparam =
      du_col: 2
      dx_col: 24
      dp_col: 0
+
 diary off

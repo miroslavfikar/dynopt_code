@@ -1,11 +1,12 @@
 options = optimset('LargeScale','off','Display','iter');
 options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e4);
-options = optimset(options,'MaxIter',1e3);
+options = optimset(options,'MaxIter',2e3);
 options = optimset(options,'TolFun',1e-7);
-options = optimset(options,'TolCon',1e-7);
+options = optimset(options,'TolCon',1e-6);
 options = optimset(options,'TolX',1e-7);
-options = optimset(options,'Algorithm','sqp'); %2010a
+options = optimset(options,'Algorithm','interior-point'); %2013b
+%options = optimset(options,'Algorithm','sqp'); %2010a
 %options = optimset(options,'Algorithm','active-set'); %2008b
 
 optimparam.optvar = 3; 

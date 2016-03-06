@@ -1,4 +1,8 @@
-2012-11-27  Martin Jelemensky  <martin.jelemensky@stuba.sk>
+2014-01-07  Miroslav Fikar  <miroslav.fikar@stuba.sk>
+
+	* examples tested with matlab 2013b. 
+
+2012-11-27  Martin Jelemensky  <martin.jelemensky@stuba.sk> Version 4.1.4
 
 	* liniconstr.m: bug if only one time interval was optimised
 

@@ -4,7 +4,8 @@ options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
 options = optimset(options,'MaxIter',4000);
-options = optimset(options,'Algorithm','sqp'); %2010a
+options = optimset(options,'Algorithm','interior-point'); %2013b
+%options = optimset(options,'Algorithm','sqp'); %2010a
 %options = optimset(options,'Algorithm','active-set'); %2008b
 
 optimparam.optvar = 3; 
