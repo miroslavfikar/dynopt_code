@@ -89,9 +89,12 @@ for i=1:optim_param.ni
         if isempty(optim_param.bdu)
             lbu = (-inf*ones(optim_param.nu,1)*ones(1,optim_param.ncolu))';
             ubu = (inf*ones(optim_param.nu,1)*ones(1,optim_param.ncolu))';
-        else
+        elseif (size(optim_param.bdu,2) == 2)            
             lbu = (optim_param.bdu(:,1)*ones(1,optim_param.ncolu))';
             ubu = (optim_param.bdu(:,2)*ones(1,optim_param.ncolu))';
+        else  
+            lbu = (optim_param.bdu(:,(i-1)+i)*ones(1,optim_param.ncolu))';
+            ubu = (optim_param.bdu(:,2*i)*ones(1,optim_param.ncolu))';
         end
         lbu = lbu(:);
         mlbu = [mlbu;lbu];
@@ -104,9 +107,12 @@ for i=1:optim_param.ni
     if isempty(optim_param.bdx)
         lbx = (-inf*ones(optim_param.nx,1)*ones(1,optim_param.ncolx+1))';
         ubx = (inf*ones(optim_param.nx,1)*ones(1,optim_param.ncolx+1))';
-    else
+    elseif size(optim_param.bdx,2) == 2
         lbx = (optim_param.bdx(:,1)*ones(1,optim_param.ncolx+1))';
         ubx = (optim_param.bdx(:,2)*ones(1,optim_param.ncolx+1))';
+    else 
+        lbx = (optim_param.bdx(:,(i-1)+i)*ones(1,optim_param.ncolx+1))';
+        ubx = (optim_param.bdx(:,2*i)*ones(1,optim_param.ncolx+1))';
     end
     lbx = lbx(:);
     mlbx = [mlbx;lbx];

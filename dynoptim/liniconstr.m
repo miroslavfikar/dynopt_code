@@ -83,12 +83,20 @@ for i = 1:optim_param.ni % cycle for each interval
             duduij = kron(eye(optim_param.nu),optim_param.lfu(j,:));
             Auu(1:optim_param.nu,(i-1)*nuj+1:i*nuj) = -duduij;
             % -u_ij^L
-            bu(1:optim_param.nu,1) = -optim_param.bdu(:,1); 
+            if size(optim_param.bdu,2) == 2
+              bu(1:optim_param.nu,1) = -optim_param.bdu(:,1); 
+            else
+	     bu(1:optim_param.nu,1) = -optim_param.bdu(:,(i-1)+i);
+            end 
             
             % u_ij <= u_ij^U
             Auu(optim_param.nu+1:2*optim_param.nu,(i-1)*nuj+1:i*nuj) = duduij;
             % u_ij^U
-            bu(optim_param.nu+1:2*optim_param.nu) = optim_param.bdu(:,2);
+            if size(optim_param.bdu,2) == 2
+              bu(optim_param.nu+1:2*optim_param.nu,1) = optim_param.bdu(:,2);
+            else              
+              bu(optim_param.nu+1:2*optim_param.nu,1) = optim_param.bdu(:,2*i);
+            end
         end
         %..................................................................
         
@@ -101,12 +109,20 @@ for i = 1:optim_param.ni % cycle for each interval
             dxdxij = kron(eye(optim_param.nx),optim_param.lfx(j,:));
             Axx(1:optim_param.nx,(i-1)*nxj+1:i*nxj) = -dxdxij;
             % -x_ij^L
-            bx(1:optim_param.nx,1) = -optim_param.bdx(:,1); 
+            if size(optim_param.bdx,2) == 2
+              bx(1:optim_param.nx,1) = -optim_param.bdx(:,1); 
+            else
+	      bx(1:optim_param.nx,1) = -optim_param.bdx(:,(i-1)+i);
+            end 
 
             % x_ij <= x_ij^U
             Axx(optim_param.nx+1:2*optim_param.nx,(i-1)*nxj+1:i*nxj) = dxdxij;
             % x_ij^U
-            bx(optim_param.nx+1:2*optim_param.nx,1) = optim_param.bdx(:,2); 
+            if size(optim_param.bdx,2) == 2
+              bx(optim_param.nx+1:2*optim_param.nx,1) = optim_param.bdx(:,2);
+            else             
+              bx(optim_param.nx+1:2*optim_param.nx,1) = optim_param.bdx(:,2*i);
+            end 
         end
         %..................................................................
         
