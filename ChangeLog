@@ -1,8 +1,13 @@
+2014-07-29  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.1.5
+
+	* initoptimvar.m: fixed warning "Your initial point x0 is not
+	between bounds lb and ub". Thanks to Hua Zhengui <zhengui.hua@entpe.fr>  
+
 2014-02-13  Miroslav Fikar  <miroslav.fikar@stuba.sk>
 
 	* typo fix in documentation of Exaple 3.1.6 (car problem):
 	incorrect state description. Thanks to Stephen Phillips
-	(stephen.phillips@colorado.edu )
+	(stephen.phillips@colorado.edu)
 
 2014-01-07  Miroslav Fikar  <miroslav.fikar@stuba.sk>
 

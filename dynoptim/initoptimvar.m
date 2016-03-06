@@ -73,7 +73,7 @@ mlbp=[];mubp=[];
 
 for i=1:optim_param.ni
     % lower/upper bounds for t
-    % they are calculed just when t belongs to optimised variables
+    % they are calculated just when t belongs to optimised variables
     if (optim_param.optvar == 1 || optim_param.optvar == 3 ...
             || optim_param.optvar == 5 || optim_param.optvar == 7) 
         lbt = optim_param.bdt(1,1);
@@ -83,7 +83,7 @@ for i=1:optim_param.ni
     end
     
     % lower/upper bounds for u
-    % they are calculed just when u belongs to optimised variables
+    % they are calculated just when u belongs to optimised variables
     if (optim_param.optvar == 2 || optim_param.optvar == 3 ...
             || optim_param.optvar == 6 || optim_param.optvar == 7) 
         if isempty(optim_param.bdu)
@@ -100,7 +100,7 @@ for i=1:optim_param.ni
     end
             
     % lower/upper bounds for x
-    % they are calculed always
+    % they are calculated always
     if isempty(optim_param.bdx)
         lbx = (-inf*ones(optim_param.nx,1)*ones(1,optim_param.ncolx+1))';
         ubx = (inf*ones(optim_param.nx,1)*ones(1,optim_param.ncolx+1))';
@@ -115,7 +115,7 @@ for i=1:optim_param.ni
 end
 
 % lower/upper bounds for p
-% they are calculed just when p belongs to optimised variables
+% they are calculated just when p belongs to optimised variables
 if (optim_param.optvar == 4 || optim_param.optvar == 5 ...
         || optim_param.optvar == 6 || optim_param.optvar == 7)
     if isempty(optim_param.bdp)
@@ -131,4 +131,12 @@ end
 lb=[mlbt;mlbu;mlbx;mlbp];
 ub=[mubt;mubu;mubx;mubp];
 %..........................................................................
+% fix x0 to be between [lb, ub] - numerics from ODE integration
+% is sometimes slightly outside
+ii = find (x0 < lb);
+x0(ii) = lb(ii);
+ii = find (x0 > ub);
+x0(ii) = ub(ii);
+end
+
 %--------------------------------------------------------------------------
