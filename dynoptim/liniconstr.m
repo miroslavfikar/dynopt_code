@@ -7,7 +7,7 @@ function [A,b] = liniconstr(optim_param)
 
 
 % calculation of variations of boundary conditions
-% gives later information about rows of matrixes Axy
+% gives later information about rows of matrices Axy
 %..........................................................................
 if ~isempty(optim_param.bdt) % bounds to t are given 
     dt_row = optim_param.ni; 
@@ -50,22 +50,22 @@ nxj = optim_param.nx*(optim_param.ncolx+1);
 for i = 1:optim_param.ni % cycle for each interval
     % initialisation of variables
     %......................................................................
-    Att = zeros(dt_row,optim_param.dt_col); % matrixes for optimised 
-    Atu = zeros(dt_row,optim_param.du_col); % lengths of intervals
-    Atx = zeros(dt_row,optim_param.dx_col); %
-    Atp = zeros(dt_row,optim_param.dp_col); %
-    bt = zeros(dt_row,1);                   %
+    Att = zeros(2,optim_param.dt_col); % matrices for optimised 
+    Atu = zeros(2,optim_param.du_col); % lengths of intervals
+    Atx = zeros(2,optim_param.dx_col); %
+    Atp = zeros(2,optim_param.dp_col); %
+    bt = zeros(2,1);  
     Aut = zeros(du_row,optim_param.dt_col); % matixes for optimised
     Auu = zeros(du_row,optim_param.du_col); % control variables
     Aux = zeros(du_row,optim_param.dx_col); %
     Aup = zeros(du_row,optim_param.dp_col); %
     bu = zeros(du_row,1);                   %
-    Axt = zeros(dx_row,optim_param.dt_col); % matrixes for optimised
+    Axt = zeros(dx_row,optim_param.dt_col); % matrices for optimised
     Axu = zeros(dx_row,optim_param.du_col); % state variables
     Axx = zeros(dx_row,optim_param.dx_col); %
     Axp = zeros(dx_row,optim_param.dp_col); %
     bx = zeros(dx_row,1);                   %
-    Apt = zeros(dp_row,optim_param.dt_col); % matrixes for optimised
+    Apt = zeros(dp_row,optim_param.dt_col); % matrices for optimised
     Apu = zeros(dp_row,optim_param.du_col); % parameters
     Apx = zeros(dp_row,optim_param.dx_col); %
     App = zeros(dp_row,optim_param.dp_col); %
@@ -75,7 +75,7 @@ for i = 1:optim_param.ni % cycle for each interval
     % cycle for each collocation point in given interval
     for j = 1:optim_param.ncolx+2 
         % bounds to u are given 
-        % the following two equations should be calculed in each
+        % the following two equations should be calculated in each
         % collocation point: -u_ij <= -u_ij^L, u_ij <= u_ij^U 
         %..................................................................
         if du_row ~= 0 
@@ -93,7 +93,7 @@ for i = 1:optim_param.ni % cycle for each interval
         %..................................................................
         
         % bounds to x are given
-        % the following two equations should be calculed in each
+        % the following two equations should be calculated in each
         % collocation point: -x_ij <= -x_ij^L, x_ij <= x_ij^U
         %..................................................................
         if dx_row ~= 0 
@@ -118,7 +118,7 @@ for i = 1:optim_param.ni % cycle for each interval
         % the last collocation point is also element knot (t_i)
         if j == optim_param.ncolx+2 
             % bounds to t are given
-            % the following two equations should be calculed in each
+            % the following two equations should be calculated in each
             % element knot, the last collocation point in each interval:
             % -fi_ij <= -fi_ij^L, fi_ij <= fi_ij^U  
             %..................................................................
@@ -144,7 +144,7 @@ for i = 1:optim_param.ni % cycle for each interval
 end
 
 % bounds to p are given
-% the following two equations should be calculed: -p <= -p^L, p <= p^U
+% the following two equations should be calculated: -p <= -p^L, p <= p^U
 %..........................................................................
 if dp_row ~= 0 
     % -p <= -p^L 

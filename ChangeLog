@@ -1,3 +1,7 @@
+2012-11-27  Martin Jelemensky  <martin.jelemensky@stuba.sk>
+
+	* liniconstr.m: bug if only one time interval was optimised
+
 2012-06-21  Miroslav Fikar  <miroslav.fikar@stuba.sk>
 
 	* added examples car, car2: minimum time problem without (car) and
