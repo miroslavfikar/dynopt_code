@@ -1,4 +1,10 @@
 car
+
+
+*********************  Running fminsdp  ********************** 
+
+Calling NLP-solver fmincon for problem with no matrix inequality constraints.
+
                                                           Norm of First-order
  Iter F-count            f(x) Feasibility  Steplength        step  optimality
     0       1    1.000000e+02   3.000e+02                           1.000e+00
@@ -91,16 +97,16 @@ car
    81     789    3.018357e+01   1.071e-03   3.430e-01   2.030e+00   4.148e-01
    82     792    3.005388e+01   1.015e-03   7.000e-01   2.643e+00   1.378e-01
    83     794    3.000001e+01   4.967e-05   1.000e+00   1.107e+00   3.183e-03
-   84     795    3.000000e+01   1.600e-11   1.000e+00   5.700e-05   1.849e-05
-   85     796    3.000000e+01   2.593e-13   1.000e+00   1.029e-11   1.347e-12
+   84     795    3.000000e+01   1.583e-11   1.000e+00   5.700e-05   1.849e-05
+   85     796    3.000000e+01   3.126e-13   1.000e+00   1.068e-11   1.355e-12
 
-Local minimum found that satisfies the constraints.
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_found','CSHelpWindow');">Local minimum found that satisfies the constraints</a>.
 
 Optimization completed because the objective function is non-decreasing in 
-feasible directions, to within the selected value of the function tolerance,
-and constraints are satisfied to within the selected value of the constraint tolerance.
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'feasible_directions','CSHelpWindow');">feasible directions</a>, to within the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'function_tolerance','CSHelpWindow');">function tolerance</a>,
+and constraints are satisfied to within the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'constraint_tolerance','CSHelpWindow');">constraint tolerance</a>.
 
-
+<<a href = "matlab: createExitMsg('sqpLineSearch',1.000000e+00,true,true,'fmincon',1.355360e-12,'selected',1.000000e-07,1.042129e-15,'selected',1.000000e-07,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
 
 
 optimout = 
@@ -112,6 +118,135 @@ optimout =
       lambda: [1x1 struct]
         grad: [20x1 double]
      hessian: [20x20 double]
+           t: [6x1 double]
+           u: [6x1 double]
+           p: []
+
+
+optimparam = 
+
+     optvar: 3
+    objtype: []
+      ncolx: 3
+      ncolu: 1
+         li: [2x1 double]
+         tf: []
+         ui: [0 0]
+        par: []
+        bdu: [-2 1]
+        bdx: [2x2 double]
+        bdp: []
+     objfun: @objfun
+     confun: @confun
+    process: @process
+    options: [1x1 struct]
+        bdt: [1.0000e-03 100]
+         ni: 2
+         nu: 1
+         nx: 2
+         np: 0
+        tau: [5x1 double]
+        lfx: [5x4 double]
+       dlfx: [5x4 double]
+        lfu: [5x1 double]
+          M: [2x2 double]
+     dt_col: 2
+     du_col: 2
+     dx_col: 16
+     dp_col: 0
+
+car
+
+
+*********************  Running fminsdp  ********************** 
+
+Calling NLP-solver ipopt for problem with no matrix inequality constraints.
+
+This is Ipopt version 3.12.4, running with linear solver mumps.
+NOTE: Other linear solvers might be more efficient (see Ipopt documentation).
+
+Number of nonzeros in equality constraint Jacobian...:      330
+Number of nonzeros in inequality constraint Jacobian.:       88
+Number of nonzeros in Lagrangian Hessian.............:        0
+
+Total number of variables............................:       20
+                     variables with only lower bounds:        0
+                variables with lower and upper bounds:       20
+                     variables with only upper bounds:        0
+Total number of equality constraints.................:       20
+Total number of inequality constraints...............:       64
+        inequality constraints with only lower bounds:        0
+   inequality constraints with lower and upper bounds:        0
+        inequality constraints with only upper bounds:       64
+
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+   0  1.0000000e+02 3.00e+02 1.00e+00   0.0 0.00e+00    -  0.00e+00 0.00e+00   0
+   1  9.6172245e+01 3.00e+02 1.18e+05   4.1 5.17e+04    -  1.26e-03 9.57e-04f  1
+   2  1.0113428e+02 2.99e+02 1.17e+05  -3.6 4.52e+03    -  1.09e-04 1.16e-03h  4
+   3  1.4581713e+02 2.99e+02 1.10e+05   4.5 2.23e+04    -  2.29e-03 2.09e-03f  2
+   4  1.9175794e+02 2.98e+02 1.43e+05   2.4 1.41e+04    -  3.67e-03 3.34e-03h  1
+   5  1.9215917e+02 2.98e+02 1.39e+05   2.4 1.02e+03    -  7.77e-03 4.61e-04h  1
+   6  1.9145758e+02 2.90e+02 1.24e+05   2.4 2.98e+02    -  8.32e-03 2.40e-02f  1
+   7  1.9140342e+02 2.90e+02 1.24e+05  -3.7 2.90e+02    -  3.41e-03 6.83e-04h  1
+   8  1.9090094e+02 2.89e+02 1.32e+05   1.5 2.90e+02    -  5.02e-04 3.45e-03f  1
+   9  7.7126461e+01 1.81e+02 1.95e+06   3.3 2.89e+02    -  2.86e-02 3.74e-01f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  10  1.6553118e+02 1.17e+02 1.02e+06   2.7 1.82e+02    -  4.56e-01 3.56e-01f  1
+  11  8.0381457e+01 9.75e+01 1.45e+06   3.5 2.34e+02    -  6.05e-01 2.78e-01f  1
+  12  1.0410402e+02 2.54e+01 9.93e+05   3.5 8.43e+01    -  1.00e+00 8.43e-01h  1
+  13  1.0454379e+02 3.22e+00 7.10e+05   2.3 1.32e+01    -  1.00e+00 8.68e-01h  1
+  14  1.0442723e+02 2.47e+00 5.43e+05  -3.5 1.75e+00    -  9.69e-01 2.34e-01h  1
+  15  1.0406239e+02 2.77e-02 4.78e+03  -0.6 1.34e+00    -  1.00e+00 9.89e-01h  1
+  16  1.0215695e+02 1.05e-03 1.36e+02  -0.5 1.99e+00    -  1.00e+00 1.00e+00H  1
+  17  9.9054708e+01 5.10e-01 4.14e+02  -0.2 3.23e+00    -  1.00e+00 1.00e+00f  1
+  18  9.4601066e+01 1.17e+00 3.28e+02  -0.4 4.76e+00    -  1.00e+00 1.00e+00f  1
+  19  2.9655942e+01 2.68e+02 3.35e+01  -0.1 6.94e+01    -  8.51e-01 1.00e+00f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  20  5.2882181e+01 2.23e+01 4.93e+01  -0.6 2.60e+01    -  9.91e-01 1.00e+00h  1
+  21  3.8104570e+01 4.44e+01 4.94e+00  -0.6 3.72e+01    -  9.76e-01 1.00e+00f  1
+  22  3.2031168e+01 2.90e+01 4.27e+00  -0.8 5.67e+01    -  8.83e-01 1.00e+00h  1
+  23  2.8401911e+01 2.28e+01 6.98e+00  -1.1 7.42e+01    -  1.00e+00 6.77e-01h  1
+  24  3.0463221e+01 3.02e+00 7.26e-01  -1.3 2.13e+01    -  9.99e-01 1.00e+00h  1
+  25  3.0058053e+01 7.81e-02 3.89e-01  -2.6 2.69e+00    -  9.94e-01 1.00e+00h  1
+  26  3.0004949e+01 2.96e-03 8.62e-02  -3.2 2.60e-01    -  1.00e+00 9.81e-01h  1
+  27  3.0000046e+01 1.99e-05 3.54e-03  -5.3 3.19e-02    -  1.00e+00 1.00e+00h  1
+  28  3.0000000e+01 1.00e-08 7.34e-03 -11.0 2.61e-04    -  1.00e+00 1.00e+00h  1
+Error=-3 returned from MUMPS in Solve.
+Cannot recompute multipliers for feasibility problem.  Error in eq_mult_calculator
+
+Number of Iterations....: 28
+
+                                   (scaled)                 (unscaled)
+Objective...............:   2.9999999879019740e+01    2.9999999879019740e+01
+Dual infeasibility......:   5.2448323987807031e+05    5.2448323987807031e+05
+Constraint violation....:   9.9999963715172242e-09    9.9999963715172242e-09
+Complementarity.........:   0.0000000000000000e+00    0.0000000000000000e+00
+Overall NLP error.......:   9.9999963715172242e-09    5.2448323987807031e+05
+
+
+Number of objective function evaluations             = 38
+Number of objective gradient evaluations             = 29
+Number of equality constraint evaluations            = 38
+Number of inequality constraint evaluations          = 38
+Number of equality constraint Jacobian evaluations   = 29
+Number of inequality constraint Jacobian evaluations = 1
+Number of Lagrangian Hessian evaluations             = 0
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.056
+Total CPU secs in NLP function evaluations           =      0.404
+
+EXIT: Optimal Solution Found.
+
+*** IPOPT DONE ***
+
+optimout = 
+
+        nlpx: [20x1 double]
+        fval: 30.0000
+    exitflag: 0
+      output: [1x1 struct]
+      lambda: [1x1 struct]
+        grad: [20x1 double]
+     hessian: []
            t: [6x1 double]
            u: [6x1 double]
            p: []

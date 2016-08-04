@@ -1,4 +1,0 @@
-Used MatlabInterface.site file, and had Matlab on the path.
-
-Win32 and Win64 configured with:
-../configure --enable-matlab-ma57

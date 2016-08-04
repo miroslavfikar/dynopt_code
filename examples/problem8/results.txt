@@ -1,19 +1,25 @@
 problem8
+
+
+*********************  Running fminsdp  ********************** 
+
+Calling NLP-solver fmincon for problem with no matrix inequality constraints.
+
                                                           Norm of First-order
  Iter F-count            f(x) Feasibility  Steplength        step  optimality
     0       1    2.798801e-06   2.884e-03                           5.233e-03
-    1       2    2.508476e-06   8.549e-15   1.000e+00   4.203e-04   1.202e-03
-    2       3    2.493140e-06   6.738e-15   1.000e+00   3.687e-04   9.887e-05
-    3      10    2.493085e-06   2.331e-15   1.176e-01   4.313e-05   8.744e-05
-    4      30    2.493085e-06   2.331e-15   7.979e-04   2.642e-07   8.744e-05
+    1       2    2.508476e-06   8.590e-15   1.000e+00   4.203e-04   1.202e-03
+    2       3    2.493140e-06   3.178e-15   1.000e+00   3.687e-04   9.887e-05
+    3      10    2.493085e-06   5.940e-15   1.176e-01   4.313e-05   8.744e-05
+    4      30    2.493085e-06   5.940e-15   7.979e-04   2.642e-07   8.744e-05
 
-Local minimum possible. Constraints satisfied.
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_poss_with_constr','CSHelpWindow');">Local minimum possible. Constraints satisfied</a>.
 
-fmincon stopped because the size of the current step is less than
-the selected value of the step size tolerance and constraints are 
-satisfied to within the selected value of the constraint tolerance.
+fmincon stopped because the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'norm_curr_step_simple_fminconip','CSHelpWindow');">size of the current step</a> is less than
+the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'step_size_tol','CSHelpWindow');">step size tolerance</a> and constraints are 
+satisfied to within the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'constraint_tolerance','CSHelpWindow');">constraint tolerance</a>.
 
-
+<<a href = "matlab: createExitMsg('sqpLineSearch',2.000000e+00,true,true,'fmincon',7.722633e-08,'selected',1.000000e-07,5.939693e-15,'selected',1.000000e-07,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
 
 
 optimout = 
@@ -25,6 +31,107 @@ optimout =
       lambda: [1x1 struct]
         grad: [62x1 double]
      hessian: [62x62 double]
+           t: []
+           u: []
+           p: [2x1 double]
+
+
+optimparam = 
+
+     optvar: 4
+    objtype: [1x1 struct]
+      ncolx: 4
+      ncolu: []
+         li: [6x1 double]
+         tf: []
+         ui: []
+        par: [2x1 double]
+        bdu: []
+        bdx: []
+        bdp: [2x2 double]
+     objfun: @objfun
+     confun: []
+    process: @process
+    options: [1x1 struct]
+        bdt: []
+         ni: 6
+         nu: 0
+         nx: 2
+         np: 2
+        tau: [6x1 double]
+        lfx: [6x5 double]
+       dlfx: [6x5 double]
+        lfu: []
+          M: [2x2 double]
+     dt_col: 0
+     du_col: 0
+     dx_col: 60
+     dp_col: 2
+
+problem8
+
+
+*********************  Running fminsdp  ********************** 
+
+Calling NLP-solver ipopt for problem with no matrix inequality constraints.
+
+This is Ipopt version 3.12.4, running with linear solver mumps.
+NOTE: Other linear solvers might be more efficient (see Ipopt documentation).
+
+Number of nonzeros in equality constraint Jacobian...:     3160
+Number of nonzeros in inequality constraint Jacobian.:        4
+Number of nonzeros in Lagrangian Hessian.............:        0
+
+Total number of variables............................:       62
+                     variables with only lower bounds:        0
+                variables with lower and upper bounds:        2
+                     variables with only upper bounds:        0
+Total number of equality constraints.................:       62
+Total number of inequality constraints...............:       16
+        inequality constraints with only lower bounds:        0
+   inequality constraints with lower and upper bounds:        0
+        inequality constraints with only upper bounds:       16
+
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+   0  2.7988008e-06 2.88e-03 1.00e+00   0.0 0.00e+00    -  0.00e+00 0.00e+00   0
+   1  2.5159707e-06 8.31e-06 4.29e-03  -2.3 1.00e-02    -  1.00e+00 9.97e-01h  1
+   2  2.5003645e-06 1.44e-12 8.74e-05  -8.7 5.75e-05    -  1.00e+00 1.00e+00h  1
+Error=-3 returned from MUMPS in Solve.
+Cannot recompute multipliers for feasibility problem.  Error in eq_mult_calculator
+
+Number of Iterations....: 2
+
+                                   (scaled)                 (unscaled)
+Objective...............:   2.5003644976740549e-06    2.5003644976740549e-06
+Dual infeasibility......:   1.4873981054836805e+00    1.4873981054836805e+00
+Constraint violation....:   1.4382939284018903e-12    1.4382939284018903e-12
+Complementarity.........:   0.0000000000000000e+00    0.0000000000000000e+00
+Overall NLP error.......:   1.4382939284018903e-12    1.4873981054836805e+00
+
+
+Number of objective function evaluations             = 3
+Number of objective gradient evaluations             = 3
+Number of equality constraint evaluations            = 3
+Number of inequality constraint evaluations          = 3
+Number of equality constraint Jacobian evaluations   = 3
+Number of inequality constraint Jacobian evaluations = 1
+Number of Lagrangian Hessian evaluations             = 0
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.016
+Total CPU secs in NLP function evaluations           =      0.056
+
+EXIT: Optimal Solution Found.
+
+*** IPOPT DONE ***
+
+optimout = 
+
+        nlpx: [62x1 double]
+        fval: 2.5004e-06
+    exitflag: 0
+      output: [1x1 struct]
+      lambda: [1x1 struct]
+        grad: [62x1 double]
+     hessian: []
            t: []
            u: []
            p: [2x1 double]

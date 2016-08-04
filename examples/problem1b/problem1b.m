@@ -9,6 +9,8 @@ options = optimset(options,'Algorithm','interior-point'); %2013b
 %options = optimset(options,'Algorithm','sqp'); %2010a
 %options = optimset(options,'Algorithm','active-set'); %2008b
 
+%options.NLPsolver='ipopt';
+
 optimparam.optvar = 3; 
 optimparam.objtype = []; 
 optimparam.ncolx = 6;

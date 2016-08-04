@@ -62,7 +62,7 @@ function [optimout,optim_param] = dynopt(optim_param)
 %          DerivativeCheck, Diagnostics, DiffMaxChange, DiffMinChange,
 %          Display, GradConstr, GradObj, LargeScale, MaxFunEvals, MaxIter,
 %          MaxPCGIter, PrecondBandWidth, TolCon, TolFun, TolPCG, TolX,
-%          TypicalX 
+%          TypicalX, NLPSolver
 %--------------------------------------------------------------------------
 %
 % output arguments in OPTIMOUT structure:
@@ -186,18 +186,36 @@ end
 objgr = optimget(optim_param.options,'GradObj');
 congr = optimget(optim_param.options,'GradConstr');
 
-% optimisation
-if ((strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1))
-    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
-        optimout.lambda,optimout.grad,optimout.hessian] = ...
-        fmincon(@cmobjfungrad,x0,A,b,Aeq,beq,lb,ub,@cmconfungrad, ...
-        optim_param.options,optim_param);
-else
-    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
-        optimout.lambda,optimout.grad,optimout.hessian] = ...
-        fmincon(@cmobjfun,x0,A,b,Aeq,beq,lb,ub,@cmconfun, ...
-        optim_param.options,optim_param);
+% set default NLP solver
+if ~isfield(optim_param.options, 'NLPsolver')
+    optim_param.options.NLPsolver = 'fmincon';
 end
+
+if (strcmp(optim_param.options.NLPsolver,'ipopt') == 1) && (strcmp(objgr,'on') ~= 1) && (strcmp(congr,'on') ~= 1)
+  warning('Gradients are missing, ipopt cannot be used, switching to fmincon.')
+  optim_param.options.NLPsolver = 'fmincon';
+end
+
+
+% optimisation
+if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
+    
+    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+        optimout.lambda,optimout.grad,optimout.hessian] = ...
+        fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,@(x) cmconfungrad(x, optim_param), ...
+        optim_param.options);
+    
+else
+        [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+        optimout.lambda,optimout.grad,optimout.hessian] = ...
+        fminsdp(@(x) cmobjfun(x, optim_param),x0,A,b,Aeq,beq,lb,ub,@(x) cmconfun(x, optim_param), ...
+        optim_param.options);
+    
+end
+    
+%[x,fval,exitflag,output,lambda,grad,hessian] = ...
+%fminsdp(objfun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)
+
 %..........................................................................
 
 % user output from optimisation
