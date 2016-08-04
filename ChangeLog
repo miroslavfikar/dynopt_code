@@ -1,3 +1,8 @@
+2016-08-04  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.3.0
+
+	* new option NLPsolver makes possible to incorporate different NLP
+	solvers. Tested with Ipopt. 
+
 2015-06-22  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.2.0
 
 	* initoptimvar.m, liniconstr.m, testinputvar.m: input and state
