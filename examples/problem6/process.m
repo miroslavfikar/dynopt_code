@@ -1,24 +1,27 @@
 function sys = process(t,x,flag,u,p)
 
-switch flag,
+switch flag
     case 0 % f(x,u,p,t)
-        sys = [u*(10*x(2)-x(1));
-               -u*(10*x(2)-x(1))-(1-u)*x(2)];
+        sys = process_function(t,x,u,p,flag);      
     case 1 % df/dx
-        sys = [-u u;
-                10*u (-10*u-(1-u))];
+        [~,JacX,~,~] = dgrad_process(t,x,u,p,flag);
+        sys = JacX;
     case 2 % df/du
-        sys = [(10*x(2)-x(1)) (-(10*x(2)-x(1))+x(2))];
+        [~,~,JacU,~] = dgrad_process(t,x,u,p,flag);
+        sys = JacU;
     case 3 % df/dp
-        sys = [];
+        [~,~,~,JacP] = dgrad_process(t,x,u,p,flag);
+        sys = JacP;
     case 4 % df/dt
-        sys = [];
+        [JacT,~,~,~] = dgrad_process(t,x,u,p,flag);
+        sys = JacT;
     case 5 % x0
-        sys = [1;0];
+        sys = process_function(t,x,u,p,flag);
     case 6 % dx0/dp
-        sys = [];
+        [~,~,~,JacP] = dgrad_process(t,x,u,p,flag);
+        sys = JacP;
     case 7 % M
-        sys = [];
+        sys = process_function(t,x,u,p,flag);
     case 8 % unused flag
         sys = [];
     otherwise

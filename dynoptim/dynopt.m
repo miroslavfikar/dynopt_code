@@ -100,6 +100,25 @@ function [optimout,optim_param] = dynopt(optim_param)
 %
 % See also PROFILES, CONSTRAINTS
 
+% setting the objective, constraints and process function :
+if (~isempty(optim_param.objfun))
+    optim_param.objfun = @objfun;
+else
+    optim_param.objfun = [];
+end
+
+if (~isempty(optim_param.confun))
+    optim_param.confun = @confun;
+else
+    optim_param.confun = [];
+end
+
+if (~isempty(optim_param.process))
+    optim_param.process = @process;
+else
+    optim_param.process = [];
+end
+
 
 % testing all inputs
 testinputvar(optim_param);
@@ -131,6 +150,10 @@ optim_param.nx = length(feval(optim_param.process,0,0,5,0,optim_param.par));
 % number of parameters estimation
 % np = 0 - if par_init = [], np > 0 - otherwise
 optim_param.np = length(optim_param.par);
+
+% % % % % % number of estimation points
+% % % % % % nm = 0 - if objtype.xm = [], np > 0 - otherwise
+% % % % % optim_param.xm = length(optim_param.objtype.xm);
 
 % collocation points and Lagrange functions estimation
 % collocation points for states are always given !!!
@@ -196,20 +219,29 @@ if (strcmp(optim_param.options.NLPsolver,'ipopt') == 1) && (strcmp(objgr,'on') ~
   optim_param.options.NLPsolver = 'fmincon';
 end
 
+disp('-----------------------------------------------')
+disp('dynopt in local folder for adigator testing !!!')
+disp('-----------------------------------------------')
 
 % optimisation
 if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
+    % creating gradients :
+    disp('*********** generating gradients please wait ***********')
+    adigator_gradients(1,optim_param.nx,optim_param.nu,optim_param.np);     
     
+    % calling nlp solver with gradients :
     [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
-        optimout.lambda,optimout.grad,optimout.hessian] = ...
-        fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,@(x) cmconfungrad(x, optim_param), ...
-        optim_param.options);
-    
+    optimout.lambda,optimout.grad,optimout.hessian] = ...
+    fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
+    @(x) cmconfungrad(x, optim_param), optim_param.options);
+
+    % deleting adigator files (gradient files):
+    delete gradt* gradx* gradu* gradp*
 else
-        [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
-        optimout.lambda,optimout.grad,optimout.hessian] = ...
-        fminsdp(@(x) cmobjfun(x, optim_param),x0,A,b,Aeq,beq,lb,ub,@(x) cmconfun(x, optim_param), ...
-        optim_param.options);
+    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+    optimout.lambda,optimout.grad,optimout.hessian] = ...
+    fminsdp(@(x) cmobjfun(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
+    @(x) cmconfun(x, optim_param), optim_param.options);
     
 end
     
