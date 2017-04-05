@@ -23,7 +23,6 @@ optimparam.bdx = [0 1600;0 600; 0.01 0.035];
 optimparam.bdp =[];
 optimparam.objfun = @objfun;
 optimparam.confun = @confun;
-%optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
 

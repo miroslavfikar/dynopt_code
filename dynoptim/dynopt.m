@@ -102,19 +102,19 @@ function [optimout,optim_param] = dynopt(optim_param)
 
 % setting the objective, constraints and process function :
 if (~isempty(optim_param.objfun))
-    optim_param.objfun = @objfun;
+    optim_param.objfun = @dynobjfun;
 else
     optim_param.objfun = [];
 end
 
 if (~isempty(optim_param.confun))
-    optim_param.confun = @confun;
+    optim_param.confun = @dynconfun;
 else
     optim_param.confun = [];
 end
 
 if (~isempty(optim_param.process))
-    optim_param.process = @process;
+    optim_param.process = @dynprocess;
 else
     optim_param.process = [];
 end

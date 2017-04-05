@@ -39,9 +39,9 @@ optimparam.par = [];
 optimparam.bdu = [0 100]; 
 optimparam.bdx = [0 140;0 35;0 1;0 1]; 
 optimparam.bdp = [];
-optimparam.objfun  = @objfun_function;
-optimparam.confun  = @confun_function;
-optimparam.process = @process_function;
+optimparam.objfun  = @objfun;
+optimparam.confun  = @confun;
+optimparam.process = @process;
 optimparam.options = options;
 
 [optimout,optimparam] = dynopt(optimparam);

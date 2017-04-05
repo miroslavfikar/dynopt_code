@@ -1,55 +1,17 @@
-function [c,ceq,Dc,Dceq] = confun(t,x,flag,u,p)
+function [c, ceq] = confun(t,x,u,p,flag)
+global c1f c2f c10 c20 V0 Vw0
 
-switch flag
-    case 0 % constraints in t0
-        [c, ceq] = confun_function(t,x,u,p,flag);
-        
-        % calculating gradients using adigator:
-        [JacT, JacX, JacU, JacP] = dgrad_confun(t,x,u,p,flag,c,ceq);
-
-        % gradient calculus         
-        if nargout == 4
-            Dc.t = JacT.c;
-            Dc.x = JacX.c;
-            Dc.u = JacU.c;
-            Dc.p = JacP.c;
-            Dceq.t = JacT.ceq;
-            Dceq.x = JacX.ceq;
-            Dceq.u = JacU.ceq;
-            Dceq.p = JacP.ceq;
-        end
-    case 1 % constraints over interval [t0,tf]
-        [c, ceq] = confun_function(t,x,u,p,flag);
-        
-         % calculating gradients using adigator:
-        [JacT, JacX, JacU, JacP] = dgrad_confun(t,x,u,p,flag,c,ceq);
-
-        % gradient calculus         
-        if nargout == 4
-            Dc.t = JacT.c;
-            Dc.x = JacX.c;
-            Dc.u = JacU.c;
-            Dc.p = JacP.c;
-            Dceq.t = JacT.ceq;
-            Dceq.x = JacX.ceq;
-            Dceq.u = JacU.ceq;
-            Dceq.p = JacP.ceq;
-        end
-    case 2 % constraints in tf
-        [c, ceq] = confun_function(t,x,u,p,flag);
-        
-         % calculating gradients using adigator:
-        [JacT, JacX, JacU, JacP] = dgrad_confun(t,x,u,p,flag,c,ceq);
-
-        % gradient calculus         
-        if nargout == 4
-            Dc.t = JacT.c;
-            Dc.x = JacX.c;
-            Dc.u = JacU.c;
-            Dc.p = JacP.c;
-            Dceq.t = JacT.ceq;
-            Dceq.x = JacX.ceq;
-            Dceq.u = JacU.ceq;
-            Dceq.p = JacP.ceq;
-        end
- end
+    if flag == 0                % constraints in t0
+        c1 = x(1); c2 = x(2); V = x(3); Vw = x(4);
+        c   = [];
+        ceq = [c1 - c10;c2 - c20;V - V0; Vw - Vw0];
+    elseif flag == 1            % constraints over interval [t0,tf]
+        c1 = x(1); c2 = x(2); V = x(3); Vw = x(4);
+        c   = [c1 - 140; c2 - 35; V - 1; Vw - 1;u-100;-u-0];
+        ceq = [];
+    elseif flag == 2            % constraints in tf
+        c1 = x(1); c2 = x(2);
+          c = [];
+        ceq = [c1 - c1f; c2 - c2f];
+    end
+end

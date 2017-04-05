@@ -8,6 +8,6 @@ function [c, ceq] = confun(t,x,u,p,flag)
         ceq = [];
     elseif flag == 2            % constraints in tf
           c = [];
-        ceq = [];
+        ceq = [x(3)-0.01];
     end
 end

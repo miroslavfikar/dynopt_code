@@ -1,3 +1,3 @@
 function fun = objfun(t,x,u,p)
-    fun = t;
+    fun = -x(2);
 end

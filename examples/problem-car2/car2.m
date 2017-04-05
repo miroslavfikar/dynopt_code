@@ -1,3 +1,18 @@
+%% global parameters : 
+global x10 x20 x1f x2f x1t
+
+% initial conditions :
+x10 = 0;
+x20 = 0;
+
+% final conditions :
+x1f = 0;
+x2f = 300;
+
+% constraintes in each time :
+x1t = 10;
+
+%% optimization
 options = optimset('LargeScale','off','Display','iter');
 options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e4);

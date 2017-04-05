@@ -14,7 +14,7 @@ options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
                        'TolCon',1e-7,'TolX',1e-7,...
                        'MaxFunEvals',1e5,'MaxIter',1e5,'Algorithm','sqp',...
                        'DerivativeCheck','on','GradObj','on',...
-                       'GradConstr','on','NLPsolver','fmincon');
+                       'GradConstr','on','NLPsolver','ipopt');
 
 optimparam.optvar = 3;
 optimparam.objtype = [];
@@ -27,9 +27,9 @@ optimparam.par = [];
 optimparam.bdu = [-4 10]; 
 optimparam.bdx = []; 
 optimparam.bdp = [];
-optimparam.objfun  = @objfun_function;
-optimparam.confun  = @confun_function;
-optimparam.process = @process_function;
+optimparam.objfun  = @objfun;
+optimparam.confun  = @confun;
+optimparam.process = @process;
 optimparam.options = options;
 
 [optimout,optimparam] = dynopt(optimparam);
