@@ -18,3 +18,9 @@ Adigator in DYNOPT :
        function "objfun.m". 
     b) examples with the Mass matrix (example 3.2.1)
     
+Pridat do struktury
+optimparam.autdiff = 'on|off', default (ak nezadane) bude 'on'
+
+Ak 'off', budu moct byt pouzite stare vstupne subory, ale prerobene z 'case' na 'if'. Vtedy bude teda fungovat aj Mass matrix ci najmensie stvorce. Ak nie, tie casti kodu nebudu aktivne.
+
+Niekedy neskor sa prida aj moznost 'some', kde bude moct pouzivatel definovat, ktore jacobiany su dane rucne pomocou optimparam.autdiff.process.x a podobne
