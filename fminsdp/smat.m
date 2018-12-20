@@ -28,6 +28,7 @@ else
     
     A = double(tril(sP));
     A(tril(sP)) = vA;  
+    % A(tril(sP)) = vA(sP(:));      
     A = A + triu(A',1);
         
 end

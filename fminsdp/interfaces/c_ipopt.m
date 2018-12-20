@@ -7,5 +7,5 @@ function c = c_ipopt(x,data)
 %
 % See also DC_IPOPT, IPOPT_MAIN, FMINSDP
 
-[cineq,ceq] = data.nonlconSDP(x);
+[cineq,ceq] = data.nonlcon(x);
 c = full([cineq; ceq]);

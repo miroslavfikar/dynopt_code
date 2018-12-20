@@ -237,7 +237,7 @@ catch ME
     evalin('base', 'clear all;');
     dbstop(breakpoints);
     fprintf('\n');
-    error(['In fminsdp, using snopt as NLP-solver: ',ME.message]);
+    error(['In fminsdp, using snopt as NLP-solver: .',ME.message]);
 end
 
 if nargout>1

@@ -1,11 +1,11 @@
-function [cineq,ceq,cineqgrad,ceqgrad] = nonlconSDP(x,data)
+function [cineq,ceq,cineqgrad,ceqgrad] = nonlconCHOL(x,data)
 
-% NONLCONSDP is used by fminsdp for computing nonlinear constraints
+% NONLCONCHOL is used by fminsdp for computing nonlinear constraints
 % and (optionally) derivatives thereof. It augments the user-supplied routine
 % with terms pertaining to the auxiliary variables used by fminsdp.
 %
-% >> [cineq,ceq] = nonlconSDP(x,data)
-% >> [cineq,ceq,cineqgrad,ceqgrad] = nonlconSDP(x,data)
+% >> [cineq,ceq] = nonlconCHOL(x,data)
+% >> [cineq,ceq,cineqgrad,ceqgrad] = nonlconCHOL(x,data)
 %
 % The output vector "ceq" has the following structure:
 %
@@ -72,7 +72,7 @@ if nargout>3
     else
         ceqgrad = [ceqgrad(:,[(1:data.Aind(1)-1)'; data.ceqind]); ...
             sparse(nLvars,data.Aind(1)-1) sparse(data.sP(:,1),data.sP(:,2),...
-            -x(data.Lind(1)-1 + data.sP(:,3),1),nLvars,nLvars)];
+                    -x(data.Lind(1)-1 + data.sP(:,3),1),nLvars,nLvars)];
     end  
 
     if ~isempty(cineq)

@@ -1,10 +1,10 @@
-function H = hessianSDP(x,lambda,UserHessFcn,data)
+function H = hessianCHOL(x,lambda,UserHessFcn,data)
 
-% HESSIANSDP is used by fminsdp for computing an exact Hessian of the
+% HESSIANCHOL is used by fminsdp for computing an exact Hessian of the
 % Lagrangian. It augments the user-supplied routine with terms pertaining
 % to the auxiliary variables used by fminsdp.
 %
-% >> H = hessianSDP(x,lambda,UserHessFcn,args)
+% >> H = hessianCHOL(x,lambda,UserHessFcn,args)
 %
 % The Lagrangian has the form
 % 
@@ -37,7 +37,7 @@ H = sparse(n,n);
 nxvars = data.nxvars;
 
 % Hessian wrt to auxiliary variables
-n = sum(data.L_size,1);
+n = sum(data.A_size,1);
 
 % Matrix with Lagrange multipliers
 Lambda = reshape(data.Sn'*lambda.eqnonlin(data.Aind(1):end),n,n);
@@ -63,14 +63,14 @@ if ~isempty(UserHessFcn)
     
     % Modify the vector of Lagrange multipliers to account for the fact
     % that the size of the non-linear equality constraints vector is of
-    % size nScalarConstraints + \sum_{m_{i}} m_{i}*(m_{i}+1)/2 wheras
+    % size nScalarConstraints + \sum_{m_{i}} m_{i}*(m_{i}+1)/2 whereas
     % fminsdp works with a vector of size 
     % nScalarConstraints + \sum_{i} nnz(sp_Li)
     % where sp_Li is the symbolic Cholesky factorization of the i-th 
     % constraint matrix.
     temp = lambda.eqnonlin;
-    lambda.eqnonlin = zeros(sum(data.L_size.*(data.L_size+1))/2,1);
-    lambda.eqnonlin([(1:data.Aind(1)-1)';data.ceqind],1) = ...
+    lambda.eqnonlin = zeros(sum(data.A_size.*(data.A_size+1))/2,1);
+    lambda.eqnonlin([(1:data.Aind(1)-1)'; data.ceqind],1) = ...
                     [temp(1:data.Aind(1)-1,1); temp(data.Aind(1):end)];
     
     H(1:nxvars,1:nxvars) = UserHessFcn(x(1:nxvars),lambda);

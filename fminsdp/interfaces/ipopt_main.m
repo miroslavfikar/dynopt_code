@@ -83,10 +83,16 @@ if nargin<10
     error('ipopt_main requires at least 10 input argument');
 end
 
+if ~isfield(options,'method')
+    options.method = 'cholesky';
+end
+
 if nargin>10
     nxvars = data.nxvars;
-    nLvars = data.nLvars;
-    nauxvars = nLvars+(data.c>0);
+    if strcmpi(options.method,'cholesky')
+        nLvars = data.nLvars;
+        nauxvars = nLvars+(data.c>0);
+    end
     Aind   = data.Aind;
     MatrixInequalities = true;
 else
@@ -96,6 +102,10 @@ end
 
 if ~isfield(options,'ipopt')
     options.ipopt = [];
+end
+
+if isfield(options,'max_cpu_time') && isscalar(options.max_cpu_time)
+   options.ipopt.max_cpu_time = options.max_cpu_time;
 end
 
 % Problem size data
@@ -109,31 +119,47 @@ if nargin<12
         cineq = []; ceq = [];
     end
 end
-if MatrixInequalities
+if MatrixInequalities && strcmpi(options.method,'cholesky') 
     nEqConstr   = data.nceq;
+elseif MatrixInequalities 
+    nEqConstr = options.Aind-1;
 else
     nEqConstr = size(ceq,1);
 end
-nIneqConstr = size(cineq,1);
+if MatrixInequalities && strcmpi(options.method,'ldl')
+    nIneqConstr = sum(data.A_size);
+else
+    nIneqConstr = size(cineq,1);
+end
 
 % Objective function and its gradient
 funcs.objective = @(x,auxdata) objfun(x);
 funcs.gradient  = @(x,auxdata) g_ipopt(x,auxdata);
 
 % Set up functions for evaluation of constraints
-if ~isempty(a) && ~isempty(aeq)
+if ~isempty(a) && ~isempty(aeq) && ~isempty(nonlcon)
     funcs.constraints = @(x,auxdata) [a*x; aeq*x; c_ipopt(x,auxdata)];
     funcs.jacobian   =  @(x,auxdata) [a;   aeq;   dc_ipopt(x,auxdata)];
     Jpattern = sparse([a; aeq;]);
-elseif ~isempty(a)
-    funcs.constraints = @(x,auxdata) [a*x; c_ipopt(x,auxdata)];
-    funcs.jacobian   =  @(x,auxdata) [a;   dc_ipopt(x,auxdata)];
+elseif ~isempty(a)    
+    if ~isempty(nonlcon)
+        funcs.constraints = @(x,auxdata) [a*x; c_ipopt(x,auxdata)];
+        funcs.jacobian   =  @(x,auxdata) [a;   dc_ipopt(x,auxdata)];
+    else
+        funcs.constraints = @(x,auxdata) a*x; 
+        funcs.jacobian   =  @(x,auxdata) a;
+    end
     Jpattern = sparse(a);
-elseif ~isempty(aeq)
-    funcs.constraints = @(x,auxdata) [aeq*x; c_ipopt(x,auxdata)];
-    funcs.jacobian   =  @(x,auxdata) [aeq;   dc_ipopt(x,auxdata)];
+elseif ~isempty(aeq)    
+    if ~isempty(nonlcon)
+        funcs.constraints = @(x,auxdata) [aeq*x; c_ipopt(x,auxdata)];
+        funcs.jacobian   =  @(x,auxdata) [aeq;   dc_ipopt(x,auxdata)];
+    else
+        funcs.constraints = @(x,auxdata) aeq*x;
+        funcs.jacobian   =  @(x,auxdata) aeq;
+    end
     Jpattern = sparse(aeq);
-else
+elseif ~isempty(nonlcon)
     funcs.constraints = @(x,auxdata) c_ipopt(x,auxdata);
     funcs.jacobian   =  @(x,auxdata) dc_ipopt(x,auxdata);
     Jpattern = sparse(0,size(x0,1));
@@ -150,7 +176,8 @@ if isempty(ceq) && ~isempty(aeq)
 end
 
 % Sparsity structure for the Jacobian of the constraints
-if MatrixInequalities && isfield(options,'JacobPattern') && ~isempty(options.JacobPattern)
+if MatrixInequalities && strcmpi(options.method,'cholesky') && ...
+   isfield(options,'JacobPattern') && ~isempty(options.JacobPattern)
     
     % Jacobian structure:
     %
@@ -188,7 +215,7 @@ if MatrixInequalities && isfield(options,'JacobPattern') && ~isempty(options.Jac
         
     end
     
-elseif MatrixInequalities
+elseif MatrixInequalities && strcmpi(options.method,'cholesky')
     
     % Assume user-supplied derivatives are dense
     
@@ -216,12 +243,12 @@ elseif ~MatrixInequalities && isfield(options,'JacobPattern') && ~isempty(option
     
     funcs.jacobianstructure = @(auxdata) [Jpattern; options.JacobPattern];
     
-elseif ~MatrixInequalities
+elseif ~MatrixInequalities || ~strcmpi(options.method,'cholesky')
     
+    % TODO: Account for sparsity for non-cholesky methods
     funcs.jacobianstructure = @(auxdata) [Jpattern; ones(nEqConstr+nIneqConstr,nxvars)];
     
 end
-
 
 % Sparsity structure for the Hessian of the Lagrangian and some option
 % checks
@@ -278,8 +305,8 @@ if isfield(options,'Hessian') && ~isempty(options.Hessian)
         % where the last row and column only exists in "feasibility mode".
         %
         
-        if MatrixInequalities
-            HPattern = tril(hessianSDP(x0,struct('eqnonlin',ones(nEqConstr,1)),[],data));
+        if MatrixInequalities && strcmpi(options.method,'cholesky')
+            HPattern = tril(hessianCHOL(x0,struct('eqnonlin',ones(nEqConstr,1)),[],data));
             % Check for user-supplied sparsity pattern
             if isfield(options,'HessPattern') && ~isempty(options.HessPattern)
                 HPattern = [tril(options.HessPattern) sparse(nxvars,nauxvars);
@@ -378,7 +405,7 @@ options.cu = [full(b);   full(beq); ub_cineq; zeros(nEqConstr,1)];
 
 % Additional data to be passed to the problem functions
 options.auxdata.objective = objfun;
-options.auxdata.nonlconSDP = nonlcon;
+options.auxdata.nonlcon = nonlcon;
 
 if isfield(options,'MaxIter')
     if ~isempty(options.MaxIter) && isnumeric(options.MaxIter) && options.MaxIter>=0 && ~isfield(options.ipopt,'max_iter')
@@ -444,7 +471,7 @@ if nargout>1
         if nargout>3
             
             % Compute maximum constraint violation at solution
-            if ~isempty(options.auxdata.nonlconSDP)
+            if ~isempty(options.auxdata.nonlcon)
                 constrval = funcs.constraints(x,options.auxdata);
                 output.constrviolation  = max(0,max([x-options.ub; options.lb-x; constrval-options.cu; options.cl-constrval]));
             else

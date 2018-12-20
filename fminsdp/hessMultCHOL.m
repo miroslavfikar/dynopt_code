@@ -1,7 +1,7 @@
-function Hv = hessMultSDP(x,lambda,v,UserHessMult,data)
+function Hv = hessMultCHOL(x,lambda,v,UserHessMult,data)
 
 % Internal function for computing Hessian of the Lagrangian H times
-% a vector v. The result is an n x 1 vector Hv.
+% a vector v when using the cholesky-method. The result is an n x 1 vector Hv.
 %
 % Hessian is blockdiagonal, so
 %
@@ -9,7 +9,7 @@ function Hv = hessMultSDP(x,lambda,v,UserHessMult,data)
 %        \   0    H_{ll} / \ v_{l} /    \ H_{ll}*v_{l} /
 %
 %
-% See also FMINSDP, HESSIANLL
+% See also FMINSDP, HESSIANCHOL
 
 n = numel(x);
 Hv = zeros(n,1);
@@ -18,7 +18,7 @@ Hv = zeros(n,1);
 nxvars = data.nxvars;
 
 % Hessian wrt to auxiliary variables times vector
-n = sum(data.L_size,1);
+n = sum(data.A_size,1);
 
 Lambda = reshape(data.Sn'*lambda.eqnonlin(data.Aind(1):end),n,n);
 Lambda = Lambda+tril(Lambda)';   
@@ -42,7 +42,7 @@ if ~isempty(UserHessMult)
     % where sp_Li is the symbolic Cholesky factorization of the i-th 
     % constraint matrix.
     temp = lambda.eqnonlin;
-    lambda.eqnonlin = zeros(sum(data.L_size.*(data.L_size+1))/2,1);
+    lambda.eqnonlin = zeros(sum(data.A_size.*(data.A_size+1))/2,1);
     lambda.eqnonlin([(1:data.Aind(1)-1)';data.ceqind],1) = ...
                     [temp(1:data.Aind(1)-1,1); temp(data.Aind(1):end)];
     

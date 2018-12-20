@@ -33,15 +33,15 @@
 %
 % Objective function value at the solution: 956.4580
 % Number of iterations:           			33
-% Run-time for this script using Matlab R2013b on Windows 7 64-bit
-% and an Intel Core i5-520m:      			1.9 seconds  
+% Run-time for this script using Matlab R2016a on Windows 7 64-bit
+% and an Intel Core i7-4712MQ:      		1.7 [s] (first run)
 %
 
 
 tic
 
 clc
-clear all
+clear
 
 % List of node coordinates [node #, x-co. y-co.]
 nc = [1 0 0
@@ -61,17 +61,17 @@ nc = [1 0 0
     15 7 0
     16 7 1
     17 8 0.5];
-fixeddof = 1:4;
+fixeddofs = 1:4;
 maxlength = sqrt(2);
 
 % Create an instance of TrussClass
-truss = TrussClass(nc,fixeddof,maxlength);
+truss = TrussClass(nc,fixeddofs,maxlength);
 
 % Force applied to the right-most node, pointing in the negative
 % x-direction
-f = zeros(truss.ndof,1);
-f(truss.ndof-1,1) = -1;
-truss.f = f;
+truss.f = zeros(2*size(nc,1),1);
+truss.f(2*17-1,1) = -1;
+truss.f(fixeddofs) = [];
 
 % Upper bound on the compliance
 c = 0.5;
@@ -82,18 +82,18 @@ ndof = truss.ndof;
 
 % Lower bounds on element volumes and displacements
 lb = [zeros(nel,1);        -ones(ndof,1)];
-ub = [500*ones(nel,1);      ones(ndof,1)];
+ub = [2000*ones(nel,1);      ones(ndof,1)];
 % Bounds on the displacements and upper bounds on the volumes
 % are not strictly necessary.
 
 % Upper bound on compliance. This is now a scalar, linear constraint
-A = [sparse(1,nel) f'];
+A = [sparse(1,nel) truss.f'];
 b = c;
 
 % Construct sparsity pattern of the constraint matrix
 K = abs(truss.B)'*abs(truss.B);
 G = abs(truss.C)'*abs(truss.C);
-sp_pattern = symbol_fact(K+G);
+sp_pattern = K+G;
 
 % Precompute some data for better performance
 CC = zeros(nel,ndof*(ndof+1)/2);
@@ -113,7 +113,6 @@ options = sdpoptionset('Algorithm','interior-point',...
     'GradConstr','on','GradObj','on','Display','iter-detailed',...
     'Hessian','user-supplied','HessFcn',HessFcn,...
     'Aind',ndof+1,...       % Matrix inequalities starts after the equilbrium constraint
-    'NLPsolver','fmincon',...
     'sp_pattern',sp_pattern,...
     'L_low',-400,...
     'L_upp',400);
@@ -122,12 +121,12 @@ options = sdpoptionset('Algorithm','interior-point',...
 % Initial guess for element volumes
 t0 = ones(nel,1);
 
-% To ensure feasibility of the initial guess we can simply add
+% To ensure feasibility of the initial guess we simply add
 % material until the compliance and stability constraints are 
 % satified.
 while true
     K = bsxfun(@times,truss.B,t0./truss.length.^2)'*truss.B;
-    u0 = K\f;
+    u0 = K\truss.f;
     strain = truss.B*u0;
     G = truss.C'*diag(t0.*strain./truss.length.^3)*truss.C;
     try

@@ -9,34 +9,24 @@
 %               \ f    K(x)  /
 %               x >= 0
 %
+% The problem solved here is the same as that in example1.m; see that file for additional
+% details. This time however, fminsdp calls PENLab which solves the matrix constrained 
+% problem directly
 %
-% where x is the element volumes, f the applied load,
-% K(x) the small deformation stiffness matrix, and c is the
-% upper bound on the compliance.
+% NOTE that PENLab must be obtained and installed separately.
 %
-% The truss is fixed at the left end and subject to a force of
-% unit magnitude pointed in the negative x-direction at the right end.
-%
-% /|-----------------
-% /|                  \
-% /|                     <- F        y
-% /|                  /              |
-% /|-----------------                 -> x
-%
-%
-% (This problem is of course also amenable to solution by specialized solvers 
-%  such as SeDuMi or SDPT3.)
 %
 % Objective function value at the solution: 144.5000
-% Number of iterations:           			18
-% Run-time for this script using Matlab R2016a on Windows 7 64-bit
-% and an Intel Core i7-4712MQ:             0.97 [s]  (first run)
+% Number of iterations:           			10
+% Run-time for this script using PENLab v1.04, 
+% Matlab R2016a on Windows 7 64-bit and an Intel 
+% Core i7-4712MQ:                           1.3 [s](first run) 
 %
 
 tic
 
 clc
-clear
+clear all
 
 % List of node coordinates [node #, x-co. y-co.]
 nc = [1 0 0
@@ -99,20 +89,12 @@ objective = @(x) volume12(x);
 nonlcon   = @(x) nonlcon1(x,truss,gradA);
 
 % Set options for the optimization solver
-options = sdpoptionset('Algorithm','interior-point',...
-				       'GradConstr','on','GradObj','on','DerivativeCheck','off',...
+options = sdpoptionset('method','penlab',...        
+				       'GradConstr','on','GradObj','on',...
                        'Display','iter-detailed','Hessian','user-supplied',...
-                       'Aind',1,...                 % Mark the beginning of the matrix constraints
-                       'sp_pattern',sp_pattern,...  % Supply sparsity pattern
-                       'L_upp',200,...              % Set upper and lower bounds on the off-diagonal elements of the Cholesky factors    
-                       'L_low',-200);               %                          
-                   
-% Note that options.Hessian is set to 'user-supplied' but that we do not need
-% to supply a function for evaluating the Hessian of the Lagrangian since
-% it is zero with respect to the element volumes. It is not zero with
-% respect to the auxiliary variables, however, and internally fminsdp makes
-% use of a function for evaluating the full Hessian of the Lagrangian.
-
+                       'HessFcn', @(x,lambda) sparse(nel,nel),...   % PENLab requires Hessian to work
+                       'Aind',1);                 % Mark the beginning of the matrix constraints
+                           
 % Initial guess 
 x0 = ones(nel,1);
 
@@ -136,18 +118,9 @@ end
 [x,fval,exitflag,output,lambda] = ...
     fminsdp(objective,x0,[],[],[],[],lb,ub,nonlcon,options);
 
-% Positive semi-definitness of the constraint matrix can 
-% be verified by computing the eigenvalues of the constraint
-% matrix at the solution
-%eig(output.A{1});
-
-% The Cholesky factors at the solution can also be 
-% retrieved to verify that A \approx L*L'
-%norm(full(output.A{1}-output.L{1}*output.L{1}'));
-
 % Visualize solution
 truss.x = x;
-figure('Name','fminsdp: Example 1');
+figure('Name','fminsdp: Example 5');
 truss.draw
 set(gca,'xlim',[0 9],'ylim',[-0.5 1.5]);
 

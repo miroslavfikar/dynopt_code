@@ -11,7 +11,13 @@ function H = hessian3(x, lambda, truss, CC)
 %           K(x) + G(u,x) positive semi-definite
 %           x > 0
 %
-% The Hessian of the Lagrangian has the following structure:
+% This function computes the Hessian of the Lagrangian 
+%
+% % L = \sum(x) + mu'*(f^{T}u - c) + 
+%               lambda1'*svec(K(x)u-f)) + 
+%               lambda2'*svec(K(x) + G(u,x))
+%
+% The structure of the Hessian:
 %
 %           x              u
 % x     / 0              H_{ux}  \

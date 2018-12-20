@@ -88,7 +88,7 @@ if MatrixInequalities
         % where the last row and column only exists in "feasibility mode".
         %
         
-        HPattern = hessianSDP(x0,struct('eqnonlin',ones(nEqConstr,1)),[],data);
+        HPattern = hessianCHOL(x0,struct('eqnonlin',ones(nEqConstr,1)),[],data);
         % Check for user-supplied sparsity pattern
         if ~isempty(options.HessPattern)
             HPattern(1:nxvars,1:nxvars) = options.HessPattern;
