@@ -1,3 +1,8 @@
+2018-12-20  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.3.1
+
+	* update of fminsdp and changes resulting from it. Examples tested
+	with Matlab 2018b.
+
 2016-08-04  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.3.0
 
 	* new option NLPsolver makes possible to incorporate different NLP

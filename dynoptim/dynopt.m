@@ -184,7 +184,16 @@ end
 %..........................................................................
 % obtaining information about gradients
 objgr = optimget(optim_param.options,'GradObj');
+if (isempty(objgr))
+  objgr='off';
+  optim_param.options = optimset(optim_param.options,'GradObj','off');
+end
+
 congr = optimget(optim_param.options,'GradConstr');
+if (isempty(congr))
+  congr='off';
+  optim_param.options = optimset(optim_param.options,'GradConstr','off');
+end
 
 % set default NLP solver
 if ~isfield(optim_param.options, 'NLPsolver')

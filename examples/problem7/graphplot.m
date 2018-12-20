@@ -56,7 +56,7 @@ plot(tplot,xplot(:,1),'k-',tplot,xplot(:,2),'b-',tplot,xplot(:,3),'r-', ...
 title('')
 xlabel('time')
 ylabel('x_1, x_2, x_3, x_4, x_5, x_6, x_7')
-legend('x_1','x_2','x_3','x_4','x_5','x_6','x_7',1)
+legend('x_1','x_2','x_3','x_4','x_5','x_6','x_7','Location','NorthEast')
 axis tight
 % axis([0 30 0 20.05])
 set(1,'PaperUnits','centimeters')
