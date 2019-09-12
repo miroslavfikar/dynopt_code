@@ -1,3 +1,8 @@
+2019-09-12  Miroslav Fikar  <miroslav.fikar@stuba.sk>
+
+	* Repository moved from mercurial to git due termination of mercurial
+	support at bitbucket 
+
 2016-08-04  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.3.0
 
 	* new option NLPsolver makes possible to incorporate different NLP
