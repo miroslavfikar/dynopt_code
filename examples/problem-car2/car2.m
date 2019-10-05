@@ -9,7 +9,7 @@ x20 = 0;
 x1f = 0;
 x2f = 300;
 
-% constraintes in each time :
+% constraints in each time :
 x1t = 10;
 
 %% optimization

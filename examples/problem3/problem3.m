@@ -40,8 +40,13 @@ subplot(1,2,1)
 plot(tplot, xplot(:, 1:2))
 xlabel('t')
 ylabel('x_1, x_2')
-
+ 
 subplot(1,2,2)
 plot(tplot, uplot)
 xlabel('t')
 ylabel('u')
+ 
+figure
+plot(tplot, xplot(:,2)-8*(tplot-0.5).^2+0.5)
+xlabel('t')
+ylabel('constraint')

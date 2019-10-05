@@ -52,4 +52,6 @@ switch flag
             Dceq.u = JacU.ceq;
             Dceq.p = JacP.ceq;
         end
- end
+end
+
+%[c,ceq,Dc,Dceq] = confund(t,x,u,p,flag)

@@ -1,0 +1,8 @@
+problem2: ipopt. Niektore Jac matice su jemne nepresne a ipopt diverguje. fmincon je ok
+
+problem8: diferenciacia v pociatocnych podmienkach
+
+pravdepodobne natvrdo process, confun, objfun
+
+problem7: nie uplne rovnaky pocet iteracii, ale vysledne riesenie a cost prakticky rovnake.  Zrejme drobne zmeny z adigatora.
+

@@ -1,25 +1,14 @@
-clear; close all; clc;
-%% Global parameters : 
-global x10 x20 x30 x40 x50 x60 x70 x80
+options = optimset('LargeScale','off','Display','iter');
+options = optimset(options,'GradObj','on','GradConstr','on');
+options = optimset(options,'MaxFunEvals',1e5);
+options = optimset(options,'MaxIter',1e5);
+options = optimset(options,'TolFun',1e-5);
+options = optimset(options,'TolCon',1e-5);
+options = optimset(options,'TolX',1e-5);
+options = optimset(options,'Algorithm','sqp'); %2010a
+%options = optimset(options,'Algorithm','active-set'); %2008b
 
-% initial conditions :
-x10 = 0.1883;
-x20 = 0.2507;
-x30 = 0.0467;
-x40 = 0.0899;
-x50 = 0.1804;
-x60 = 0.1394;
-x70 = 0.1046;
-x80 = 0;
-      
-
-%% Optimization : 
-
-options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
-                       'TolCon',1e-7,'TolX',1e-7,...
-                       'MaxFunEvals',1e5,'MaxIter',1e5,'Algorithm','sqp',...
-                       'DerivativeCheck','on','GradObj','on',...
-                       'GradConstr','on','NLPsolver','fmincon');
+%options.NLPsolver='ipopt';
 
 optimparam.optvar = 3; 
 optimparam.objtype = []; 
@@ -29,16 +18,17 @@ optimparam.li = ones(10,1)*(0.2/10);
 optimparam.tf = 0.2;
 optimparam.ui = [ones(1,10)*10;ones(1,10)*3;ones(1,10)*2;ones(1,10)*10];
 optimparam.par = []; 
-optimparam.bdu = [0 20;0 6;0 4;0 20]; 
-optimparam.bdx = []; 
-optimparam.bdp =[];
-optimparam.objfun  = @objfun;
-optimparam.confun  = @confun;
+optimparam.bdu = [0 20;0 6;0 4;0 20]; optimparam.bdx = []; optimparam.bdp =[];
+optimparam.objfun = @objfun; 
+optimparam.confun = @confun; 
+optimparam.confun = []; 
 optimparam.process = @process;
 optimparam.options = options;
 
-[optimout,optimparam] = dynopt(optimparam);
-[tplot,uplot,xplot]   = profiles(optimout,optimparam,50);
+[optimout,optimparam]=dynopt(optimparam)
+save optimresults optimout optimparam
+[tplot,uplot,xplot] = profiles(optimout,optimparam,50);
+save optimprofiles tplot uplot xplot 
 
 figure
 subplot(1,2,1)

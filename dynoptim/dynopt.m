@@ -178,9 +178,9 @@ else % if control variables are given
 end
 
 % mass matrix estimation
-optim_param.M = feval(optim_param.process,0,0,7,0,0); % DAE system
-if isempty(optim_param.M)
-    optim_param.M = eye(optim_param.nx); % ODE system
+%optim_param.M = feval(optim_param.process,0,0,7,0,0); % DAE system
+if ~isfield(optim_param,'M')
+  optim_param.M = eye(optim_param.nx); % ODE system
 end
 
 % filling the optim_param variable with variables dt_col, du_col, dx_col,
@@ -228,7 +228,14 @@ if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
     % creating gradients :
     disp('*********** generating gradients please wait ***********')
     adigator_gradients(1,optim_param.nx,optim_param.nu,optim_param.np);     
-    
+ %   disp('*********** gradient check ***********')
+ %   flag = 0; %%% ?
+ %   [JacT, JacX, JacU, JacP] = dgrad_process( 0, x0, optim_param.ui(1), optim_param.par, flag )
+ %   disp('*********** gradient check ***********')
+ %   JacX = processd( 0, x0, optim_param.ui(1), optim_param.par, 1 )
+ %   JacU = processd( 0, x0, optim_param.ui(1), optim_param.par, 2 )
+%    pause
+	
     % calling nlp solver with gradients :
     [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
     optimout.lambda,optimout.grad,optimout.hessian] = ...

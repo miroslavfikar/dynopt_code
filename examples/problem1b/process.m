@@ -4,16 +4,12 @@ function sys = process(t,x,u,p,flag)
 global x10 x20
 
 % do not modify the individual IF,ELSE conditions !!
-    if flag == 7
-        % mass matrix
-        sys = [];
-    elseif flag == 5
+    if flag == 5
         % initial conditions for ODE system x0 can be scalar or vector:
-        sys = initial_conditions([x10; x20]);
+%        sys = initial_conditions([x10; x20]);
+        sys = [1;0];
     else
         % ODE system :     
-        x1 = x(1); x2 = x(2);
-        sys = [u; 
-               x1^2 + u^2];
+        sys = [u;x(1)^2+u^2];
     end
 end

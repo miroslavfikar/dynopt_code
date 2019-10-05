@@ -25,6 +25,8 @@ optimparam.objfun = @objfun;
 optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
+M = zeros(4,4); M(1,1)=1; M(2,2)=1;
+optimparam.M = M;
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam

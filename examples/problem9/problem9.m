@@ -1,3 +1,5 @@
+clear
+
 options = optimset('LargeScale','off','Display','iter');
 options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e5);
@@ -5,8 +7,8 @@ options = optimset(options,'MaxIter',1e5);
 options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
-%options = optimset(options,'Algorithm','sqp'); %2010a
-options = optimset(options,'Algorithm','active-set'); %2008b
+options = optimset(options,'Algorithm','sqp'); %2010a
+%options = optimset(options,'Algorithm','active-set'); %2008b
 
 n=2;
 optimparam.optvar = 3; 
@@ -23,6 +25,7 @@ optimparam.bdx = [0 1600;0 600; 0.01 0.035];
 optimparam.bdp =[];
 optimparam.objfun = @objfun;
 optimparam.confun = @confun;
+%optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
 

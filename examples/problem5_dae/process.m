@@ -1,12 +1,12 @@
 function sys = process(t,x,u,p,flag)
 
 % do not modify the individual IF,ELSE conditions !!
-    if flag == 7
-        % mass matrix
-        sys = [];
-    elseif flag == 5
+    if flag == 5
         % initial conditions for ODE system:
         sys = initial_conditions([1;0;5.0736;0.9975]);        
+%    elseif flag == 7
+%        % mass matrix
+%        sys = zeros(4,4); sys(1,1)=1; sys(2,2) = 1;
     else
         % ODE system :
   
