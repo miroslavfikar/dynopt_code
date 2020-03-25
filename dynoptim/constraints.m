@@ -61,7 +61,7 @@ for i=1:optim_param.ni
         % np-by-1 vector
         pj = pmopt;
         % user defined constraints   
-        [uc,uceq]=feval(optim_param.confun,tfull(j,i),xj,1,uj,pj);
+        [uc,uceq]=feval(optim_param.confun,tfull(j,i),xj,1,uj,pj, optim_param);
         cplot = [cplot;uc];
         ceqplot = [ceqplot;uceq];
     end

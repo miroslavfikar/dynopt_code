@@ -33,9 +33,9 @@ for i = 1:length(tmes)
     [t_c,x_c,u_c,p_c] = evalcollpoint(optim_param,tfull,xm,um,pm,t_m, ...
         optim_param.ncolx+2);
     if nargout == 1
-        [f] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,x_m);
+        [f] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,x_m, optim_param);
     else
-        [f,Df] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,x_m);
+        [f,Df] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,x_m, optim_param);
     end
     
     % user defined objective function in given element knot

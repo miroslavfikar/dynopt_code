@@ -102,22 +102,46 @@ function [optimout,optim_param] = dynopt(optim_param)
 
 % setting the objective, constraints and process function :
 if (~isempty(optim_param.objfun))
+    optim_param.origobjfun = optim_param.objfun;
     optim_param.objfun = @dynobjfun;
 else
+    optim_param.origobjfun = [];
     optim_param.objfun = [];
 end
 
 if (~isempty(optim_param.confun))
+    optim_param.origconfun = optim_param.confun;
     optim_param.confun = @dynconfun;
 else
+    optim_param.origconfun = [];
     optim_param.confun = [];
 end
 
 if (~isempty(optim_param.process))
+    optim_param.origprocess = optim_param.process;
     optim_param.process = @dynprocess;
 else
+    optim_param.origprocess = [];
     optim_param.process = [];
 end
+process = func2str(optim_param.origprocess);
+objfun = func2str(optim_param.origobjfun);
+confun = func2str(optim_param.origconfun);
+
+gradt_process = strcat('grad','t','_',process); optim_param.gradt_process=str2func(gradt_process);
+gradx_process = strcat('grad','x','_',process); optim_param.gradx_process=str2func(gradx_process);
+gradu_process = strcat('grad','u','_',process); optim_param.gradu_process=str2func(gradu_process);
+gradp_process = strcat('grad','p','_',process); optim_param.gradp_process=str2func(gradp_process);
+
+gradt_objfun = strcat('grad','t','_',objfun); optim_param.gradt_objfun=str2func(gradt_objfun); 
+gradx_objfun = strcat('grad','x','_',objfun); optim_param.gradx_objfun=str2func(gradx_objfun); 
+gradu_objfun = strcat('grad','u','_',objfun); optim_param.gradu_objfun=str2func(gradu_objfun); 
+gradp_objfun = strcat('grad','p','_',objfun); optim_param.gradp_objfun=str2func(gradp_objfun); 
+
+gradt_confun = strcat('grad','t','_',confun); optim_param.gradt_confun=str2func(gradt_confun);  
+gradx_confun = strcat('grad','x','_',confun);	optim_param.gradx_confun=str2func(gradx_confun);  
+gradu_confun = strcat('grad','u','_',confun);	optim_param.gradu_confun=str2func(gradu_confun);  
+gradp_confun = strcat('grad','p','_',confun);	optim_param.gradp_confun=str2func(gradp_confun);  
 
 
 % testing all inputs
@@ -145,7 +169,7 @@ optim_param.nu = size(optim_param.ui,1);
 
 % number of state variables estimation
 % nx > 0 always
-optim_param.nx = length(feval(optim_param.process,0,0,5,0,optim_param.par)); 
+optim_param.nx = length(feval(optim_param.origprocess,0,0,5,0,optim_param.par)); 
 
 % number of parameters estimation
 % np = 0 - if par_init = [], np > 0 - otherwise
@@ -178,7 +202,7 @@ else % if control variables are given
 end
 
 % mass matrix estimation
-%optim_param.M = feval(optim_param.process,0,0,7,0,0); % DAE system
+%optim_param.M = feval(optim_param.origprocess,0,0,7,0,0); % DAE system
 if ~isfield(optim_param,'M')
   optim_param.M = eye(optim_param.nx); % ODE system
 end
@@ -227,7 +251,7 @@ disp('-----------------------------------------------')
 if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
     % creating gradients :
     disp('*********** generating gradients please wait ***********')
-    adigator_gradients(1,optim_param.nx,optim_param.nu,optim_param.np);     
+    adigator_gradients(optim_param);     
  %   disp('*********** gradient check ***********')
  %   flag = 0; %%% ?
  %   [JacT, JacX, JacU, JacP] = dgrad_process( 0, x0, optim_param.ui(1), optim_param.par, flag )
