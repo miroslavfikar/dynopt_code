@@ -75,6 +75,10 @@ end
 
 
 % gradients of process model \wrt to parameters (p)
+if flag == 6
+  flag = 5;
+end
+
 if (~isempty(p))
     parameter = struct('f',p,'dp',ones(length(p),1));
     y_p     = param.gradp_process(t, x, u, parameter, flag);

@@ -11,7 +11,7 @@ function [x0,lb,ub] = initoptimvar(optim_param)
 tfull = coltime(optim_param.tau,optim_param.li); 
 
 % initialisation of integration x(t0) = x_0
-y0 = feval(optim_param.origprocess,0,0,5,0,optim_param.par);
+y0 = feval(optim_param.origprocess,0,0,0,optim_param.par,5);
 
 % mass matrix estimation
 M = optim_param.M;

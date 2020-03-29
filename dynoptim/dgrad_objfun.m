@@ -1,9 +1,13 @@
-function [JacT, JacX, JacU, JacP] = dgrad_objfun( t, x, u, p, param )
+function [JacT, JacX, JacU, JacP] = dgrad_objfun( t, x, u, p, param, xm )
 
 % gradients of process model \wrt to time (t)
 if (~isempty(t))
     t_time = struct('f',t,'dt',ones(length(t),1));
-    y_t    = param.gradt_objfun(t_time, x, u, p);
+    if isempty(param.objtype) % objfun: Meyer
+      y_t    = param.gradt_objfun(t_time, x, u, p);
+    else % objfun: Sum
+      y_t    = param.gradt_objfun(t_time, x, u, p, xm);
+    end
        
     if (isfield(y_t,'dt_size'))
             if (length(y_t.dt_size) == 1)
@@ -27,7 +31,11 @@ end
 % gradients of process model \wrt to states (x)
 if (~isempty(x))
     states  = struct('f',x,'dx',ones(length(x),1));
-    y_x     = param.gradx_objfun(t, states, u, p);
+    if isempty(param.objtype) % objfun: Meyer
+      y_x     = param.gradx_objfun(t, states, u, p);
+    else % objfun: Sum
+      y_x     = param.gradx_objfun(t, states, u, p, xm);
+    end
 
     if (isfield(y_x,'dx_size'))
        if (length(y_x.dx_size) == 1)
@@ -52,7 +60,11 @@ end
 % gradients of process model \wrt to control (u)
 if (~isempty(u))
     control = struct('f',u,'du',ones(length(u),1));
-    y_u     = param.gradu_objfun(t, x, control, p);
+    if isempty(param.objtype) % objfun: Meyer
+      y_u     = param.gradu_objfun(t, x, control, p);
+    else % objfun: Sum
+      y_u     = param.gradu_objfun(t, x, control, p, xm);
+    end
 
     if (isfield(y_u,'du_size'))
         if (length(y_u.du_size) == 1)
@@ -77,7 +89,11 @@ end
 % gradients of process model \wrt to parameters (p)
 if (~isempty(p))
     parameter = struct('f',p,'dp',ones(length(p),1));
-    y_p     = param.gradp_objfun(t, x, u, parameter);
+    if isempty(param.objtype) % objfun: Meyer
+      y_p     = param.gradp_objfun(t, x, u, parameter);
+    else % objfun: Sum
+      y_p     = param.gradp_objfun(t, x, u, parameter, xm);
+    end
 
     if (isfield(y_p,'dp_size'))
         if (length(y_p.dp_size) == 1)

@@ -126,7 +126,6 @@ else
 end
 process = func2str(optim_param.origprocess);
 objfun = func2str(optim_param.origobjfun);
-confun = func2str(optim_param.origconfun);
 
 gradt_process = strcat('grad','t','_',process); optim_param.gradt_process=str2func(gradt_process);
 gradx_process = strcat('grad','x','_',process); optim_param.gradx_process=str2func(gradx_process);
@@ -138,11 +137,13 @@ gradx_objfun = strcat('grad','x','_',objfun); optim_param.gradx_objfun=str2func(
 gradu_objfun = strcat('grad','u','_',objfun); optim_param.gradu_objfun=str2func(gradu_objfun); 
 gradp_objfun = strcat('grad','p','_',objfun); optim_param.gradp_objfun=str2func(gradp_objfun); 
 
-gradt_confun = strcat('grad','t','_',confun); optim_param.gradt_confun=str2func(gradt_confun);  
-gradx_confun = strcat('grad','x','_',confun);	optim_param.gradx_confun=str2func(gradx_confun);  
-gradu_confun = strcat('grad','u','_',confun);	optim_param.gradu_confun=str2func(gradu_confun);  
-gradp_confun = strcat('grad','p','_',confun);	optim_param.gradp_confun=str2func(gradp_confun);  
-
+if (~isempty(optim_param.confun))
+  confun = func2str(optim_param.origconfun);
+  gradt_confun = strcat('grad','t','_',confun); optim_param.gradt_confun=str2func(gradt_confun);  
+  gradx_confun = strcat('grad','x','_',confun);	optim_param.gradx_confun=str2func(gradx_confun);  
+  gradu_confun = strcat('grad','u','_',confun);	optim_param.gradu_confun=str2func(gradu_confun);  
+  gradp_confun = strcat('grad','p','_',confun);	optim_param.gradp_confun=str2func(gradp_confun);  
+end
 
 % testing all inputs
 testinputvar(optim_param);
@@ -169,7 +170,7 @@ optim_param.nu = size(optim_param.ui,1);
 
 % number of state variables estimation
 % nx > 0 always
-optim_param.nx = length(feval(optim_param.origprocess,0,0,5,0,optim_param.par)); 
+optim_param.nx = length(feval(optim_param.origprocess,0,0,0,optim_param.par,5)); 
 
 % number of parameters estimation
 % np = 0 - if par_init = [], np > 0 - otherwise

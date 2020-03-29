@@ -1,10 +1,18 @@
-function [f,Df] = dynobjfun(t,x,u,p, param)
+function [f,Df] = dynobjfun(t,x,u,p, param, xm)
 
 % objective function
-f = param.origobjfun(t,x,u,p); % J
+if isempty(param.objtype) % objfun: Meyer
+  f = param.origobjfun(t,x,u,p); % J
+else % objfun: Sum
+  f = param.origobjfun(t,x,u,p, xm); % J
+end
 
 % calculating gradients \wrt to {t, x, u p} using adigator
-[JacT,JacX,JacU,JacP] = dgrad_objfun(t,x,u,p, param);
+if isempty(param.objtype) % objfun: Meyer
+  [JacT,JacX,JacU,JacP] = dgrad_objfun(t,x,u,p, param);
+else % objfun: Sum
+  [JacT,JacX,JacU,JacP] = dgrad_objfun(t,x,u,p, param, xm);
+end
 
 % gradients of the objective function
 Df.t = JacT;   % dJ/dt
