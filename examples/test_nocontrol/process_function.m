@@ -9,7 +9,7 @@ global p_vab x0
         sys = [];
     elseif flag == 5
         % initial conditions for ODE system x0 can be scalar or vector:
-        sys = initial_conditions([x0]);
+        sys = x0;
     else
         % ODE system :     
         x1 = x(1);

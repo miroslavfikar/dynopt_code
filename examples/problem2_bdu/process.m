@@ -6,7 +6,7 @@ global x10 x20 x30 x40
 % do not modify the individual IF,ELSE conditions !!
     if flag == 5
         % initial conditions for ODE system:
-        sys = initial_conditions([x10;x20;x30;x40]);        
+        sys = [x10;x20;x30;x40];   
     else
         % ODE system :
         x1 = x(1); x2 = x(2); x3 = x(3); x4 = x(4);

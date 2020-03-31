@@ -6,7 +6,6 @@ global x10 x20
 % do not modify the individual IF,ELSE conditions !!
     if flag == 5
         % initial conditions for ODE system x0 can be scalar or vector:
-%        sys = initial_conditions([x10; x20]);
         sys = [1;0];
     else
         % ODE system :     
