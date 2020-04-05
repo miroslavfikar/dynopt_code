@@ -8,8 +8,7 @@ global x1f x2f
         c   = [];
         ceq = [];
     elseif flag == 2            % constraints in tf
-        x1 = x(1); x2 = x(2);
           c = [];
-        ceq = [x1 - x1f; x2 - x2f];
+        ceq = [x(1) - x1f; x(2) - x2f];
     end
 end

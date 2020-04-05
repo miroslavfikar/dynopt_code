@@ -33,10 +33,17 @@ for i = 1:length(tmes)
     [t_c,x_c,u_c,p_c] = evalcollpoint(optim_param,tfull,xm,um,pm,t_m, ...
         optim_param.ncolx+2);
     if nargout == 1
-        [f] = feval(optim_param.objfun,t_c,x_c,u_c,p_c, optim_param,x_m);
-    else
-        [f,Df] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,optim_param,x_m);
+      f = feval(optim_param.objfun,t_c,x_c,u_c,p_c, optim_param, x_m);
+    else 
+      if optim_param.adoptions.objfunjacuser == 0;
+	[f,Df] = feval(optim_param.objfun,t_c,x_c,u_c,p_c, optim_param, x_m);
+      else
+	f = feval(optim_param.origobjfun,t_c,x_c,u_c,p_c, x_m);
+	Df = feval(optim_param.adoptions.objfund,t_c,x_c,u_c,p_c, x_m);
+      end
     end
+    
+    
     
     % user defined objective function in given element knot
     pf = pf + f;

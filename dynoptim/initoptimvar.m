@@ -30,7 +30,7 @@ for i=1:optim_param.ni
     end
     
     % integration
-    [t,y] = ode23t(optim_param.origprocess,tfull(:,i)',y0,odeop,0,ui,optim_param.par);
+    [t,y] = ode23t(optim_param.origprocess,tfull(:,i)',y0,odeop,ui,optim_param.par,0);
     xp_temp = y(1:optim_param.ncolx+1,:);
     xp = [xp; xp_temp(:)];
     if ~isempty(optim_param.ui)

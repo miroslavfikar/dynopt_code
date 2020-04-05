@@ -1,3 +1,5 @@
+clear; close all; clc;
+
 %% global parameters : 
 global x10 x20 x1f x2f x1t
 
@@ -41,6 +43,7 @@ optimparam.objfun = @objfun;
 optimparam.confun = @confun; 
 optimparam.process = @process;
 optimparam.options = options;
+optimparam.adoptions = adoptionset();
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam

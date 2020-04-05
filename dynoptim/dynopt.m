@@ -250,16 +250,12 @@ disp('-----------------------------------------------')
 
 % optimisation
 if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
-    % creating gradients :
-    disp('*********** generating gradients please wait ***********')
-    adigator_gradients(optim_param);     
- %   disp('*********** gradient check ***********')
- %   flag = 0; %%% ?
- %   [JacT, JacX, JacU, JacP] = dgrad_process( 0, x0, optim_param.ui(1), optim_param.par, flag )
- %   disp('*********** gradient check ***********')
- %   JacX = processd( 0, x0, optim_param.ui(1), optim_param.par, 1 )
- %   JacU = processd( 0, x0, optim_param.ui(1), optim_param.par, 2 )
-%    pause
+    if optim_param.adoptions.generate==0
+      disp('*********** gradients reused or provided by user ***********')
+    else
+      disp('*********** generating gradients please wait ***********')
+      adigator_gradients(optim_param);     
+    end
 	
     % calling nlp solver with gradients :
     [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
@@ -267,8 +263,12 @@ if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
     fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
     @(x) cmconfungrad(x, optim_param), optim_param.options);
 
-    % deleting adigator files (gradient files):
-    delete gradt* gradx* gradu* gradp*
+    if optim_param.adoptions.keep==1
+      disp('*********** gradients not deleted ***********')
+    else
+      % deleting adigator files (gradient files):
+      delete gradt* gradx* gradu* gradp*
+    end
 else
     [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
     optimout.lambda,optimout.grad,optimout.hessian] = ...

@@ -81,13 +81,18 @@ for i = 1:optim_param.ni
             
             % d(x10 - x0)/dp
             %..............................................................
-            if optim_param.dp_col ~= 0 % p is optimised variable
-                % np-by-nx matrix or []
-                dx0dp = feval(optim_param.process,t_c,x_c,6,u_c,p_c, optim_param); 
-                if isempty(dx0dp)
-                    dx0dp = zeros(optim_param.np,optim_param.nx);
-                end
-                Dceqp_temp(:,:) = -dx0dp';
+            if optim_param.dp_col ~= 0 
+	      % p is optimised variable
+	      % np-by-nx matrix or []
+	      if optim_param.adoptions.processjacuser == 0;
+		dx0dp = feval(optim_param.process,t_c,x_c,6,u_c,p_c, optim_param); 
+	      else
+		dx0dp = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,6);
+	      end
+	      if isempty(dx0dp)
+		dx0dp = zeros(optim_param.np,optim_param.nx);
+	      end
+	      Dceqp_temp(:,:) = -dx0dp';
             end
             %..............................................................
             
@@ -135,7 +140,11 @@ for i = 1:optim_param.ni
             %..............................................................
             if optim_param.dt_col ~= 0 % t is optimised variable
                 % 1-by-nx matrix or []
+	      if optim_param.adoptions.processjacuser == 0;
                 dfdt = feval(optim_param.process,t_c,x_c,4,u_c,p_c, optim_param); 
+	      else
+		dfdt = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c, 4);
+	      end
                 if isempty(dfdt)
                     dfdt = zeros(1,optim_param.nx);
                 end
@@ -147,7 +156,11 @@ for i = 1:optim_param.ni
             %..............................................................
             if optim_param.du_col ~= 0 % u is optimised variable
                 % nu-by-nx matrix or []
+	      if optim_param.adoptions.processjacuser == 0;
                 dfdu = feval(optim_param.process,t_c,x_c,2,u_c,p_c, optim_param); 
+	      else
+		dfdu = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,2);
+	      end
                 if isempty(dfdu)
                     dfdu = zeros(optim_param.nu,optim_param.nx);
                 end
@@ -163,7 +176,11 @@ for i = 1:optim_param.ni
             % nx-by-nx*(ncolx+1) matrix
             ddxdxij = kron(eye(optim_param.nx),optim_param.dlfx(j,:)); 
             % nx-by-nx matrix
-            dfdx = feval(optim_param.process,t_c,x_c,1,u_c,p_c, optim_param); 
+	      if optim_param.adoptions.processjacuser == 0;
+		dfdx = feval(optim_param.process,t_c,x_c,1,u_c,p_c, optim_param); 
+	      else
+		dfdx = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,1);
+	      end
             % nx-by-nx*(ncolx+1) matrix
             dxdxij = kron(eye(optim_param.nx),optim_param.lfx(j,:)); 
             Dceqx_temp(:,(i-1)*nxj+1:i*nxj) = optim_param.M*ddxdxij ...
@@ -174,7 +191,11 @@ for i = 1:optim_param.ni
             %..............................................................
             if optim_param.dp_col ~= 0 % p is optimised variable
                 % np-by-nx matrix or []
+	      if optim_param.adoptions.processjacuser == 0;
                 dfdp = feval(optim_param.process,t_c,x_c,3,u_c,p_c, optim_param); 
+	      else
+		dfdp = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,3);
+	      end
                 if isempty(dfdp)
                     dfdp = zeros(optim_param.np,optim_param.nx);
                 end

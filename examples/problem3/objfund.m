@@ -1,7 +1,6 @@
-function [f,Df] = objfund(t,x,u,p)
+function Df = objfund(t,x,u,p)
 
-% objective function
-f = [x(3)]; % J
+%f = x(3); % J
 
 % gradients of the objective function
 Df.t = [];      % dJ/dt

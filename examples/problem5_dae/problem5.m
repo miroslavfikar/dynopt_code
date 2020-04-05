@@ -1,3 +1,4 @@
+clear; close all; clc;
 options = optimset('LargeScale','off','Display','iter');
 options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e5);
@@ -27,6 +28,7 @@ optimparam.process = @process;
 optimparam.options = options;
 M = zeros(4,4); M(1,1)=1; M(2,2)=1;
 optimparam.M = M;
+optimparam.adoptions = adoptionset();
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam

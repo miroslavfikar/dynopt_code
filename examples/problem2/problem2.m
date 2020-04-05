@@ -27,6 +27,8 @@ optimparam.objfun = @objfun;
 optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
+optimparam.adoptions = adoptionset();
+%optimparam.adoptions = adoptionset('jacuser', true);
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam
