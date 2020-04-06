@@ -1,4 +1,4 @@
-function sys = process(t,x,u,p,flag)
+function sys = process(t,x,flag,u,p)
   global x10 x20
   
   if flag == 5 % initial conditions

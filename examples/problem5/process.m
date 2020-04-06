@@ -1,4 +1,4 @@
-function sys = process(t,x,u,p,flag)
+function sys = process(t,x,flag,u,p)
 
 % parameters can be set through global variables :
   global x10 x20

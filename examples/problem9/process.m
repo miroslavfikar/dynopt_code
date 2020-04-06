@@ -1,4 +1,4 @@
-function sys = process(t,x,u,p,flag)
+function sys = process(t,x,flag,u,p)
 
   if flag == 5 % initial conditions
     sys = [150;300;0.03];

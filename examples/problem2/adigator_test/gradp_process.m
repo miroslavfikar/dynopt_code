@@ -10,7 +10,7 @@
 % provided 'AS IS' with NO WARRANTIES OF ANY KIND and no merchantability
 % or fitness for any purpose or application.
 
-function sys = gradp_process(t,x,u,p,flag)
+function sys = gradp_process(t,x,flag,u,p)
 global ADiGator_gradp_process
 if isempty(ADiGator_gradp_process); ADiGator_LoadData(); end
 Gator1Data = ADiGator_gradp_process.gradp_process.Gator1Data;

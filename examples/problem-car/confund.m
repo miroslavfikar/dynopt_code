@@ -1,4 +1,4 @@
-function [Dc,Dceq] = confund(t,x,u,p,flag)
+function [Dc,Dceq] = confund(t,x,flag,u,p)
   Dc.t = [];
   Dc.x = [];
   Dc.u = [];

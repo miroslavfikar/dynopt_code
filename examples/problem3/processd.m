@@ -1,4 +1,4 @@
-function sys = processd(t,x,u,p,flag)
+function sys = processd(t,x,flag,u,p)
 
   global x10 x20 x30
 

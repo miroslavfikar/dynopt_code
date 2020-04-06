@@ -1,4 +1,4 @@
-function sys = processd(t,x,u,p,flag)
+function sys = processd(t,x,flag,u,p)
 
   if flag == 5 % initial conditions
     sys = [0;-1;-sqrt(5);0];

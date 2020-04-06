@@ -1,4 +1,4 @@
-function sys = processd(t,x,u,p,flag)
+function sys = processd(t,x,flag,u,p)
 
 % do not modify the individual IF,ELSE conditions !!
   if flag == 1 % df/dx

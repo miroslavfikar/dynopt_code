@@ -1,4 +1,4 @@
-function [Dc,Dceq] = confund(t,x,u,p,flag)
+function [Dc,Dceq] = confund(t,x,flag,u,p)
 
   switch flag
    case 0 % constraints in t0

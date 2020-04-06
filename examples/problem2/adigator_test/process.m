@@ -1,4 +1,4 @@
-function sys = process(t,x,u,p,flag)
+function sys = process(t,x,flag,u,p)
 
 % do not modify the individual IF,ELSE conditions !!
     if flag == 7

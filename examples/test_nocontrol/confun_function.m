@@ -1,4 +1,4 @@
-function [c, ceq] = confun_function(t,x,u,p,flag)
+function [c, ceq] = confun_function(t,x,flag,u,p)
 
     if flag == 0                % constraints in t0
         c   = [];

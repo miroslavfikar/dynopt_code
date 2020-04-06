@@ -1,4 +1,4 @@
-function sys = processd(t,x,u,p,flag)
+function sys = processd(t,x,flag,u,p)
 
   sys = [];
   if flag == 1 % df/dx

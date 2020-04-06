@@ -87,7 +87,7 @@ for i = 1:optim_param.ni
 	      if optim_param.adoptions.processjacuser == 0;
 		dx0dp = feval(optim_param.process,t_c,x_c,6,u_c,p_c, optim_param); 
 	      else
-		dx0dp = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,6);
+		dx0dp = feval(optim_param.adoptions.processd,t_c,x_c,6,u_c,p_c);
 	      end
 	      if isempty(dx0dp)
 		dx0dp = zeros(optim_param.np,optim_param.nx);
@@ -143,7 +143,7 @@ for i = 1:optim_param.ni
 	      if optim_param.adoptions.processjacuser == 0;
                 dfdt = feval(optim_param.process,t_c,x_c,4,u_c,p_c, optim_param); 
 	      else
-		dfdt = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c, 4);
+		dfdt = feval(optim_param.adoptions.processd,t_c,x_c,4,u_c,p_c);
 	      end
                 if isempty(dfdt)
                     dfdt = zeros(1,optim_param.nx);
@@ -159,7 +159,7 @@ for i = 1:optim_param.ni
 	      if optim_param.adoptions.processjacuser == 0;
                 dfdu = feval(optim_param.process,t_c,x_c,2,u_c,p_c, optim_param); 
 	      else
-		dfdu = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,2);
+		dfdu = feval(optim_param.adoptions.processd,t_c,x_c,2,u_c,p_c);
 	      end
                 if isempty(dfdu)
                     dfdu = zeros(optim_param.nu,optim_param.nx);
@@ -179,7 +179,7 @@ for i = 1:optim_param.ni
 	      if optim_param.adoptions.processjacuser == 0;
 		dfdx = feval(optim_param.process,t_c,x_c,1,u_c,p_c, optim_param); 
 	      else
-		dfdx = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,1);
+		dfdx = feval(optim_param.adoptions.processd,t_c,x_c,1,u_c,p_c);
 	      end
             % nx-by-nx*(ncolx+1) matrix
             dxdxij = kron(eye(optim_param.nx),optim_param.lfx(j,:)); 
@@ -194,7 +194,7 @@ for i = 1:optim_param.ni
 	      if optim_param.adoptions.processjacuser == 0;
                 dfdp = feval(optim_param.process,t_c,x_c,3,u_c,p_c, optim_param); 
 	      else
-		dfdp = feval(optim_param.adoptions.processd,t_c,x_c,u_c,p_c,3);
+		dfdp = feval(optim_param.adoptions.processd,t_c,x_c,3,u_c,p_c);
 	      end
                 if isempty(dfdp)
                     dfdp = zeros(optim_param.np,optim_param.nx);

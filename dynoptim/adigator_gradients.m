@@ -16,7 +16,7 @@ function adigator_gradients(param)
     u = adigatorCreateAuxInput([param.nu 1]);
     p = adigatorCreateAuxInput([param.np 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(process, {t, x, u, p, flag}, gradt_process, options);
+    adigator(process, {t, x, flag, u, p}, gradt_process, options);
     
     % adigator gradients -- process model (states)
     x = adigatorCreateDerivInput([param.nx 1],'x');
@@ -24,7 +24,7 @@ function adigator_gradients(param)
     p = adigatorCreateAuxInput([param.np 1]);
     t = adigatorCreateAuxInput([1 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(process, {t, x, u, p, flag}, gradx_process, options);
+    adigator(process, {t, x, flag, u, p}, gradx_process, options);
     
     % adigator gradients -- process model (control)
     u = adigatorCreateDerivInput([param.nu 1], 'u');
@@ -32,7 +32,7 @@ function adigator_gradients(param)
     p = adigatorCreateAuxInput([param.np 1]);
     t = adigatorCreateAuxInput([1 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(process, {t, x, u, p, flag}, gradu_process, options);
+    adigator(process, {t, x, flag, u, p}, gradu_process, options);
     
     % adigator gradients -- process model (parameters)
     p = adigatorCreateDerivInput([param.np 1], 'p');
@@ -40,7 +40,7 @@ function adigator_gradients(param)
     u = adigatorCreateAuxInput([param.nu 1]);
     t = adigatorCreateAuxInput([1 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(process, {t, x, u, p, flag}, gradp_process, options);
+    adigator(process, {t, x, flag, u, p}, gradp_process, options);
   end
   
   if ~param.adoptions.objfunjacuser
@@ -114,7 +114,7 @@ function adigator_gradients(param)
     u = adigatorCreateAuxInput([param.nu 1]);
     p = adigatorCreateAuxInput([param.np 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(confun, {t, x, u, p, flag}, gradt_confun, options);
+    adigator(confun, {t, x, flag, u, p}, gradt_confun, options);
     
     % adigator gradients -- confun (states)
     x = adigatorCreateDerivInput([param.nx 1],'x');
@@ -122,7 +122,7 @@ function adigator_gradients(param)
     p = adigatorCreateAuxInput([param.np 1]);
     t = adigatorCreateAuxInput([1 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(confun, {t, x, u, p, flag}, gradx_confun, options);
+    adigator(confun, {t, x, flag, u, p}, gradx_confun, options);
 
     % adigator gradients -- confun (control)
     u = adigatorCreateDerivInput([param.nu 1], 'u');
@@ -130,7 +130,7 @@ function adigator_gradients(param)
     p = adigatorCreateAuxInput([param.np 1]);
     t = adigatorCreateAuxInput([1 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(confun, {t, x, u, p, flag}, gradu_confun, options);
+    adigator(confun, {t, x, flag, u, p}, gradu_confun, options);
 
     % adigator gradients -- confun (parameters)
     p = adigatorCreateDerivInput([param.np 1], 'p');
@@ -138,5 +138,5 @@ function adigator_gradients(param)
     u = adigatorCreateAuxInput([param.nu 1]);
     t = adigatorCreateAuxInput([1 1]);
     flag = adigatorCreateAuxInput([1 1]);
-    adigator(confun, {t, x, u, p, flag}, gradp_confun, options);
+    adigator(confun, {t, x, flag, u, p}, gradp_confun, options);
   end

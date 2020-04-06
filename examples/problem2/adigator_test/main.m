@@ -5,7 +5,7 @@ u = 5.7493134564287844412433514662552624940872192382812500000;
 
 p = [];
 flag = 2;
-[~,~,JacU,~] = dgrad_process(t,x,u,p,flag)
-JacU_orig = processd(t,x,u,p,flag)
+[~,~,JacU,~] = dgrad_process(t,x,flag,u,p)
+JacU_orig = processd(t,x,flag,u,p)
 
 

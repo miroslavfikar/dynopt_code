@@ -170,7 +170,7 @@ optim_param.nu = size(optim_param.ui,1);
 
 % number of state variables estimation
 % nx > 0 always
-optim_param.nx = length(feval(optim_param.origprocess,0,0,0,optim_param.par,5)); 
+optim_param.nx = length(feval(optim_param.origprocess,0,0,5,0,optim_param.par)); 
 
 % number of parameters estimation
 % np = 0 - if par_init = [], np > 0 - otherwise

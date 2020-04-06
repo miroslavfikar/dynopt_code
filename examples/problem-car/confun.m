@@ -1,4 +1,4 @@
-function [c, ceq] = confun(t,x,u,p,flag)
+function [c, ceq] = confun(t,x,flag,u,p)
 global x1f x2f
 
     if flag == 0                % constraints in t0

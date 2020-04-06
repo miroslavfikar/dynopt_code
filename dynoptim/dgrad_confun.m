@@ -1,8 +1,8 @@
-function [JacT, JacX, JacU, JacP] = dgrad_confun( t, x, u, p, flag, c, ceq, param )
+function [JacT, JacX, JacU, JacP] = dgrad_confun( t, x, flag, u, p, c, ceq, param )
 %% gradients of process model \wrt to time (t)
 if (~isempty(t))
     t_time         = struct('f',t,'dt',ones(length(t),1));
-    [yt_c, yt_ceq] = param.gradt_confun(t_time, x, u, p, flag);
+    [yt_c, yt_ceq] = param.gradt_confun(t_time, x, flag, u, p);
 
     % inequality constraintes 
     if (isfield(yt_c,'dt_size'))
@@ -49,7 +49,7 @@ end
 %% gradients of process model \wrt to states (x)
 if (~isempty(x))
     states         = struct('f',x,'dx',ones(length(x),1));
-    [yx_c, yx_ceq] = param.gradx_confun(t, states, u, p, flag);
+    [yx_c, yx_ceq] = param.gradx_confun(t, states, flag, u, p);
 
     % inequality constraintes 
     if (isfield(yx_c,'dx_size'))
@@ -97,7 +97,7 @@ end
 %% gradients of process model \wrt to control (u)
 if (~isempty(u))
     control        = struct('f',u,'du',ones(length(u),1));
-    [yu_c, yu_ceq] = param.gradu_confun(t, x, control, p, flag);
+    [yu_c, yu_ceq] = param.gradu_confun(t, x, flag, control, p);
 
     % inequality constraintes 
     if (isfield(yu_c,'du_size'))
@@ -144,7 +144,7 @@ end
 %% gradients of process model \wrt to parameters (p)
 if (~isempty(p))
     parameter        = struct('f',p,'dp',ones(length(p),1));
-    [yp_c, yp_ceq] = param.gradp_confun(t, x, u, parameter, flag);
+    [yp_c, yp_ceq] = param.gradp_confun(t, x, flag, u, parameter);
 
     % inequality constraintes 
     if (isfield(yp_c,'dp_size'))
