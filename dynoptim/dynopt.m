@@ -228,20 +228,12 @@ end
 [Aeq,beq] = lineqconstr(optim_param);
 %..........................................................................
 
-% calculus
-%..........................................................................
-% obtaining information about gradients
-objgr = optimget(optim_param.options,'GradObj');
-congr = optimget(optim_param.options,'GradConstr');
+optim_param.options.GradObj='on';
+optim_param.options.GradConstr='on';
 
 % set default NLP solver
 if ~isfield(optim_param.options, 'NLPsolver')
     optim_param.options.NLPsolver = 'fmincon';
-end
-
-if (strcmp(optim_param.options.NLPsolver,'ipopt') == 1) && (strcmp(objgr,'on') ~= 1) && (strcmp(congr,'on') ~= 1)
-  warning('Gradients are missing, ipopt cannot be used, switching to fmincon.')
-  optim_param.options.NLPsolver = 'fmincon';
 end
 
 disp('-----------------------------------------------')
@@ -249,33 +241,30 @@ disp('dynopt in local folder for adigator testing !!!')
 disp('-----------------------------------------------')
 
 % optimisation
-if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
-    if optim_param.adoptions.generate==0
-      disp('*********** gradients reused or provided by user ***********')
-    else
-      disp('*********** generating gradients please wait ***********')
-      adigator_gradients(optim_param);     
-    end
-	
-    % calling nlp solver with gradients :
-    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
-    optimout.lambda,optimout.grad,optimout.hessian] = ...
-    fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
-    @(x) cmconfungrad(x, optim_param), optim_param.options);
-
-    if optim_param.adoptions.keep==1
-      disp('*********** gradients not deleted ***********')
-    else
-      % deleting adigator files (gradient files):
-      delete gradt* gradx* gradu* gradp*
-    end
+if optim_param.adoptions.generate==0
+  disp('*********** gradients reused or provided by user ***********')
 else
-    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
-    optimout.lambda,optimout.grad,optimout.hessian] = ...
-    fminsdp(@(x) cmobjfun(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
-    @(x) cmconfun(x, optim_param), optim_param.options);
-    
+  disp('*********** generating gradients please wait ***********')
+  adigator_gradients(optim_param);     
 end
+
+% calling nlp solver with gradients :
+[optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+ optimout.lambda,optimout.grad,optimout.hessian] = ...
+    fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
+	    @(x) cmconfungrad(x, optim_param), optim_param.options);
+
+if optim_param.adoptions.keep==1
+  disp('*********** gradients not deleted ***********')
+else
+  % deleting adigator files (gradient files):
+  delete gradt* gradx* gradu* gradp*
+end
+
+%    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+%    optimout.lambda,optimout.grad,optimout.hessian] = ...
+%    fminsdp(@(x) cmobjfun(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
+%    @(x) cmconfun(x, optim_param), optim_param.options);
     
 %[x,fval,exitflag,output,lambda,grad,hessian] = ...
 %fminsdp(objfun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)

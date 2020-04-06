@@ -1,6 +1,5 @@
 clear; close all; clc;
 options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e5);
 options = optimset(options,'MaxIter',1e4);
 %options = optimset(options,'MaxIter',22);

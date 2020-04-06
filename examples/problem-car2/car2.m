@@ -16,7 +16,6 @@ x1t = 10;
 
 %% optimization
 options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e4);
 options = optimset(options,'MaxIter',1e3);
 options = optimset(options,'TolFun',1e-7);
