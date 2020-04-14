@@ -20,8 +20,8 @@ function vA = svec(A,sp_A)
 %
 % See also FMINSDP, SMAT
 
-
-if nargin<2
+% TODO: Improve speed here, preferably without resorting to mex-functions
+if nargin<2 
     vA = A(tril(true(size(A))));
 else
     vA = A(tril(sp_A)>0);    

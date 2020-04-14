@@ -7,5 +7,5 @@ function dc = dc_ipopt(x,data)
 %
 % See also C_IPOPT, IPOPT_MAIN, FMINSDP
 
-[unused,unused,cineqgrad,ceqgrad] = data.nonlconSDP(x);
+[unused,unused,cineqgrad,ceqgrad] = data.nonlcon(x);
 dc = sparse([cineqgrad'; ceqgrad']);

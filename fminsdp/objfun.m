@@ -1,8 +1,17 @@
 function [fval,grad] = objfun(x,data)
 
 % OBJFUN is used by fminsdp to compute objective function and its 
-% gradient. The user-supplied gradient is augmented with an empty sparse
-% vector to account for the auxiliary variables used by fminsdp.
+% gradient when using the cholesky-method. The user-supplied gradient 
+% is augmented with an empty sparse  vector to account for the 
+% auxiliary variables used by fminsdp.
+%
+% Let f=f(x) denote the user supplied objective. Then if options.c==0
+%
+% fval = f(x)
+%
+% If options.x>0, then
+%
+% fval = f(x) + c*s
 %
 % See also FMINSDP
 
@@ -22,4 +31,5 @@ elseif nargout==2
     end        
 end
 
+% Add s-variable for feasibility-mode
 fval = fval + data.c*x(end);

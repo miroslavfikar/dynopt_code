@@ -33,4 +33,4 @@ save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 
 
-%graph
+%graphplot

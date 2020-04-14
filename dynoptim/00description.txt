@@ -1,0 +1,228 @@
+Schema:
+
+dynopt: process, initoptimvar (process), adigator_gradients (process, objfun, confun), fminsdp (cmobjfungrad, cmconfungrad)
+cmobjfungrad: userperformindx (objfun), paramperformindx (objfun)
+cmconfungrad: nonlineqconstr (process), userconst (confun)
+adigator_gradients:
+ process -> grad[txup]_process
+ objfun -> grad[txup]_objfun
+ confun -> grad[txup]_confun
+
+dynconfun -> confun: confun, dgrad_confun (grad[txup]_confun)
+dynobjfun -> objfun: objfun, dgrad_objfun (grad[txup]_objfun)
+dynprocess -> process: process, dgrad_process (grad[txup]_process)
+
+
+adigator_gradients.m    
+=========================
+adigator('process', {t, x, u, p, flag}, 'gradt_process', options);
+adigator('process', {t, x, u, p, flag}, 'gradx_process', options);
+adigator('process', {t, x, u, p, flag}, 'gradu_process', options);
+adigator('process', {t, x, u, p, flag}, 'gradp_process', options);
+adigator('objfun', {t, x, u, p}, 'gradt_objfun', options);
+adigator('objfun', {t, x, u, p}, 'gradx_objfun', options);
+adigator('objfun', {t, x, u, p}, 'gradu_objfun', options);
+adigator('objfun', {t, x, u, p}, 'gradp_objfun', options);
+adigator('confun', {t, x, u, p, flag}, 'gradt_confun', options);
+adigator('confun', {t, x, u, p, flag}, 'gradx_confun', options);
+adigator('confun', {t, x, u, p, flag}, 'gradu_confun', options);
+adigator('confun', {t, x, u, p, flag}, 'gradp_confun', options);
+
+cmconfun.m
+=========================
+Mceq = nonlineqconstr(optim_param,lim,um,xm,pm,tfull);
+
+if ~isempty(optim_param.confun)
+    [Uc,Uceq] = userconst(optim_param,t_c,x_c,0,u_c,p_c,1,1);
+    for i = 1:optim_param.ni
+        for j = 1:optim_param.ncolx+1
+            [Uc,Uceq] = userconst(optim_param,t_c,x_c,1,u_c,p_c,i,j);
+        end
+        if i == optim_param.ni
+            [Uc,Uceq] = userconst(optim_param,t_c,x_c,1,u_c,p_c,i, ...
+                optim_param.ncolx+2);
+        end
+    end
+   
+    [Uc,Uceq] = userconst(optim_param,t_c,x_c,2,u_c,p_c,optim_param.ni, ...
+        optim_param.ncolx+2);
+end
+
+
+cmconfungrad.m       
+=========================
+[Mceq,DMceq] = nonlineqconstr(optim_param,lim,um,xm,pm,tfull);
+
+if ~isempty(optim_param.confun)
+    [Uc,Uceq,DUc,DUceq] = userconst(optim_param,t_c,x_c,0,u_c,p_c,1,1);
+    for i = 1:optim_param.ni
+        for j = 1:optim_param.ncolx+1
+            [Uc,Uceq,DUc,DUceq] = userconst(optim_param,t_c,x_c,1,u_c,p_c,i,j);
+        end
+        if i == optim_param.ni
+            [Uc,Uceq,DUc,DUceq] = userconst(optim_param,t_c,x_c,1,u_c,p_c,i, ...
+                optim_param.ncolx+2);
+        end
+    end
+    [Uc,Uceq,DUc,DUceq] = userconst(optim_param,t_c,x_c,2,u_c,p_c, ...
+        optim_param.ni,optim_param.ncolx+2);
+end
+
+cmobjfun.m           
+=========================
+if isempty(optim_param.objtype) % user defined objective function in tf
+    [Uf] = userperformindx(optim_param,t_c,x_c,u_c,p_c,optim_param.ni, ...
+        optim_param.ncolx+2);
+else % user defined objective function for parameter estimation
+    pf = paramperformindx(tfull,xm,um,pm,optim_param);
+end
+
+cmobjfungrad.m       
+=========================
+if isempty(optim_param.objtype) % user defined objective function in tf
+    [Uf,DUf] = userperformindx(optim_param,t_c,x_c,u_c,p_c, ...
+        optim_param.ni,optim_param.ncolx+2);
+else % user defined objective function for parameter estimation
+    [pf,pDf] = paramperformindx(tfull,xm,um,pm,optim_param);
+end
+
+=========================
+dgrad_confun.m          
+ [yt_c, yt_ceq] = gradt_confun(t_time, x, u, p, flag);
+ [yx_c, yx_ceq] = gradx_confun(t, states, u, p, flag);
+ [yu_c, yu_ceq] = gradu_confun(t, x, control, p, flag);
+ [yp_c, yp_ceq] = gradp_confun(t, x, u, parameter, flag);
+
+=========================
+dgrad_objfun.m          
+    y_t    = gradt_objfun(t_time, x, u, p);
+    y_x     = gradx_objfun(t, states, u, p);
+    y_u     = gradu_objfun(t, x, control, p);
+    y_p     = gradp_objfun(t, x, u, parameter);
+
+=========================
+dgrad_process.m         
+    y_t    = gradt_process(t_time, x, u, p, flag);
+    y_x     = gradx_process(t, states, u, p, flag);
+    y_u     = gradu_process(t, x, control, p, flag);
+    y_p     = gradp_process(t, x, u, parameter, flag);
+
+=========================
+dynconfun.m             
+switch flag
+    case 0 % constraints in t0
+        [c, ceq] = confun(t,x,u,p,flag);
+        [JacT, JacX, JacU, JacP] = dgrad_confun(t,x,u,p,flag,c,ceq);
+    case 1 % constraints over interval [t0,tf]
+        [c, ceq] = confun(t,x,u,p,flag);
+        [JacT, JacX, JacU, JacP] = dgrad_confun(t,x,u,p,flag,c,ceq);
+    case 2 % constraints in tf
+        [c, ceq] = confun(t,x,u,p,flag);
+        [JacT, JacX, JacU, JacP] = dgrad_confun(t,x,u,p,flag,c,ceq);
+end
+
+=========================
+dynobjfun.m             
+f = objfun(t,x,u,p); % J
+[JacT,JacX,JacU,JacP] = dgrad_objfun(t,x,u,p);
+
+=========================
+dynopt.m                
+optim_param.nx = length(feval(optim_param.process,0,0,5,0,optim_param.par)); 
+[x0,lb,ub] = initoptimvar(optim_param);
+if (strcmp(objgr,'on') == 1) && (strcmp(congr,'on') == 1)
+    adigator_gradients(1,optim_param.nx,optim_param.nu,optim_param.np);     
+    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+    optimout.lambda,optimout.grad,optimout.hessian] = ...
+    fminsdp(@(x) cmobjfungrad(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
+    @(x) cmconfungrad(x, optim_param), optim_param.options);
+else
+    [optimout.nlpx,optimout.fval,optimout.exitflag,optimout.output, ...
+    optimout.lambda,optimout.grad,optimout.hessian] = ...
+    fminsdp(@(x) cmobjfun(x, optim_param),x0,A,b,Aeq,beq,lb,ub,...
+    @(x) cmconfun(x, optim_param), optim_param.options);
+    
+end
+
+=========================
+dynprocess.m            
+switch flag
+    case 0 % f(x,u,p,t)
+        sys = process(t,x,u,p,flag);      
+    case 1 % df/dx
+        [~,JacX,~,~] = dgrad_process(t,x,u,p,flag);
+    case 2 % df/du
+        [~,~,JacU,~] = dgrad_process(t,x,u,p,flag);
+    case 3 % df/dp
+        [~,~,~,JacP] = dgrad_process(t,x,u,p,flag);
+    case 4 % df/dt
+        [JacT,~,~,~] = dgrad_process(t,x,u,p,flag);
+    case 5 % x0
+        sys = process(t,x,u,p,flag);
+    case 6 % dx0/dp
+        [~,~,~,JacP] = dgrad_process(t,x,u,p,flag);
+    case 7 % M
+        sys = process(t,x,u,p,flag);
+end
+
+initoptimvar.m          
+=========================
+y0 = feval(optim_param.process,0,0,5,0,optim_param.par);
+for i=1:optim_param.ni
+    [t,y] = ode23t(optim_param.process,tfull(:,i)',y0,odeop,0,ui,optim_param.par);
+end
+
+nonlineqconstr.m        
+=========================
+for i = 1:optim_param.ni
+    
+    if i == 1 
+        x0 = feval(optim_param.process,t_c,x_c,5,u_c,p_c); 
+        if nargout == 2 % DMceq is also calculed
+            if optim_param.dp_col ~= 0 % p is optimised variable
+                dx0dp = feval(optim_param.process,t_c,x_c,6,u_c,p_c); 
+            end
+        end
+    end
+    for j = 2:optim_param.ncolx+1 
+        f = feval(optim_param.process,t_c,x_c,0,u_c,p_c); 
+        if nargout == 2 % DMceq is also calculed
+            if optim_param.dt_col ~= 0 % t is optimised variable
+                dfdt = feval(optim_param.process,t_c,x_c,4,u_c,p_c); 
+            end
+            if optim_param.du_col ~= 0 % u is optimised variable
+                dfdu = feval(optim_param.process,t_c,x_c,2,u_c,p_c); 
+            end
+            dfdx = feval(optim_param.process,t_c,x_c,1,u_c,p_c); 
+            if optim_param.dp_col ~= 0 % p is optimised variable
+                dfdp = feval(optim_param.process,t_c,x_c,3,u_c,p_c); 
+            end
+        end
+    end
+end
+
+paramperformindx.m      
+=========================
+for i = 1:length(tmes) 
+    if nargout == 1
+        [f] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,x_m);
+    else
+        [f,Df] = feval(optim_param.objfun,t_c,x_c,u_c,p_c,x_m);
+    end
+end
+
+userconst.m             
+=========================
+if nargout == 2
+    [c,ceq] = feval(optim_param.confun,t_c,x_c,flag,u_c,p_c);
+else 
+    [c,ceq,Dc,Dceq] = feval(optim_param.confun,t_c,x_c,flag,u_c,p_c);
+end
+
+userperformindx.m
+=========================
+if nargout == 1
+    [f] = feval(optim_param.objfun,t_c,x_c,u_c,p_c);
+else 
+    [f,Df] = feval(optim_param.objfun,t_c,x_c,u_c,p_c);
+end

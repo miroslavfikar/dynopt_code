@@ -8,7 +8,7 @@ function [fval,grad] = objfun_feas_no_user(x,data)
 %    inequalities.
 %
 %
-% See also FMINSDP, OBJFUN_FEAS
+% See also FMINSDP
 
 fval = data.c*x(end);
 if nargout==2  

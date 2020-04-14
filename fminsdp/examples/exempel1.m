@@ -29,14 +29,14 @@
 %
 % Objective function value at the solution: 144.5000
 % Number of iterations:           			18
-% Run-time for this script using Matlab R2013b on Windows 7 64-bit
-% and an Intel Core i5-520m:      			1.2 seconds  
+% Run-time for this script using Matlab R2016a on Windows 7 64-bit
+% and an Intel Core i7-4712MQ:             0.97 [s]  (first run)
 %
 
 tic
 
 clc
-clear all
+clear
 
 % List of node coordinates [node #, x-co. y-co.]
 nc = [1 0 0
@@ -78,11 +78,10 @@ lb = zeros(truss.nel,1);
 % performance 
 ub = 500*ones(truss.nel,1);
 
-% Construct sparsity pattern of the Cholesky factors of the constraint
-% matrix using the function symbol_fact. It is  recommended, but not necessary 
-% to provide a sparsity pattern.
+% Construct sparsity pattern of the constraint matrix. 
+% It is recommended, but not necessary to provide a sparsity pattern.
 K = abs(truss.B)'*abs(truss.B);
-sp_pattern = symbol_fact([c f'; f K]);
+sp_pattern = [c f'; f K];
 
 % Set up gradient of matrix constraint with respect to primary
 % variables. This needs only be done once since the matrix 
@@ -95,7 +94,7 @@ for e = 1:nel
     gradA(e,:) = svec([zeros(1,ndof+1); zeros(ndof,1) Ke0]);
 end
 
-% Objective and nonlinear constraints functions
+% Objective and nonlinear constraint functions
 objective = @(x) volume12(x);
 nonlcon   = @(x) nonlcon1(x,truss,gradA);
 
@@ -104,10 +103,9 @@ options = sdpoptionset('Algorithm','interior-point',...
 				       'GradConstr','on','GradObj','on','DerivativeCheck','off',...
                        'Display','iter-detailed','Hessian','user-supplied',...
                        'Aind',1,...                 % Mark the beginning of the matrix constraints
-                       'NLPsolver','fmincon',...    % Select optimization solver
                        'sp_pattern',sp_pattern,...  % Supply sparsity pattern
-                       'L_upp',200,...              % Set upper bounds on the off-diagonal elements of the Cholesky factors    
-                       'L_low',-200);               % Set lower bounds on all elements of the Cholesky factors                           
+                       'L_upp',200,...              % Set upper and lower bounds on the off-diagonal elements of the Cholesky factors    
+                       'L_low',-200);               %                          
                    
 % Note that options.Hessian is set to 'user-supplied' but that we do not need
 % to supply a function for evaluating the Hessian of the Lagrangian since
@@ -135,17 +133,17 @@ while true
 end
 
 % Call solver
-[x,fval,exitflag,output] = ...
+[x,fval,exitflag,output,lambda] = ...
     fminsdp(objective,x0,[],[],[],[],lb,ub,nonlcon,options);
 
 % Positive semi-definitness of the constraint matrix can 
 % be verified by computing the eigenvalues of the constraint
 % matrix at the solution
-eig(output.A{1});
+%eig(output.A{1});
 
 % The Cholesky factors at the solution can also be 
 % retrieved to verify that A \approx L*L'
-norm(full(output.A{1}-output.L{1}*output.L{1}'));
+%norm(full(output.A{1}-output.L{1}*output.L{1}'));
 
 % Visualize solution
 truss.x = x;

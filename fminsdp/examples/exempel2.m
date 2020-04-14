@@ -46,8 +46,8 @@
 %
 % Objective function value at the solution: 956.4580
 % Number of iterations:           			44
-% Run-time for this script using Matlab R2013b on Windows 7 64-bit
-% and an Intel Core i5-520m:      			8.0 seconds  
+% Run-time for this script using Matlab R2016a on Windows 7 64-bit
+% and an Intel Core i7-4712MQ:      		5.4 [s]  (first run)
 %
 
 
@@ -74,17 +74,21 @@ nc = [1 0 0
     15 7 0
     16 7 1
     17 8 0.5];
-fixeddof = 1:4;
+fixeddofs = 1:4;
 maxlength = sqrt(2);
 
 % Create an instance of TrussClass
-truss = TrussClass(nc,fixeddof,maxlength);
+truss = TrussClass(nc,fixeddofs,maxlength);
 
 % Force applied to the right-most node, pointing in the negative
 % x-direction
-f = zeros(truss.ndof,1);
-f(truss.ndof-1,1) = -1;
-truss.f = f;
+truss.f = zeros(2*size(nc,1),1);
+truss.f(2*17-1,1) = -1;
+truss.f(fixeddofs) = [];
+
+% f = zeros(truss.ndof,1);
+% f(truss.ndof-1,1) = -1;
+% truss.f = f;
 
 c = 0.5;
 truss.c_upp = c;
@@ -99,10 +103,10 @@ ub = 500*ones(truss.nel,1);
 K = abs(truss.B)'*abs(truss.B);
 G = abs(truss.C)'*abs(truss.C);
 
-% Construct sparsity pattern of the Cholesky factors of the constraint
+% Construct sparsity pattern of the constraint
 % matrices and put them in a cell array with two entries
-sp_pattern = {symbol_fact([c f'; f K]),...
-              symbol_fact(K+G)};       
+sp_pattern = {[c truss.f'; truss.f K],...
+              K+G};       
 
 % Some problem data is precomputed. This is not neccesary,
 % but improves performance      
@@ -130,8 +134,8 @@ options = sdpoptionset('Algorithm','interior-point',...
                        'Aind',1,...                 % Mark being of matrix constraints
                        'NLPsolver','fmincon',...    % Select optimization solver
                        'sp_pattern',sp_pattern,...  % Sparsity pattern
-                       'L_upp',200,...              % Set upper bounds on the off-diagonal elements of the Cholesky factors    
-                       'L_low',-200);               % Set lower bounds on all elements of the Cholesky factors
+                       'L_upp',200,...              % Set upper and lower bounds on the off-diagonal elements of the Cholesky factors    
+                       'L_low',-200);               % 
                    
                    
 % Initial guess 
@@ -149,8 +153,8 @@ while true
     try
         % Attempt Cholesky factorizations. If the matrices are positive
         % definite this will work and we exit the loop.
-        chol(sparse([c f'; f K]));
-        chol(sparse(K+G));
+        chol([c truss.f'; truss.f K]);
+        chol(K+G);
         break;
     catch
     end

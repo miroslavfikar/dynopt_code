@@ -37,7 +37,7 @@ else
         case 'symrcm'
             P = symrcm(A);
         otherwise
-            error('Unknown reordering method. Availiable options are ''amd'',''colamd'',''symamd'' and ''symrcm''');
+            error('Unknown reordering method. Available options are ''amd'',''colamd'',''symamd'' and ''symrcm''');
     end
 end
 [count,h,parent,post,L] = symbfact(A(P,P),'lo','lower');

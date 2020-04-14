@@ -15,7 +15,7 @@ function sP = gradientSparsity(data)
 %
 %   where Lvars is a vector containing the auxiliary variables.   
 %
-% See also FMINSDP, NONLCONSDP, NONLCONSDP_FEAS
+% See also FMINSDP, NONLCONCHOL
 
 
 Lindz = data.Lindz;
@@ -46,7 +46,7 @@ for q = 1:data.nMatrixConstraints
     Sn = sparse(row,col,1,numel(col),n^2);
     
     % Construct gradient
-    gradLLt = (Sn*(Tn+speye(n^2))*kron(L,In)*Sn')';   
+    gradLLt = (Sn*(Tn+speye(n^2))*kron(L,In)*Sn')';
     
     [row,col] = find(gradLLt);
     

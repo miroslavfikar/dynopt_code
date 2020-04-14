@@ -46,9 +46,9 @@
 %
 % Objective function value at the solution: 956.4580
 % Number of iterations:                     23
-% Run-time for this script using Matlab R2013b on Windows 7 64-bit, 
-% Ipopt 3.11.7 with Ma57 from Matlab
-% and an Intel Core i5-520m:                1.4 seconds
+% Run-time for this script using Matlab R2016a on Windows 7 64-bit, 
+% Ipopt 3.11.8 with Ma57 from Matlab
+% and an Intel Core i7-4712MQ:             	1.0 [s] (first run)
 %
 
 tic
@@ -74,17 +74,17 @@ nc = [1 0 0
     15 7 0
     16 7 1
     17 8 0.5];
-fixeddof = 1:4;
+fixeddofs = 1:4;
 maxlength = sqrt(2);
 
 % Create an instance of TrussClass
-truss = TrussClass(nc,fixeddof,maxlength);
+truss = TrussClass(nc,fixeddofs,maxlength);
 
 % Force applied to the right-most node, pointing in the negative
 % x-direction
-f = zeros(truss.ndof,1);
-f(truss.ndof-1,1) = -1;
-truss.f = f;
+truss.f = zeros(2*size(nc,1),1);
+truss.f(2*17-1,1) = -1;
+truss.f(fixeddofs) = [];
 
 % Upper bound on the compliance
 c = 0.5;
@@ -97,13 +97,13 @@ lb = [zeros(nel,1);        -ones(ndof,1)];
 ub = [500*ones(nel,1);      ones(ndof,1)];
 
 % Upper bound on compliance. This is now a scalar, linear constraint
-A = [sparse(1,nel) f'];
+A = [sparse(1,nel) truss.f'];
 b = c;
 
 % Construct sparsity pattern of the constraint matrix
 K = abs(truss.B)'*abs(truss.B);
 G = abs(truss.C)'*abs(truss.C);
-sp_pattern = symbol_fact(K+G);
+sp_pattern = K+G;
 
 % Precompute some data for better performance
 CC = zeros(nel,ndof*(ndof+1)/2);
@@ -146,11 +146,11 @@ t0 = ones(nel,1);
 % satified.
 while true
     K = bsxfun(@times,truss.B,t0./truss.length.^2)'*truss.B;
-    u0 = K\f;
+    u0 = K\truss.f;
     strain = truss.B*u0;
     G = truss.C'*diag(t0.*strain./truss.length.^3)*truss.C;
     try
-        chol(sparse(K+G));
+        chol(K+G);
         if A*[t0; u0]<b
             break;
         end
