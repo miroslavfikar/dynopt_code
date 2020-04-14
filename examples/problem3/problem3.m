@@ -1,19 +1,8 @@
 clear; close all; clc;
-%% Global parameters : 
-global x10 x20 x30
-
-% initial conditions :
-x10 = 0;
-x20 = -1;
-x30 = 0;
-
-
-%% Optimization : 
-
 options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
                        'TolCon',1e-7,'TolX',1e-7,...
                        'MaxFunEvals',1e5,'MaxIter',1e5,'Algorithm','sqp',...
-                       'DerivativeCheck','on','NLPsolver','fmincon');
+                       'NLPsolver','fmincon');
 
 optimparam.optvar = 3;
 optimparam.objtype = [];
@@ -30,11 +19,14 @@ optimparam.objfun  = @objfun;
 optimparam.confun  = @confun;
 optimparam.process = @process;
 optimparam.options = options;
-%optimparam.adoptions = adoptionset();
-optimparam.adoptions = adoptionset('jacuser',true);
+%optimparam.adoptions = adoptionset('jacuser',true);
 
 [optimout,optimparam] = dynopt(optimparam);
 [tplot,uplot,xplot]   = profiles(optimout,optimparam,50);
+[tplot,uplot,xplot] = profiles(optimout,optimparam,50);
+[tp,cp,ceqp] = constraints(optimout,optimparam,50);
+
+save optimprofiles tplot uplot xplot tp cp ceqp
 
 figure
 subplot(1,2,1)

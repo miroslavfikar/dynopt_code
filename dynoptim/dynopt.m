@@ -236,6 +236,11 @@ if ~isfield(optim_param.options, 'NLPsolver')
     optim_param.options.NLPsolver = 'fmincon';
 end
 
+% set default AD options
+if ~isfield(optim_param, 'adoptions')
+    optim_param.adoptions=adoptionset();
+end
+
 disp('-----------------------------------------------')
 disp('dynopt in local folder for adigator testing !!!')
 disp('-----------------------------------------------')

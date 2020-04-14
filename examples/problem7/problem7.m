@@ -24,7 +24,6 @@ optimparam.confun = @confun;
 optimparam.confun = []; 
 optimparam.process = @process;
 optimparam.options = options;
-optimparam.adoptions = adoptionset();
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam

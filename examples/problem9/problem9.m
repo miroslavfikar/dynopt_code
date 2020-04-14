@@ -27,7 +27,6 @@ optimparam.confun = @confun;
 %optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
-%optimparam.adoptions = adoptionset();
 optimparam.adoptions = adoptionset('jacuser',true);
 
 

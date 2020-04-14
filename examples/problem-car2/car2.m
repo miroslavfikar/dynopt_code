@@ -1,16 +1,9 @@
 clear; close all; clc;
-
-%% global parameters : 
 global x10 x20 x1f x2f x1t
-
 % initial conditions :
-x10 = 0;
-x20 = 0;
-
+x10 = 0; x20 = 0;
 % final conditions :
-x1f = 0;
-x2f = 300;
-
+x1f = 0; x2f = 300;
 % constraints in each time :
 x1t = 10;
 
@@ -22,7 +15,6 @@ options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
 options = optimset(options,'Algorithm','sqp'); %2010a
-%options = optimset(options,'Algorithm','active-set'); %2008b
 
 %options.NLPsolver='ipopt';
 
@@ -42,11 +34,8 @@ optimparam.objfun = @objfun;
 optimparam.confun = @confun; 
 optimparam.process = @process;
 optimparam.options = options;
-optimparam.adoptions = adoptionset();
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 
-
-%graph

@@ -6,7 +6,6 @@ options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
 options = optimset(options,'Algorithm','sqp'); %2010a
-%options = optimset(options,'Algorithm','active-set'); %2008b
 
 %options.NLPsolver='ipopt';
 
@@ -25,9 +24,7 @@ optimparam.objfun = @objfun;
 optimparam.confun = [];
 optimparam.process = @process;
 optimparam.options = options;
-M = zeros(4,4); M(1,1)=1; M(2,2)=1;
-optimparam.M = M;
-optimparam.adoptions = adoptionset();
+M = zeros(4,4); M(1,1)=1; M(2,2)=1; optimparam.M = M;
 
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam

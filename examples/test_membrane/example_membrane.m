@@ -43,7 +43,6 @@ optimparam.objfun  = @objfun;
 optimparam.confun  = @confun;
 optimparam.process = @process;
 optimparam.options = options;
-optimparam.adoptions = adoptionset();
 
 [optimout,optimparam] = dynopt(optimparam);
 [tplot,uplot,xplot]   = profiles(optimout,optimparam,50);

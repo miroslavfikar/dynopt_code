@@ -1,17 +1,9 @@
 clear; close all; clc;
-%% Global parameters : 
 global x10 x20 x1f x2f
-
 % initial conditions :
-x10 = 0;
-x20 = 0;
-
+x10 = 0; x20 = 0;
 % final conditions :
-x1f = 0;
-x2f = 300;
-
-
-%% Optimization : 
+x1f = 0; x2f = 300;
 
 options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
                        'TolCon',1e-7,'TolX',1e-7,...
@@ -33,7 +25,6 @@ optimparam.objfun  = @objfun;
 optimparam.confun  = @confun;
 optimparam.process = @process;
 optimparam.options = options;
-optimparam.adoptions = adoptionset();
 %optimparam.adoptions = adoptionset('jacuser', true);
 
 [optimout,optimparam] = dynopt(optimparam);

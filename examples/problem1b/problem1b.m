@@ -1,13 +1,4 @@
 clear; close all; clc;
-
-% global variables :
-global x10 x20
-
-% initial conditions:
-x10 = 1;
-x20 = 0;
-
-% Optimization : 
 options = sdpoptionset('LargeScale','off','Display','iter','TolFun',1e-7,...
                        'TolCon',1e-6,'TolX',1e-7,...
                        'MaxFunEvals',1e6,'MaxIter',40000,...
@@ -29,11 +20,11 @@ optimparam.objfun  = @objfun;
 optimparam.confun  = @confun;
 optimparam.process = @process;
 optimparam.options = options;
-%optimparam.adoptions = adoptionset('jacuser',true);
-optimparam.adoptions = adoptionset();
+optimparam.adoptions = adoptionset('jacuser',true);
 
 [optimout,optimparam] = dynopt(optimparam);
 [tplot,uplot,xplot]   = profiles(optimout,optimparam,50);
+save optimprofiles tplot uplot xplot 
 
 figure
 subplot(2,1,1)
