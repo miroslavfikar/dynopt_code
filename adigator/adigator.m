@@ -710,8 +710,9 @@ end
 
 %% ~~~~~~~~~~~~~~~~~~~~~~~~~~ FILEKEEPING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %%
 function [SoftwareLocation,adigatorTempDir] = filekeeping()
-SoftwareLocation = which('adigator');
-SoftwareLocation = SoftwareLocation(1:end-11);
+%%SoftwareLocation = which('adigator');
+%%SoftwareLocation = SoftwareLocation(1:end-11);
+SoftwareLocation = tempdir;
 % Delete any previously created dummy files
 adigatorTempDir = [SoftwareLocation,filesep,'adigatorTempDir',filesep];
 if exist(adigatorTempDir,'dir')
