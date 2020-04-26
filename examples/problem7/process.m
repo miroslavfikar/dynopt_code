@@ -1,8 +1,6 @@
 function sys = process(t,x,flag,u,p)
 
-  if flag == 5 % initial conditions
-        sys = [0.1883;0.2507;0.0467;0.0899;0.1804;0.1394;0.1046;0];
-  else % ODE system
+  if flag == 0 % ODE system 
         q = u(1)+u(2)+u(4);
         sys = [u(4)-q*x(1)-17.6*x(1)*x(2)-23.0*x(1)*x(6)*u(3);
                u(1)-q*x(2)-17.6*x(1)*x(2)-146.0*x(2)*x(3);
@@ -12,5 +10,9 @@ function sys = process(t,x,flag,u,p)
                -q*x(6)+102.60*x(4)*x(5)-23.0*x(1)*x(6)*u(3);
                -q*x(7)+46.0*x(1)*x(6)*u(3);
                5.80*((q*x(1))-u(4))-3.70*u(1)-4.10*u(2)+q*(23.0*x(4)+11.0*x(5)+28.0*x(6)+35.0*x(7))-5.0*u(3)^2-0.099];
+  elseif flag == 5  % initial conditions
+        sys = [0.1883;0.2507;0.0467;0.0899;0.1804;0.1394;0.1046;0];
+  else
+    sys = [];
   end
 end
