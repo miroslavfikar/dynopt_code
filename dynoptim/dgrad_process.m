@@ -3,8 +3,9 @@ function Jac = dgrad_process( t, x, flag, u, p, param )
 % gradients of process model \wrt to states (x)
   if flag==1
     if (~isempty(x))
+      origflag = 0;
       states  = struct('f',x,'dx',ones(length(x),1));
-      y_x     = param.gradx_process(t, states, flag, u, p);
+      y_x     = param.gradx_process(t, states, origflag, u, p);
       
       if (isfield(y_x,'dx_size'))
 	if (length(y_x.dx_size) == 1)
@@ -30,8 +31,9 @@ function Jac = dgrad_process( t, x, flag, u, p, param )
   % gradients of process model \wrt to control (u)
   if flag==2
     if (~isempty(u))
+      origflag = 0;
       control = struct('f',u,'du',ones(length(u),1));
-      y_u     = param.gradu_process(t, x, flag, control, p);
+      y_u     = param.gradu_process(t, x, origflag, control, p);
       
       if (isfield(y_u,'du_size'))
         if (length(y_u.du_size) == 1)
@@ -58,12 +60,14 @@ function Jac = dgrad_process( t, x, flag, u, p, param )
   if flag==3 | flag==6
 
     if flag == 6
-      flag = 5;
+      origflag = 5;
+    else
+      origflag = 0;
     end
     
     if (~isempty(p))
       parameter = struct('f',p,'dp',ones(length(p),1));
-      y_p     = param.gradp_process(t, x, flag, u, parameter);
+      y_p     = param.gradp_process(t, x, origflag, u, parameter);
       
       if (isfield(y_p,'dp_size'))
         if (length(y_p.dp_size) == 1)
@@ -89,8 +93,9 @@ function Jac = dgrad_process( t, x, flag, u, p, param )
 % gradients of process model \wrt to time (t)
   if flag==4
     if (~isempty(t))
+      origflag = 0;
       t_time = struct('f',t,'dt',ones(length(t),1));
-      y_t    = param.gradt_process(t_time, x, flag, u, p);
+      y_t    = param.gradt_process(t_time, x, origflag, u, p);
       
       if (isfield(y_t,'dt_size'))
 	if (length(y_t.dt_size) == 1)

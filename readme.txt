@@ -1,3 +1,8 @@
+ToDo in minor versions:
+- hardwired names of user functions replace with definable defaults
+- change derivative information calculation (process) for each specific flag
+- defaults for adigator defined in adoptionset
+
 Adigator in DYNOPT :
 
 1.) what needs to be changed in dynopt.m 
