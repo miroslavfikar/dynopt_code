@@ -241,10 +241,6 @@ if ~isfield(optim_param, 'adoptions')
     optim_param.adoptions=adoptionset();
 end
 
-disp('-----------------------------------------------')
-disp('dynopt in local folder for adigator testing !!!')
-disp('-----------------------------------------------')
-
 % optimisation
 if optim_param.adoptions.generate==0
   disp('*********** gradients reused or provided by user ***********')
