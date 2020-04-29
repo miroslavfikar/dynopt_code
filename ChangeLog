@@ -1,3 +1,7 @@
+2020-04-29  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.1
+
+	* forgotten code not erased
+
 2020-04-29  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.0 
 
 	* automatic differentiation implemented using adigator,
