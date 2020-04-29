@@ -1,49 +1,16 @@
-function [c,ceq,Dc,Dceq] = confun(t,x,flag,u,p)
+function [c, ceq] = confun(t,x,flag,u,p)
+global x1f x2f x1t
 
-switch flag
-    case 0 % constraints in t0
-        c = [];
+    if flag == 0                % constraints in t0
+        c   = [];
         ceq = [];
-        
-        % gradient calculus
-        if nargout == 4
-            Dc.t = [];
-            Dc.x = [];
-            Dc.u = [];
-            Dc.p = [];
-            Dceq.t = [];
-            Dceq.x = [];
-            Dceq.u = [];
-            Dceq.p = [];
-        end
-    case 1 % constraints over interval [t0,tf]
-        c = [x(1)-10];
+    elseif flag == 1            % constraints over interval [t0,tf]
+        x1 = x(1);
+        c   = [x1 - x1t];
         ceq = [];
-        
-        % gradient calculus
-        if nargout == 4
-            Dc.t = [];
-            Dc.x = [1;0];
-            Dc.u = [];
-            Dc.p = [];
-            Dceq.t = [];
-            Dceq.x = [];
-            Dceq.u = [];
-            Dceq.p = [];
-        end
-    case 2 % constraints in tf
-        c = [];
-        ceq = [x(1); x(2)-300];
-        
-        % gradient calculus   
-        if nargout == 4
-            Dc.t = [];
-            Dc.x = [];
-            Dc.u = [];
-            Dc.p = [];
-            Dceq.t = [];
-            Dceq.x = [1 0;0 1];
-            Dceq.u = [];
-            Dceq.p = [];
-        end
- end
+    elseif flag == 2            % constraints in tf
+        x1 = x(1); x2 = x(2);
+          c = [];
+        ceq = [x1 - x1f; x2 - x2f];
+    end
+end

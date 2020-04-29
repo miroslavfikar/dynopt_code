@@ -1,36 +1,45 @@
-options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'GradObj','on','GradConstr','on');
-options = optimset(options,'MaxFunEvals',1e5);
-options = optimset(options,'MaxIter',1e5);
-options = optimset(options,'TolFun',1e-7);
-options = optimset(options,'TolCon',1e-7);
-options = optimset(options,'TolX',1e-7);
-options = optimset(options,'Algorithm','sqp'); %2010a
-%options = optimset(options,'Algorithm','active-set'); %2008b
+clear; close all; clc;
+options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
+                       'TolCon',1e-7,'TolX',1e-7,...
+                       'MaxFunEvals',1e5,'MaxIter',1e5,'Algorithm','sqp',...
+                       'NLPsolver','fmincon');
 
-% options.NLPsolver='ipopt';
-
-optimparam.optvar = 3; 
-optimparam.objtype = []; 
+optimparam.optvar = 3;
+optimparam.objtype = [];
 optimparam.ncolx = 6; 
 optimparam.ncolu = 2; 
-optimparam.li = [ones(7,1)*(1/7)]; 
+optimparam.li = ones(7,1)*(1/7);
+optimparam.ui = zeros(1,7);
 optimparam.tf = 1;
-optimparam.ui = zeros(1,7); 
 optimparam.par = []; 
-optimparam.bdu = [];
-optimparam.bdx = [];
-optimparam.bdp =[];
-optimparam.objfun = @objfun;
-optimparam.confun = @confun;
+optimparam.bdu = []; 
+optimparam.bdx = []; 
+optimparam.bdp = [];
+optimparam.objfun  = @objfun;
+optimparam.confun  = @confun;
 optimparam.process = @process;
 optimparam.options = options;
+%optimparam.adoptions = adoptionset('jacuser',true);
 
-[optimout,optimparam]=dynopt(optimparam)
-save optimresults optimout optimparam
+[optimout,optimparam] = dynopt(optimparam);
+[tplot,uplot,xplot]   = profiles(optimout,optimparam,50);
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 [tp,cp,ceqp] = constraints(optimout,optimparam,50);
 
 save optimprofiles tplot uplot xplot tp cp ceqp
 
-%graph
+figure
+subplot(1,2,1)
+plot(tplot, xplot(:, 1:2))
+xlabel('t')
+ylabel('x_1, x_2')
+ 
+subplot(1,2,2)
+plot(tplot, uplot)
+xlabel('t')
+ylabel('u')
+ 
+figure
+plot(tplot, xplot(:,2)-8*(tplot-0.5).^2+0.5)
+xlabel('t')
+ylabel('constraint')

@@ -13,9 +13,14 @@ dtdli = dercoltime(optim_param.tau,optim_param.ni,i);
 
 % user defined equality and inequality constraints and their gradients
 if nargout == 2
-    [c,ceq] = feval(optim_param.confun,t_c,x_c,flag,u_c,p_c);
+    [c,ceq] = feval(optim_param.confun,t_c,x_c,flag,u_c,p_c, optim_param);
 else 
-    [c,ceq,Dc,Dceq] = feval(optim_param.confun,t_c,x_c,flag,u_c,p_c);
+  if optim_param.adoptions.confunjacuser == 0;
+    [c,ceq,Dc,Dceq] = feval(optim_param.confun,t_c,x_c,flag,u_c,p_c, optim_param);
+  else
+    [c, ceq] = feval(optim_param.origconfun,t_c,x_c,flag,u_c,p_c);
+    [Dc,Dceq] = feval(optim_param.adoptions.confund,t_c,x_c,flag,u_c,p_c);
+  end
 end
 
 % user defined constraints in given collocation point

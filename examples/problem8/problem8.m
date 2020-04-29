@@ -1,10 +1,9 @@
+clear; close all; clc;
 options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
-options = optimset(options,'Algorithm','sqp'); %2010a
-%options = optimset(options,'Algorithm','active-set'); %2008b
+options = optimset(options,'Algorithm','sqp'); 
 
 %options.NLPsolver='ipopt';
 
@@ -19,7 +18,7 @@ optimparam.ncolu = [];
 optimparam.li = ones(6,1);
 optimparam.tf = [];
 optimparam.ui = [];
-optimparam.par = [0;0]; 
+optimparam.par = [1;1]; 
 optimparam.bdu = []; 
 optimparam.bdx = [];
 optimparam.bdp = [-1.5 1.5;-1.5 1.5];
@@ -32,5 +31,3 @@ optimparam.options = options;
 save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 
-
-%graphplot

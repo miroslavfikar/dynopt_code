@@ -1,4 +1,3 @@
-function f = objfun(t,x,u,p)
-
-f = [x(2)];
-
+function fun = objfun(t,x,u,p)
+  fun = x(2);
+end

@@ -1,12 +1,20 @@
+clear; close all; clc;
+global x10 x20 x1f x2f x1t
+% initial conditions :
+x10 = 0; x20 = 0;
+% final conditions :
+x1f = 0; x2f = 300;
+% constraints in each time :
+x1t = 10;
+
+%% optimization
 options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e4);
 options = optimset(options,'MaxIter',1e3);
 options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);
 options = optimset(options,'TolX',1e-7);
 options = optimset(options,'Algorithm','sqp'); %2010a
-%options = optimset(options,'Algorithm','active-set'); %2008b
 
 %options.NLPsolver='ipopt';
 
@@ -31,5 +39,3 @@ optimparam.options = options;
 save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 
-
-%graph

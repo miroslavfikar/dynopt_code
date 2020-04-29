@@ -1,5 +1,5 @@
+clear; close all; clc;
 options = optimset('LargeScale','off','Display','iter');
-options = optimset(options,'GradObj','on','GradConstr','on');
 options = optimset(options,'MaxFunEvals',1e5);
 options = optimset(options,'MaxIter',1e5);
 options = optimset(options,'TolFun',1e-5);
@@ -30,4 +30,13 @@ save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 
 
-%graph
+figure
+subplot(1,2,1)
+plot(tplot, xplot(:, 1:2))
+xlabel('t')
+ylabel('x_1, x_2')
+
+subplot(1,2,2)
+plot(tplot, uplot)
+xlabel('t')
+ylabel('u')

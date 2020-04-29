@@ -1,0 +1,5 @@
+ToDo in minor versions:
+- hardwired names of grad* functions replace with definable defaults
+- change derivative information calculation (process) for each specific flag
+- defaults for adigator defined in adoptionset
+

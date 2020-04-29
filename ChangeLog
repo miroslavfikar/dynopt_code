@@ -1,3 +1,8 @@
+2020-04-29  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.0
+
+	* automatic differentiation implemented using adigator,
+	incompatibility of source problem files with previous versions
+
 2019-09-12  Miroslav Fikar  <miroslav.fikar@stuba.sk>
 
 	* Repository moved from mercurial to git due termination of mercurial
