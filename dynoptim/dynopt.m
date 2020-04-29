@@ -230,15 +230,6 @@ end
 
 optim_param.options.GradObj='on';
 optim_param.options.GradConstr='on';
-if (isempty(objgr))
-  objgr='off';
-  optim_param.options = optimset(optim_param.options,'GradObj','off');
-end
-
-if (isempty(congr))
-  congr='off';
-  optim_param.options = optimset(optim_param.options,'GradConstr','off');
-end
 
 % set default NLP solver
 if ~isfield(optim_param.options, 'NLPsolver')
