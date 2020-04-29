@@ -1,3 +1,8 @@
+2020-04-29  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.0
+
+	* automatic differentiation implemented using adigator,
+	incompatibility of source problem files with previous versions
+
 2016-08-04  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 4.3.0
 
 	* new option NLPsolver makes possible to incorporate different NLP
