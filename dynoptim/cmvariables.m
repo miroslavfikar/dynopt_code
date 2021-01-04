@@ -1,5 +1,5 @@
 function [lim,um,xm,pm] = cmvariables(nlpx,optim_param)
-% CMVARIABLES - returns the matrixes filled with variables given by the
+% CMVARIABLES - returns the matrices filled with variables given by the
 % orthogonal collocation method.
 
 % This function is used in cmobjfun, cmobjfungrad, cmconfun, cmconfungrad
@@ -103,7 +103,7 @@ switch optim_param.optvar
 end
 %..........................................................................
 
-% calculus of matrixes from vectors liv, upv, xpv, parv obtained by
+% calculus of matrices from vectors liv, upv, xpv, parv obtained by
 % separating the optimised vector x, output
 %..........................................................................
 lim_opt = liv; % optimised variable: li

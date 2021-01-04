@@ -277,7 +277,7 @@ end
 % initialisation of output variables
 optimout.t = []; optimout.u = []; optimout.p =[];
 
-% vector of length of intervals and parameters, and matrixes of control
+% vector of length of intervals and parameters, and matrices of control
 % and state variable coefficients uij and xij calculus 
 [limopt,umopt,xmopt,pmopt] = cmvariables(optimout.nlpx,optim_param);
 

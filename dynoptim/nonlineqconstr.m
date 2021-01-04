@@ -13,7 +13,7 @@ function [Mceq,DMceq] = nonlineqconstr(optim_param,lim,um,xm,pm,tfull)
 
 % initialisation of variables
 %..........................................................................
-% gives information about rows of ceq_pom vector and Dceqxy_pom matrixes
+% gives information about rows of ceq_pom vector and Dceqxy_pom matrices
 % nx nonlinear equality constraints at each collocation point
 ceq_row = optim_param.nx; 
 
@@ -66,7 +66,7 @@ for i = 1:optim_param.ni
         if nargout == 2 % DMceq is also calculed
             % initialisation of variables
             %..............................................................
-            Dceqt_temp = zeros(ceq_row,optim_param.dt_col); % gradient matrixes
+            Dceqt_temp = zeros(ceq_row,optim_param.dt_col); % gradient matrices
             Dcequ_temp = zeros(ceq_row,optim_param.du_col); % of ceq_pom with 
             Dceqx_temp = zeros(ceq_row,optim_param.dx_col); % respect to optimised
             Dceqp_temp = zeros(ceq_row,optim_param.dp_col); % parameters: t, x, u, p
@@ -130,7 +130,7 @@ for i = 1:optim_param.ni
         if nargout == 2 % DMceq is also calculed
             % initialisation of variables
             %..............................................................
-            Dceqt_temp = zeros(ceq_row,optim_param.dt_col); % gradient matrixes
+            Dceqt_temp = zeros(ceq_row,optim_param.dt_col); % gradient matrices
             Dcequ_temp = zeros(ceq_row,optim_param.du_col); % of ceq_pom with 
             Dceqx_temp = zeros(ceq_row,optim_param.dx_col); % respect to optimised
             Dceqp_temp = zeros(ceq_row,optim_param.dp_col); % parameters: t, x, u, p

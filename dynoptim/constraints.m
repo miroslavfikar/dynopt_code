@@ -1,5 +1,5 @@
 function [tplot,cplot,ceqplot] = constraints(optimout,optim_param,ntimes)
-% CONSTRAINTS - returns vector of time, vectors/matrixes of nonlinear
+% CONSTRAINTS - returns vector of time, vectors/matrices of nonlinear
 % inequality and equality contraint introduced over full time interval
 % [t0,tf] prepared to plot them.   
 %
@@ -32,7 +32,7 @@ else % if control variables are given
     lfu = lagfun(tau,tauku);
 end
 
-% vector of length of intervals and parameters, and matrixes of control and
+% vector of length of intervals and parameters, and matrices of control and
 % state variable coefficients uij and xij calculus 
 [limopt,umopt,xmopt,pmopt] = cmvariables(optimout.nlpx,optim_param);
 

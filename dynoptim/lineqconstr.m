@@ -7,7 +7,7 @@ function [Aeq,beq] = lineqconstr(optim_param)
 
 
 % calculation of variations of number of constraints
-% gives later information about rows of matrixes Aeqxy
+% gives later information about rows of matrices Aeqxy
 %..........................................................................
 % bounds to tf are given | final time condition
 if ~isempty(optim_param.tf) 
@@ -30,12 +30,12 @@ nxj = optim_param.nx*(optim_param.ncolx+1);
 for i = 1:optim_param.ni % cycle for each interval
     % initialisation of variables
     %......................................................................
-    Aeqtt = zeros(dt_row,optim_param.dt_col); % matrixes for optimised tf
+    Aeqtt = zeros(dt_row,optim_param.dt_col); % matrices for optimised tf
     Aeqtu = zeros(dt_row,optim_param.du_col); % 
     Aeqtx = zeros(dt_row,optim_param.dx_col); %
     Aeqtp = zeros(dt_row,optim_param.dp_col); % 
     beqt = zeros(dt_row,1);                   %
-    Aeqxt = zeros(dx_row,optim_param.dt_col); % matrixes for optimised state
+    Aeqxt = zeros(dx_row,optim_param.dt_col); % matrices for optimised state
     Aeqxu = zeros(dx_row,optim_param.du_col); % variables
     Aeqxx = zeros(dx_row,optim_param.dx_col); % 
     Aeqxp = zeros(dx_row,optim_param.dp_col); %

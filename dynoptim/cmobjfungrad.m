@@ -10,7 +10,7 @@ function [cmf,cmDf] = cmobjfungrad(nlpx,optim_param)
 cmf = [];
 cmDf = [];
 
-% vector of length variables and parameters, and matrixes of control and
+% vector of length variables and parameters, and matrices of control and
 % state varibale coefficients uij and xij calculus
 [lim,um,xm,pm] = cmvariables(nlpx,optim_param);
 

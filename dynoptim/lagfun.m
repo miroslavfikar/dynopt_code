@@ -37,7 +37,7 @@ end
 temp = length(tau);
 lp = length(tauk); 
 
-% initialisation of the Lagrange function matrixes
+% initialisation of the Lagrange function matrices
 lf = zeros(temp,lp); 
 if nargout == 2 % the derivative is calculed
     dlf = zeros(temp,lp); 
@@ -64,7 +64,7 @@ for j=1:temp
         end
     end
     
-    % filling the matrixes with vector values
+    % filling the matrices with vector values
     lf(j,:) = lf_temp'; 
     if nargout == 2
         dlf(j,:) = dlf_temp'; 
