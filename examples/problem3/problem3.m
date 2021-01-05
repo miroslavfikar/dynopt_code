@@ -1,4 +1,4 @@
-clear; close all; clc;
+clear all; close all; clc;
 options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
                        'TolCon',1e-7,'TolX',1e-7,...
                        'MaxFunEvals',1e5,'MaxIter',1e5,'Algorithm','sqp',...
@@ -40,6 +40,6 @@ xlabel('t')
 ylabel('u')
  
 figure
-plot(tplot, xplot(:,2)-8*(tplot-0.5).^2+0.5)
+plot(tplot, cp)
 xlabel('t')
 ylabel('constraint')

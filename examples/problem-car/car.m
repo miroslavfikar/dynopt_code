@@ -1,4 +1,4 @@
-clear; close all; clc;
+clear all; close all; clc;
 global x10 x20 x1f x2f
 % initial conditions :
 x10 = 0; x20 = 0;

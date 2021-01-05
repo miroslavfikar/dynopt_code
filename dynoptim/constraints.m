@@ -1,4 +1,4 @@
-function [tplot,cplot,ceqplot] = constraints(optimout,optim_param,ntimes)
+function [tplot,cplot,ceqplot] = constraints(optimout,optim_param,ntimes,ode)
 % CONSTRAINTS - returns vector of time, vectors/matrices of nonlinear
 % inequality and equality contraint introduced over full time interval
 % [t0,tf] prepared to plot them.   
@@ -12,6 +12,9 @@ function [tplot,cplot,ceqplot] = constraints(optimout,optim_param,ntimes)
 %   matrix CEQPLOT, where m represets value of (ntimes+1)*ni, n represents
 %   number of nonlinear inequality constraints, and p represents number of
 %   nonlinear equality constraints.
+%   Optional parameter ODE specifies that states are calculated
+%   using ODE solvers instead of default approximation by
+%   collocation polynomials
 
 
 % collocation points and Lagrange functions estimation
@@ -49,6 +52,7 @@ tfull = tau*limopt' + ones(length(tau),1)*tek(1:end-1)';
 % t, c, ceq variables calculation
 temp = length(tau);
 tplot = zeros(optim_param.ni*temp,1);
+uplot = zeros(optim_param.ni*temp,optim_param.nu);
 cplot = [];
 ceqplot = [];
 for i=1:optim_param.ni
@@ -64,6 +68,45 @@ for i=1:optim_param.ni
         [uc,uceq]=feval(optim_param.confun,tfull(j,i),xj,1,uj,pj, optim_param);
         cplot = [cplot;uc];
         ceqplot = [ceqplot;uceq];
+        uplot((i-1)*temp+j,:) = uj';
     end
 end
-%--------------------------------------------------------------------------
+
+if exist('ode')
+    % solution from integration
+    % piece-wise constant u is assumed between 2 printing times
+    y0 = feval(optim_param.origprocess,0,0,5,0,optim_param.par);
+    odeop = odeset('Mass',optim_param.M,'MassSingular','maybe','RelTol',1e-13);
+    n = length(tplot);
+    xplot = y0';
+    cplot1 = [];
+    ceqplot1 = [];
+    for i=1:n-1
+        if isempty(optim_param.ui)
+            uj = [];
+        else
+            uj = uplot(i,:);
+        end
+        if tplot(i) ~= tplot(i+1)
+            [t,y] = ode23t(optim_param.origprocess,[tplot(i), tplot(i+1)],y0,odeop,0,uj,optim_param.par);
+        end
+        y0 = y(end,:);
+        [uc,uceq]=feval(optim_param.confun,tplot(i),xplot,1,uj,pj, optim_param);
+        cplot1 = [cplot1;uc];
+        ceqplot1 = [ceqplot1;uceq];
+        xplot = y0';
+        
+    end
+    [uc,uceq]=feval(optim_param.confun,tplot(n),xplot,1,uj,pj, optim_param);
+    cplot1 = [cplot1;uc];
+    ceqplot1 = [ceqplot1;uceq];
+
+    % compare both solutions
+    % max(abs(cplot-cplot1)), max(abs(ceqplot-ceqplot1))
+    
+    cplot = cplot1;
+    ceqplot = ceqplot1;
+end
+
+end
+

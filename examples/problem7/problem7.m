@@ -1,4 +1,4 @@
-clear; close all; clc;
+clear all; close all; clc;
 options = optimset('LargeScale','off','Display','iter');
 options = optimset(options,'MaxFunEvals',1e5);
 options = optimset(options,'MaxIter',1e5);

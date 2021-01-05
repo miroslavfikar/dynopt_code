@@ -1,4 +1,4 @@
-clear; close all; clc;
+clear all; close all; clc;
 options = optimset('LargeScale','off','Display','iter');
 options = optimset(options,'TolFun',1e-7);
 options = optimset(options,'TolCon',1e-7);

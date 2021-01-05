@@ -1,3 +1,10 @@
+2021-01-05  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.4
+
+	* clear all: remove functions from memory between examples
+
+	* profiles.m, constraints.m: added option 'ode' to integrate ODEs
+	instead of evaluation collocation polynomials in states
+
 2020-10-02  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.3
 
 	* 4 new examples added, manual updates

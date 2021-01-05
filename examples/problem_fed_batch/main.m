@@ -1,5 +1,4 @@
-clear
-clc
+clear all; clc
 
 options = sdpoptionset('LargeScale','on','Display','iter','TolFun',1e-7,...
                        'TolCon',1e-7,'TolX',1e-7,...

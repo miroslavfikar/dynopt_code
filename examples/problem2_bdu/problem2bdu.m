@@ -1,4 +1,4 @@
-clear; close all; clc;
+clear all; close all; clc;
 %% Global parameters : 
 global x10 x20 x30 x40
 

@@ -1,4 +1,4 @@
-function [tplot,uplot,xplot] = profiles(optimout,optim_param,ntimes)
+function [tplot,uplot,xplot] = profiles(optimout,optim_param,ntimes,ode)
 % PROFILES - returns vectors/matrices of time, control and state variables
 % prepared to plot them. 
 %
@@ -10,6 +10,9 @@ function [tplot,uplot,xplot] = profiles(optimout,optim_param,ntimes)
 %   matrix UPLOT, and m-by-nx state matrix XPLOT, where m represets value
 %   of (ntimes+1)*ni, nu represents number of control variables, and nx
 %   represents number of state variables.
+%   Optional parameter ODE specifies that states are calculated
+%   using ODE solvers instead of default approximation by
+%   collocation polynomials
 
 
 % collocation points and Lagrange functions estimation
@@ -58,9 +61,46 @@ for i=1:optim_param.ni
             uplot((i-1)*temp+j,:) = uj';
         end
         % nx-by-1 vector
-        xj = reshape(xm(:,i),optim_param.ncolx+1,optim_param.nx)'*lfx(j,:)';
         tplot((i-1)*temp+j) = tfull(j,i);
-        xplot((i-1)*temp+j,:) = xj';        
+        % solution from collocation points
+        xj = reshape(xm(:,i),optim_param.ncolx+1,optim_param.nx)'*lfx(j,:)';
+        xplot((i-1)*temp+j,:) = xj';      
+        %        if isempty(optim_param.ui)
+        %    uj = [];
+        %end
+        %[t,y] = ode23t(optim_param.origprocess,tfull(j,i)',y0,odeop,0,uj,optim_param.par);
+        %xp_temp = y(1:optim_param.ncolx+1,:);
+        %xplot((i-1)*temp+j,:) = xp_temp;      
+        %y0 = y(end,:);
+
     end
 end
-%--------------------------------------------------------------------------
+
+if exist('ode')
+    % solution from integration
+    % piece-wise constant u is assumed between 2 printing times
+    xplot1 = zeros(optim_param.ni*temp,optim_param.nx);
+    y0 = feval(optim_param.origprocess,0,0,5,0,optim_param.par);
+    odeop = odeset('Mass',optim_param.M,'MassSingular','maybe','RelTol',1e-13);
+    n = length(tplot);
+    xplot1(1,:) = y0';
+    for i=1:n-1
+        if isempty(optim_param.ui)
+            uj = [];
+        else
+            uj = uplot(i,:);
+        end
+        if tplot(i) ~= tplot(i+1)
+            [t,y] = ode23t(optim_param.origprocess,[tplot(i), tplot(i+1)],y0,odeop,0,uj,optim_param.par);
+        end
+        xplot1(i+1,:) = y(end,:);
+        y0 = y(end,:);
+    end
+    % compare both solutions
+    % max(abs(xplot-xplot1))
+    
+    xplot = xplot1;
+end
+
+end
+
