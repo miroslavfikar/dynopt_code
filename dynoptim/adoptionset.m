@@ -15,8 +15,6 @@ function ad = adoptionset(varargin)
      ad.processd = @processd;
      ad.objfund = @objfund;
      ad.confund = @confund;
-     ad.keep = false;
-     ad.generate = false;
      ad.processjacuser = true;
      ad.objfunjacuser = true;
      ad.confunjacuser = true;
@@ -39,7 +37,7 @@ function ad = adoptionset(varargin)
        ad.confund = str2func(p.Results.confunjac);
        ad.confunjacuser = true;
      end
-     ad.keep = p.Results.keep;
-     ad.generate = p.Results.generate;
    end
+   ad.keep = p.Results.keep;
+   ad.generate = p.Results.generate;
 end

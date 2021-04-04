@@ -1,3 +1,10 @@
+2021-04-04  Miroslav Fikar  <miroslav.fikar@stuba.sk>
+
+	* added user supplied gradients for some examples to compare
+	computational speed with/without AD
+
+	* adoptionset.m: jacuser did not respect keep
+
 2021-01-05  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.4
 
 	* clear all: remove functions from memory between examples
