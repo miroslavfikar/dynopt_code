@@ -23,6 +23,7 @@ optimparam.options = options;
 optimparam.adoptions = adoptionset('jacuser',true);
 
 [optimout,optimparam] = dynopt(optimparam);
+save optimresults optimout optimparam
 [tplot,uplot,xplot]   = profiles(optimout,optimparam,50);
 save optimprofiles tplot uplot xplot 
 

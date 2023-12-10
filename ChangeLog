@@ -1,3 +1,7 @@
+2023-12-10  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.6
+
+	* fixed bug in profiles.m with respect to optimised parameters
+
 2021-04-04  Miroslav Fikar  <miroslav.fikar@stuba.sk> Version 5.0.5
 
 	* added user supplied gradients for some examples to compare

@@ -68,7 +68,7 @@ for i=1:optim_param.ni
         %        if isempty(optim_param.ui)
         %    uj = [];
         %end
-        %[t,y] = ode23t(optim_param.origprocess,tfull(j,i)',y0,odeop,0,uj,optim_param.par);
+        %[t,y] = ode23t(optim_param.origprocess,tfull(j,i)',y0,odeop,0,uj,optimout.p);
         %xp_temp = y(1:optim_param.ncolx+1,:);
         %xplot((i-1)*temp+j,:) = xp_temp;      
         %y0 = y(end,:);
@@ -80,7 +80,7 @@ if exist('ode')
     % solution from integration
     % piece-wise constant u is assumed between 2 printing times
     xplot1 = zeros(optim_param.ni*temp,optim_param.nx);
-    y0 = feval(optim_param.origprocess,0,0,5,0,optim_param.par);
+    y0 = feval(optim_param.origprocess,0,0,5,0,optimout.p);
     odeop = odeset('Mass',optim_param.M,'MassSingular','maybe','RelTol',1e-13);
     n = length(tplot);
     xplot1(1,:) = y0';
@@ -91,7 +91,7 @@ if exist('ode')
             uj = uplot(i,:);
         end
         if tplot(i) ~= tplot(i+1)
-            [t,y] = ode23t(optim_param.origprocess,[tplot(i), tplot(i+1)],y0,odeop,0,uj,optim_param.par);
+            [t,y] = ode23t(optim_param.origprocess,[tplot(i), tplot(i+1)],y0,odeop,0,uj,optimout.p);
         end
         xplot1(i+1,:) = y(end,:);
         y0 = y(end,:);

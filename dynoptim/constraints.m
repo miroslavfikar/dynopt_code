@@ -75,7 +75,7 @@ end
 if exist('ode')
     % solution from integration
     % piece-wise constant u is assumed between 2 printing times
-    y0 = feval(optim_param.origprocess,0,0,5,0,optim_param.par);
+    y0 = feval(optim_param.origprocess,0,0,5,0,optimout.p);
     odeop = odeset('Mass',optim_param.M,'MassSingular','maybe','RelTol',1e-13);
     n = length(tplot);
     xplot = y0';
@@ -88,7 +88,7 @@ if exist('ode')
             uj = uplot(i,:);
         end
         if tplot(i) ~= tplot(i+1)
-            [t,y] = ode23t(optim_param.origprocess,[tplot(i), tplot(i+1)],y0,odeop,0,uj,optim_param.par);
+            [t,y] = ode23t(optim_param.origprocess,[tplot(i), tplot(i+1)],y0,odeop,0,uj,optimout.p);
         end
         y0 = y(end,:);
         [uc,uceq]=feval(optim_param.confun,tplot(i),xplot,1,uj,pj, optim_param);

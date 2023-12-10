@@ -6,10 +6,9 @@ options = optimset(options,'MaxIter',1e4);
 options = optimset (options,'TolFun',1e-7);
 options = optimset (options,'TolCon',1e-7);
 options = optimset (options,'TolX',1e-7);
-options = optimset(options,'Algorithm','sqp'); %2010a
-options = optimset(options,'Algorithm','interior-point'); %2010a
-
-options.NLPsolver='ipopt';
+options = optimset(options,'Algorithm','sqp');
+%options = optimset(options,'Algorithm','interior-point'); 
+options.NLPsolver='fmincon';
 
 optimparam.optvar = 3; 
 optimparam.objtype = []; 
@@ -33,7 +32,7 @@ optimparam.options = options;
 [optimout,optimparam]=dynopt(optimparam)
 save optimresults optimout optimparam
 [tplot,uplot,xplot] = profiles(optimout,optimparam,50);
-%save optimprofiles tplot uplot xplot 
+save optimprofiles tplot uplot xplot 
 
 %graph
 figure

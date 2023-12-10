@@ -152,6 +152,9 @@ Calling NLP-solver fmincon for problem with no matrix inequality constraints.
   133         345   -6.106136e-01     2.961e-12     1.000e+00     7.877e-06     2.340e-07  
   134         347   -6.106136e-01     6.516e-14     1.000e+00     2.145e-06     2.165e-08  
 
+<a href = "matlab: helpview('optim','feasible_better_objective','CSHelpWindow');">Feasible point with lower objective function value found</a>.
+
+
 <a href = "matlab: helpview('optim','local_min_found','CSHelpWindow');">Local minimum found that satisfies the constraints</a>.
 
 Optimization completed because the objective function is non-decreasing in 

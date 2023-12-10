@@ -22,5 +22,7 @@ optimparam.options = options;
 [optimout, optimparam] = dynopt(optimparam);
 [tplot,uplot,xplot]    = profiles(optimout,optimparam,50);
 [tp,cp,ceqp] = constraints(optimout,optimparam,50);
+save optimresults optimout optimparam
+save optimprofiles tplot uplot xplot
 
 
